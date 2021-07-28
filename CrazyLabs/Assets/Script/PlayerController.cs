@@ -1,17 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Diagnostics;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 public class PlayerController : MonoBehaviour
 {
     public Joystick joyStick;
     public float speed = 5.0f;
     public float rotationSpeed;
-    
+    Animator anim;
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     // Update is called once per frame
     void Update()
     { //move the player
@@ -20,10 +18,11 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
         movementDirection.Normalize();
-
-        transform.Translate(movementDirection* Time.deltaTime * speed, Space.World);
+        if (anim)
+            anim.SetFloat("speed", movementDirection.magnitude);
+        transform.Translate(movementDirection * Time.deltaTime * speed, Space.World);
         //look in the direction of movement
-        if(movementDirection != Vector3.zero)
+        if (movementDirection != Vector3.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
@@ -33,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("dirt"))
+        if (other.CompareTag("dirt"))
         {
             Destroy(other.gameObject);
         }

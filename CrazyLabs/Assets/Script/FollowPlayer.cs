@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
@@ -11,7 +7,7 @@ public class FollowPlayer : MonoBehaviour
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
