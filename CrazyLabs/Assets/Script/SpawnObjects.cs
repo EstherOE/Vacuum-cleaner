@@ -4,33 +4,28 @@ using UnityEngine;
 
 public class SpawnObjects : MonoBehaviour
 {
-    public GameObject dirt;
-    public GameObject seconddirt;
-    public GameObject thirddirt;
-    private float posX = 81;
-    private float posz= 391;
-    private float startDelay = 1;
-    private float SpawnInterval = 0.5f;
-
+    public GameObject[] dirt;
+  
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnDirt",startDelay, SpawnInterval);
+        InvokeRepeating("SpawnDirt", 0, 0.5f);
     }
 
-    // Update is called once per frame
-    void Update()
+    Vector3 RandomPos()
     {
-        
+        float X = Random.Range(-19, 90);
+        float Y = 0;
+        float Z = Random.Range(-132, 156);
+
+        Vector3 newPos = new Vector3(X,Y,Z);
+        return newPos; 
     }
+
 
     void SpawnDirt()
     {
-        Vector3 spawnPos = new Vector3(Random.Range(-posX, posX), 0f, Random.Range(-posz, posz));
-
-        Instantiate(dirt, spawnPos, Quaternion.identity);
-        Instantiate(seconddirt, spawnPos, Quaternion.identity);
-        Instantiate(thirddirt, spawnPos, Quaternion.identity);
+        Instantiate(dirt[Random.Range(0, 3)], RandomPos(), Quaternion.identity);
     }
 
 }

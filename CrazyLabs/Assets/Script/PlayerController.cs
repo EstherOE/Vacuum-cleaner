@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -6,10 +7,20 @@ public class PlayerController : MonoBehaviour
     public float speed = 5.0f;
     public float rotationSpeed;
     Animator anim;
+    public AudioClip vacuum;
+    public AudioClip collectible;
+    private AudioSource playerAudio;
+    public Text scoreText;
+    private int theScore;
+
     private void Start()
     {
+        playerAudio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
+        theScore = 0;
+        scoreText.text = "Score: " + theScore;
     }
+
     // Update is called once per frame
     void Update()
     { //move the player
@@ -30,12 +41,19 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("dirt"))
         {
+            playerAudio.PlayOneShot(vacuum, 1.0f);
+            playerAudio.PlayOneShot(collectible, 1.0f);
+            theScore += 1;
             Destroy(other.gameObject);
+            scoreText.text = "Score: " + theScore;
+
         }
+
     }
 
 }
