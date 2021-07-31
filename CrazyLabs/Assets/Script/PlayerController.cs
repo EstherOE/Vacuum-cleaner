@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource playerAudio;
     public Text scoreText;
     private int theScore;
+   
 
     private void Start()
     {
@@ -54,6 +55,11 @@ public class PlayerController : MonoBehaviour
 
         }
 
+    }
+
+    public void ReadInput(string s)
+    {
+        speed = float.Parse( s);
     }
 
 }

@@ -15,4 +15,10 @@ public class FollowPlayer : MonoBehaviour
 
         transform.LookAt(target);
     }
+
+    public void ReadInput(string s)
+    {
+        smoothSpeed = float.Parse(s);
+    }
+
 }
