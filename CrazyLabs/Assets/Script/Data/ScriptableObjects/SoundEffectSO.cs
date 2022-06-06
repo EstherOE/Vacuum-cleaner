@@ -16,6 +16,8 @@ public class SoundEffectSO : ScriptableObject
     [BoxGroup("config/Audios")]
     public AudioClip[] clips;
 
+    public bool isLoop;
+
     [MinMaxSlider(0.0f, 1.0f)]
     [BoxGroup("config/controls")]
     public Vector2 volume = new Vector2(0.5f, 0.5f);
@@ -45,6 +47,7 @@ public class SoundEffectSO : ScriptableObject
             .CreateGameObjectWithHideFlags("AudioPreview", HideFlags.HideAndDontSave,
                 typeof(AudioSource))
             .GetComponent<AudioSource>();
+           
     }
 
     private void OnDisable()
@@ -69,6 +72,11 @@ public class SoundEffectSO : ScriptableObject
 
     public AudioSource Play(AudioSource audioSourceParam = null)
     {
+      //  if(isLoop)
+        //{
+          // clip.AudioSource.loop = true;
+        //}
+        
         if (clip == null && clips.Length == 0)
         {
             //  this.LogWarning($"Missing sound clips for {name}");
@@ -79,7 +87,7 @@ public class SoundEffectSO : ScriptableObject
         {
             playIndexResetTimer.Cancel();
         }
-
+       
         var source = audioSourceParam;
         if (source == null)
         {
@@ -93,8 +101,54 @@ public class SoundEffectSO : ScriptableObject
         source.clip = clips.Length > 0 ? GetAudioClip() : clip;
         source.volume = Random.Range(volume.x, volume.y);
         source.pitch = Random.Range(pitch.x, pitch.y);
+        source.loop = isLoop;
 
         source.Play();
+
+#if UNITY_EDITOR
+        if (source != previewer)
+        {
+            Destroy(source.gameObject, source.clip.length / source.pitch);
+        }
+#else
+                Destroy(source.gameObject, source.clip.length / source.pitch);
+#endif
+        return source;
+    }
+     public AudioSource Stop(AudioSource audioSourceParam = null)
+    {
+      //  if(isLoop)
+        //{
+          // clip.AudioSource.loop = true;
+        //}
+        
+        if (clip == null && clips.Length == 0)
+        {
+            //  this.LogWarning($"Missing sound clips for {name}");
+            return null;
+        }
+
+      //  if (playIndexResetTimer != null)
+        //{
+          //  playIndexResetTimer.Cancel();
+       // }
+       
+        var source = audioSourceParam;
+        if (source == null)
+        {
+            var _obj = new GameObject("Sound", typeof(AudioSource));
+            source = _obj.GetComponent<AudioSource>();
+        }
+
+        if (audioMixer != null)
+            source.outputAudioMixerGroup = audioMixer;
+        /*// set source config:
+        source.clip = clips.Length > 0 ? GetAudioClip() : clip;
+        source.volume = Random.Range(volume.x, volume.y);
+        source.pitch = Random.Range(pitch.x, pitch.y);
+        source.loop = isLoop;
+*/
+        source.Stop();
 
 #if UNITY_EDITOR
         if (source != previewer)
@@ -141,7 +195,10 @@ public class SoundEffectSO : ScriptableObject
     {
         Play(null);
     }
-
+    public void StopSO()
+    {
+        Stop(null);
+    }
     enum SoundClipPlayOrder
     {
         random,

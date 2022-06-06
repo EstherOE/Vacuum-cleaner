@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnExtracted;
     public GameEvent OnVacuumOn;
     public GameEvent OnVacuumOff;
+    public GameEvent OnVacuumDamage;
+    public GameEvent OnVacuumRepair;
 
     [Header("Not Grouped Yet")]
     public AudioClip vacuum;
@@ -94,6 +96,11 @@ public class PlayerController : MonoBehaviour
             //other.transform.DOScale(0, 0.95f);
         }
 
+        if(other.CompareTag("damage"))
+        {
+            DamageVacuum();
+        }
+
     }
 
     IEnumerator MoverObject(Transform t, Collider other)
@@ -110,14 +117,17 @@ public class PlayerController : MonoBehaviour
                 break;
 
         }
+        
         Extracted(other);
+        //need to destroy objects on the event that they don't get sucked in completely
+        Destroy(other);
     }
     private void Extracted(Collider other)
     {
-       // playerAudio.PlayOneShot(vacuum, 1.0f);
-       // playerAudio.PlayOneShot(collectible, 1.0f);
+        
       if (!isVacuumOn)
       return;
+     
         theScore += 1;
         OnExtracted.Raise();
         Destroy(other.gameObject);
@@ -140,6 +150,7 @@ public class PlayerController : MonoBehaviour
         if (!isVacuumOn)
         {
             isVacuumOn = true;  
+             playerAudio.Play();
             OnVacuumOn.Raise();  
         }
                 else
@@ -154,8 +165,19 @@ public class PlayerController : MonoBehaviour
         if (!isVacuumOn)
       return;
       isVacuumOn=false;
+      playerAudio.Stop();
       OnVacuumOff.Raise();
                 
+    }
+    public void DamageVacuum()
+    {
+        isVacuumOn= false;
+        playerAudio.Stop();
+        OnVacuumDamage.Raise();
+    }
+    public void RepairVacuum()
+    {
+        OnVacuumRepair.Raise();
     }
 
 }
