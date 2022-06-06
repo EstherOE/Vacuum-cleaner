@@ -14,9 +14,11 @@ public class SpawnObjects : MonoBehaviour
 
     Vector3 RandomPos()
     {
-        float X = Random.Range(-19, 90);
+        //bool validSpawnPoint = false;
+
+        float X = Random.Range(-29, 30);
         float Y = 0.5f;
-        float Z = Random.Range(-132, 156);
+        float Z = Random.Range(-44, 14);
 
         Vector3 newPos = new Vector3(X,Y,Z);
         return newPos; 

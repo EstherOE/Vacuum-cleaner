@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnExtracted;
     public GameEvent OnVacuumOn;
     public GameEvent OnVacuumOff;
+    public GameEvent OnVacuumFull;
     public GameEvent OnVacuumDamage;
     public GameEvent OnVacuumRepair;
 
@@ -27,7 +28,10 @@ public class PlayerController : MonoBehaviour
     public AudioClip collectible;
     private AudioSource playerAudio;
     public Text scoreText;
+    public Text currentVacuumCapacity;
     private int theScore;
+    private int vacuumCapacity;
+    private bool offloadTrash;
     Rigidbody rb;
     Vector3 movementDirection = Vector3.zero;
     public Transform spawnPoint;
@@ -43,10 +47,13 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        offloadTrash = false;
         playerAudio = GetComponent<AudioSource>();
         anim = GetComponentInChildren<Animator>();
         theScore = 0;
+        vacuumCapacity = 0;
         scoreText.text = "Score: " + theScore;
+        currentVacuumCapacity.text = vacuumCapacity + "/100";
         rb = GetComponent<Rigidbody>();
         /*        anim.enabled = false;
                 GetComponent<RigBuilder>().Build();
@@ -64,6 +71,13 @@ public class PlayerController : MonoBehaviour
         movementDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
         if (anim)
             anim.SetFloat("speed", movementDirection.magnitude);
+
+        if (vacuumCapacity == 100)
+        {
+            isVacuumOn = false;
+            OnVacuumOff.Raise();
+            OnVacuumFull.Raise();
+        }
 
         //transform.Translate(movementDirection * Time.deltaTime * speed, Space.World);
         //look in the direction of movement
@@ -87,6 +101,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("trashcan"))
+        {
+            offloadTrash = true;
+            //Debug.Log("entered");
+            StartCoroutine(OffloadTrash());
+        }
+
         if (!isVacuumOn)
         return;
         
@@ -100,7 +121,26 @@ public class PlayerController : MonoBehaviour
         {
             DamageVacuum();
         }
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("trashcan"))
+            offloadTrash = false;
+    }
+
+    IEnumerator OffloadTrash()
+    {
+        while (vacuumCapacity > 0 && offloadTrash)
+        {
+            yield return new WaitForSeconds(0.3f);
+            vacuumCapacity -= 10;
+            //Debug.Log("entered1");
+            currentVacuumCapacity.text = vacuumCapacity + "/100";
+        }
+        //Debug.Log("entered2");
+        isVacuumOn = true;
+        OnVacuumOn.Raise();
     }
 
     IEnumerator MoverObject(Transform t, Collider other)
@@ -129,9 +169,11 @@ public class PlayerController : MonoBehaviour
       return;
      
         theScore += 1;
+        vacuumCapacity += 10;
         OnExtracted.Raise();
         Destroy(other.gameObject);
         scoreText.text = "Stars: " + theScore;
+        currentVacuumCapacity.text = vacuumCapacity + "/100";
         for (int i = 0; i < goals.Length; i++)
         {
             if (theScore == goals[i].targetGoal)
