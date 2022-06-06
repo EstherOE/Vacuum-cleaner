@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+  
     { //move the player
         float horizontalInput = joyStick.Horizontal;
         float verticalInput = joyStick.Vertical;
@@ -51,9 +52,8 @@ public class PlayerController : MonoBehaviour
 
         //transform.Translate(movementDirection * Time.deltaTime * speed, Space.World);
         //look in the direction of movement
-
-
     }
+    
     private void FixedUpdate()
     {
         if (movementDirection != Vector3.zero)
@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
     IEnumerator MoverObject(Transform t, Collider other)
     {
         float timeTaken = 0;
