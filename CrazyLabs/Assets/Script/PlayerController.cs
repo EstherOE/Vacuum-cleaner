@@ -11,10 +11,14 @@ public class PlayerController : MonoBehaviour
     public float speed = 5.0f;
     public float rotationSpeed;
     Animator anim;
-    
+
+    [Header("Vacuum Properties")]
+    public bool isVacuumOn = false;
+
     [Header("SO Events")]
     public GameEvent OnExtracted;
     public GameEvent OnVacuumOn;
+    public GameEvent OnVacuumOff;
 
     [Header("Not Grouped Yet")]
     public AudioClip vacuum;
@@ -50,7 +54,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
   
-    { //move the player
+    { 
+        //move the player
         float horizontalInput = joyStick.Horizontal;
         float verticalInput = joyStick.Vertical;
 
@@ -80,6 +85,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!isVacuumOn)
+        return;
+        
         if (other.CompareTag("dirt"))
         {
             StartCoroutine(MoverObject(other.gameObject.transform, other));
@@ -106,8 +114,10 @@ public class PlayerController : MonoBehaviour
     }
     private void Extracted(Collider other)
     {
-        playerAudio.PlayOneShot(vacuum, 1.0f);
-        playerAudio.PlayOneShot(collectible, 1.0f);
+       // playerAudio.PlayOneShot(vacuum, 1.0f);
+       // playerAudio.PlayOneShot(collectible, 1.0f);
+      if (!isVacuumOn)
+      return;
         theScore += 1;
         OnExtracted.Raise();
         Destroy(other.gameObject);
@@ -125,8 +135,27 @@ public class PlayerController : MonoBehaviour
         speed = float.Parse(s);
     }
 
-    public void ToggleSwitch()
+    public void ToggleSwitchOn()
     {
-
+        if (!isVacuumOn)
+        {
+            isVacuumOn = true;  
+            OnVacuumOn.Raise();  
+        }
+                else
+                {
+                    isVacuumOn=false;
+                    OnVacuumOff.Raise();
+                }
     }
+
+     public void ToggleSwitchOff()
+    {
+        if (!isVacuumOn)
+      return;
+      isVacuumOn=false;
+      OnVacuumOff.Raise();
+                
+    }
+
 }
