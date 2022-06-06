@@ -2,13 +2,21 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using NaughtyAttributes;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Player Properties")]
     public Joystick joyStick;
     public float speed = 5.0f;
     public float rotationSpeed;
     Animator anim;
+    
+    [Header("SO Events")]
+    public GameEvent OnExtracted;
+    public GameEvent OnVacuumOn;
+
+    [Header("Not Grouped Yet")]
     public AudioClip vacuum;
     public AudioClip collectible;
     private AudioSource playerAudio;
@@ -53,7 +61,7 @@ public class PlayerController : MonoBehaviour
         //transform.Translate(movementDirection * Time.deltaTime * speed, Space.World);
         //look in the direction of movement
     }
-    
+
     private void FixedUpdate()
     {
         if (movementDirection != Vector3.zero)
@@ -101,6 +109,7 @@ public class PlayerController : MonoBehaviour
         playerAudio.PlayOneShot(vacuum, 1.0f);
         playerAudio.PlayOneShot(collectible, 1.0f);
         theScore += 1;
+        OnExtracted.Raise();
         Destroy(other.gameObject);
         scoreText.text = "Stars: " + theScore;
         for (int i = 0; i < goals.Length; i++)
@@ -116,4 +125,8 @@ public class PlayerController : MonoBehaviour
         speed = float.Parse(s);
     }
 
+    public void ToggleSwitch()
+    {
+
+    }
 }
