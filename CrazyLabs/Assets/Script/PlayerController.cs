@@ -144,6 +144,8 @@ public class PlayerController : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
             GameManager.VacuumCapacity -= 1;
+            GameManager.Score += 1;
+            scoreText.text = "Score: " + GameManager.Score;
             //Debug.Log("entered1");
             currentVacuumCapacity.text = GameManager.VacuumCapacity + "/50";
         }
@@ -177,11 +179,11 @@ public class PlayerController : MonoBehaviour
       if (!isVacuumOn)
       return;
      
-        GameManager.Score += 1;
+        //GameManager.Score += 1;
         GameManager.VacuumCapacity += 1;
         OnExtracted.Raise();
         Destroy(other.gameObject);
-        scoreText.text = "Stars: " + GameManager.Score;
+        //scoreText.text = "Score: " + GameManager.Score;
         currentVacuumCapacity.text = GameManager.VacuumCapacity + "/50";
         for (int i = 0; i < goals.Length; i++)
         {
