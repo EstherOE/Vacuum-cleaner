@@ -6,6 +6,7 @@ TagManager:
   tags:
   - dirt
   - damage
+  - trashcan
   layers:
   - Default
   - TransparentFX
