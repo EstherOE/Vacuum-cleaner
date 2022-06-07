@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour
     private AudioSource playerAudio;
     public Text scoreText;
     public Text currentVacuumCapacity;
-    private int theScore;
-    private int vacuumCapacity;
+    //private int theScore;
+    //private int vacuumCapacity;
     private bool offloadTrash;
     Rigidbody rb;
     Vector3 movementDirection = Vector3.zero;
@@ -50,10 +50,10 @@ public class PlayerController : MonoBehaviour
         offloadTrash = false;
         playerAudio = GetComponent<AudioSource>();
         anim = GetComponentInChildren<Animator>();
-        theScore = 0;
-        vacuumCapacity = 0;
-        scoreText.text = "Score: " + theScore;
-        currentVacuumCapacity.text = vacuumCapacity + "/50";
+        GameManager.Score = 0;
+        GameManager.VacuumCapacity = 0;
+        scoreText.text = "Score: " + GameManager.Score;
+        currentVacuumCapacity.text = GameManager.VacuumCapacity + "/50";
         rb = GetComponent<Rigidbody>();
         /*        anim.enabled = false;
                 GetComponent<RigBuilder>().Build();
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         if (anim)
             anim.SetFloat("speed", movementDirection.magnitude);
 
-        if (vacuumCapacity == 50)
+        if (GameManager.VacuumCapacity == 50)
         {
             isVacuumOn = false;
             OnVacuumOff.Raise();
@@ -132,12 +132,12 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator OffloadTrash()
     {
-        while (vacuumCapacity > 0 && offloadTrash)
+        while (GameManager.VacuumCapacity > 0 && offloadTrash)
         {
             yield return new WaitForSeconds(0.1f);
-            vacuumCapacity -= 1;
+            GameManager.VacuumCapacity -= 1;
             //Debug.Log("entered1");
-            currentVacuumCapacity.text = vacuumCapacity + "/50";
+            currentVacuumCapacity.text = GameManager.VacuumCapacity + "/50";
         }
         //Debug.Log("entered2");
         isVacuumOn = true;
@@ -169,15 +169,15 @@ public class PlayerController : MonoBehaviour
       if (!isVacuumOn)
       return;
      
-        theScore += 1;
-        vacuumCapacity += 1;
+        GameManager.Score += 1;
+        GameManager.VacuumCapacity += 1;
         OnExtracted.Raise();
         Destroy(other.gameObject);
-        scoreText.text = "Stars: " + theScore;
-        currentVacuumCapacity.text = vacuumCapacity + "/50";
+        scoreText.text = "Stars: " + GameManager.Score;
+        currentVacuumCapacity.text = GameManager.VacuumCapacity + "/50";
         for (int i = 0; i < goals.Length; i++)
         {
-            if (theScore == goals[i].targetGoal)
+            if (GameManager.Score == goals[i].targetGoal)
                 goals[i].onReachedGoal?.Invoke();
         }
 
