@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     Vector3 movementDirection = Vector3.zero;
     public Transform spawnPoint;
+    public Slider PlayerAbilitySlider;
+    public Slider VacuumAbilitySlider;
 
     [Space]
     public Goals[] goals;
@@ -58,6 +60,12 @@ public class PlayerController : MonoBehaviour
         /*        anim.enabled = false;
                 GetComponent<RigBuilder>().Build();
                 anim.enabled = true;*/
+        PlayerAbilitySlider.maxValue = 3;
+        VacuumAbilitySlider.maxValue = 3;
+        PlayerAbilitySlider.minValue = 0;
+        VacuumAbilitySlider.minValue = 0;
+        PlayerAbilitySlider.value = 0;
+        VacuumAbilitySlider.value = 0;
     }
 
     // Update is called once per frame
@@ -183,10 +191,28 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void Upgrade()
+    public void UpgradePlayerAbility()
     {
-        float newZ;
+        if (PlayerAbilitySlider.value == 3)
+            return;
+        PlayerAbilitySlider.value++;
         speed *= 1.2f;
+    }
+
+    public void DowngradePlayerAbility()
+    {
+        if (PlayerAbilitySlider.value == 0)
+            return;
+        PlayerAbilitySlider.value--;
+        speed /= 1.2f;
+    }
+
+    public void UpgradeVacuumAbility()
+    {
+        if (VacuumAbilitySlider.value == 3)
+            return;
+        VacuumAbilitySlider.value++;
+        float newZ;
         Vector3 ColliderSize = gameObject.GetComponent<BoxCollider>().size;
         Vector3 ColliderPosition = gameObject.GetComponent<BoxCollider>().center;
         gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z * 1.2f);
@@ -196,10 +222,12 @@ public class PlayerController : MonoBehaviour
         gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, newZ);
     }
 
-    public void Downgrade()
+    public void DowngradeVacuumAbility()
     {
+        if (VacuumAbilitySlider.value == 0)
+            return;
+        VacuumAbilitySlider.value--;
         float newZ;
-        speed /= 1.2f;
         Vector3 ColliderSize = gameObject.GetComponent<BoxCollider>().size;
         Vector3 ColliderPosition = gameObject.GetComponent<BoxCollider>().center;
         gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z / 1.2f);

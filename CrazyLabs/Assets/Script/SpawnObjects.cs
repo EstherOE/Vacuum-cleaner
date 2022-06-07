@@ -9,7 +9,7 @@ public class SpawnObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnDirt", 0, .3f);
+        InvokeRepeating("SpawnDirt", 0, 2f);
     }
 
 
@@ -32,7 +32,7 @@ public class SpawnObjects : MonoBehaviour
         if (dirt[id].CompareTag("damage"))
             Y = 0.5f;
         else
-            Y = -0.25f;
+            Y = 0.25f;
         float Z = Random.Range(-44, 14);
 
         Vector3 newPos = new Vector3(X,Y,Z);
