@@ -120,6 +120,7 @@ public class PlayerController : MonoBehaviour
         if(other.CompareTag("damage"))
         {
             DamageVacuum();
+            Destroy(other.gameObject);
         }
     }
 
@@ -133,8 +134,8 @@ public class PlayerController : MonoBehaviour
     {
         while (vacuumCapacity > 0 && offloadTrash)
         {
-            yield return new WaitForSeconds(.25f);
-            vacuumCapacity -= 5;
+            yield return new WaitForSeconds(0.1f);
+            vacuumCapacity -= 1;
             //Debug.Log("entered1");
             currentVacuumCapacity.text = vacuumCapacity + "/50";
         }

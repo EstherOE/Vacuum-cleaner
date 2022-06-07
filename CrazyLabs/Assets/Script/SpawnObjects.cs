@@ -9,7 +9,7 @@ public class SpawnObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnDirt", 0, 5f);
+        InvokeRepeating("SpawnDirt", 0, .3f);
     }
 
 
@@ -24,12 +24,15 @@ public class SpawnObjects : MonoBehaviour
             }
         }
     }
-    Vector3 RandomPos()
+    Vector3 RandomPos(int id)
     {
         //bool validSpawnPoint = false;
-
+        float Y;
         float X = Random.Range(-29, 30);
-        float Y = 0.5f;
+        if (dirt[id].CompareTag("damage"))
+            Y = 0.5f;
+        else
+            Y = -0.25f;
         float Z = Random.Range(-44, 14);
 
         Vector3 newPos = new Vector3(X,Y,Z);
@@ -39,7 +42,12 @@ public class SpawnObjects : MonoBehaviour
 
     void SpawnDirt()
     {
-        Instantiate(dirt[Random.Range(0, 3)], RandomPos(), Quaternion.identity);
+        int id = Random.Range(0, dirt.Length);
+        float probability = Random.Range(0f, 1.0f);
+         while (dirt[id].CompareTag("damage") && probability > 0.2)
+            id = Random.Range(0, dirt.Length);
+
+        Instantiate(dirt[id], RandomPos(id), Quaternion.identity);
     }
 
 }
