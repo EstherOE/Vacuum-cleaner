@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         theScore = 0;
         vacuumCapacity = 0;
         scoreText.text = "Score: " + theScore;
-        currentVacuumCapacity.text = vacuumCapacity + "/100";
+        currentVacuumCapacity.text = vacuumCapacity + "/50";
         rb = GetComponent<Rigidbody>();
         /*        anim.enabled = false;
                 GetComponent<RigBuilder>().Build();
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         if (anim)
             anim.SetFloat("speed", movementDirection.magnitude);
 
-        if (vacuumCapacity == 100)
+        if (vacuumCapacity == 50)
         {
             isVacuumOn = false;
             OnVacuumOff.Raise();
@@ -133,10 +133,10 @@ public class PlayerController : MonoBehaviour
     {
         while (vacuumCapacity > 0 && offloadTrash)
         {
-            yield return new WaitForSeconds(0.3f);
-            vacuumCapacity -= 10;
+            yield return new WaitForSeconds(.25f);
+            vacuumCapacity -= 5;
             //Debug.Log("entered1");
-            currentVacuumCapacity.text = vacuumCapacity + "/100";
+            currentVacuumCapacity.text = vacuumCapacity + "/50";
         }
         //Debug.Log("entered2");
         isVacuumOn = true;
@@ -169,11 +169,11 @@ public class PlayerController : MonoBehaviour
       return;
      
         theScore += 1;
-        vacuumCapacity += 10;
+        vacuumCapacity += 1;
         OnExtracted.Raise();
         Destroy(other.gameObject);
         scoreText.text = "Stars: " + theScore;
-        currentVacuumCapacity.text = vacuumCapacity + "/100";
+        currentVacuumCapacity.text = vacuumCapacity + "/50";
         for (int i = 0; i < goals.Length; i++)
         {
             if (theScore == goals[i].targetGoal)
