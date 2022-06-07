@@ -182,6 +182,32 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void Upgrade()
+    {
+        float newZ;
+        speed *= 1.2f;
+        Vector3 ColliderSize = gameObject.GetComponent<BoxCollider>().size;
+        Vector3 ColliderPosition = gameObject.GetComponent<BoxCollider>().center;
+        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z * 1.2f);
+
+        newZ = (ColliderSize.z * 1.2f) / 2 + 1;
+
+        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, newZ);
+    }
+
+    public void Downgrade()
+    {
+        float newZ;
+        speed /= 1.2f;
+        Vector3 ColliderSize = gameObject.GetComponent<BoxCollider>().size;
+        Vector3 ColliderPosition = gameObject.GetComponent<BoxCollider>().center;
+        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z / 1.2f);
+
+        newZ = (ColliderSize.z / 1.2f) / 2 + 1;
+
+        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, newZ);
+    }
+
     public void ReadInput(string s)
     {
         speed = float.Parse(s);
