@@ -9,9 +9,21 @@ public class SpawnObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnDirt", 0, 2f);
+        InvokeRepeating("SpawnDirt", 0, 5f);
     }
 
+
+    void Update()
+    {
+        for (int i = 0; i < dirt.Length; i++)
+        {
+            
+            if (dirt[i].tag=="damage")
+            {
+                
+            }
+        }
+    }
     Vector3 RandomPos()
     {
         //bool validSpawnPoint = false;
