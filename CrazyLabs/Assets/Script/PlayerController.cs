@@ -10,10 +10,25 @@ public class PlayerController : MonoBehaviour
     public Joystick joyStick;
     public float speed = 5.0f;
     public float rotationSpeed;
+    private bool offloadTrash;
+    Rigidbody rb;
+    Vector3 movementDirection = Vector3.zero;
+    public Transform spawnPoint;
+    public Slider PlayerAbilitySlider;
     Animator anim;
+   
+    [Header("Audio Properties")]
+    public AudioClip collectible;
+    public AudioClip vacuum;
+    private AudioSource playerAudio;
+    
 
     [Header("Vacuum Properties")]
     public bool isVacuumOn = false;
+    public Text currentVacuumCapacity;
+    public Slider VacuumAbilitySlider;
+    
+    public Text scoreText;
 
     [Header("SO Events")]
     public GameEvent OnExtracted;
@@ -24,21 +39,6 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnVacuumRepair;
     public GameEvent OnItemProcess;
 
-    [Header("Not Grouped Yet")]
-    public AudioClip vacuum;
-    public AudioClip collectible;
-    private AudioSource playerAudio;
-    public Text scoreText;
-    public Text currentVacuumCapacity;
-    //private int theScore;
-    //private int vacuumCapacity;
-    private bool offloadTrash;
-    Rigidbody rb;
-    Vector3 movementDirection = Vector3.zero;
-    public Transform spawnPoint;
-    public Slider PlayerAbilitySlider;
-    public Slider VacuumAbilitySlider;
-
     [Space]
     public Goals[] goals;
 
@@ -48,6 +48,14 @@ public class PlayerController : MonoBehaviour
         public int targetGoal;
         public UnityEvent onReachedGoal;
     }
+
+
+
+    //private int theScore;
+    //private int vacuumCapacity;
+
+
+
     private void Start()
     {
         offloadTrash = false;
