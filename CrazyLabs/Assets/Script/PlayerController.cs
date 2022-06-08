@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnVacuumFull;
     public GameEvent OnVacuumDamage;
     public GameEvent OnVacuumRepair;
+    public GameEvent OnItemProcess;
 
     [Header("Not Grouped Yet")]
     public AudioClip vacuum;
@@ -136,6 +137,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("trashcan"))
             offloadTrash = false;
+        
     }
 
     IEnumerator OffloadTrash()
@@ -143,11 +145,13 @@ public class PlayerController : MonoBehaviour
         while (GameManager.VacuumCapacity > 0 && offloadTrash)
         {
             yield return new WaitForSeconds(0.1f);
+  
             GameManager.VacuumCapacity -= 1;
             GameManager.Score += 1;
             scoreText.text = "Score: " + GameManager.Score;
             //Debug.Log("entered1");
             currentVacuumCapacity.text = GameManager.VacuumCapacity + "/50";
+            OnItemProcess.Raise();
         }
         //Debug.Log("entered2");
         isVacuumOn = true;

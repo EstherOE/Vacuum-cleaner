@@ -195,10 +195,7 @@ public class SoundEffectSO : ScriptableObject
     {
         Play(null);
     }
-    public void StopSO()
-    {
-        Stop(null);
-    }
+   
     enum SoundClipPlayOrder
     {
         random,

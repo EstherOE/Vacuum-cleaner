@@ -5821,7 +5821,7 @@ MonoBehaviour:
   PlayerAbilitySlider: {fileID: 1149475106}
   VacuumAbilitySlider: {fileID: 917327047}
   goals:
-  - targetGoal: 10
+  - targetGoal: 100
     onReachedGoal:
       m_PersistentCalls:
         m_Calls:
