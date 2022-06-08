@@ -5,11 +5,12 @@ using UnityEngine;
 public class SpawnObjects : MonoBehaviour
 {
     public GameObject[] dirt;
+    public float spawnTimer = 2.5f;
   
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnDirt", 0, 2f);
+        InvokeRepeating("SpawnDirt", 0, spawnTimer);
     }
 
 
@@ -27,15 +28,25 @@ public class SpawnObjects : MonoBehaviour
     Vector3 RandomPos(int id)
     {
         //bool validSpawnPoint = false;
-        float Y;
-        float X = Random.Range(-29, 30);
-        if (dirt[id].CompareTag("damage"))
+        float Y = 2.0f;
+        float X = Random.Range(-15, 21);
+        /*if (dirt[id].CompareTag("damage"))
             Y = 0.5f;
         else
-            Y = 0.25f;
-        float Z = Random.Range(-44, 14);
+            Y = 0.25f;*/
+        float Z = Random.Range(-69, 7);
 
         Vector3 newPos = new Vector3(X,Y,Z);
+        Collider[] intersecting = Physics.OverlapSphere(newPos, 0.5f);
+
+        while (intersecting.Length != 0)
+        {
+            X = Random.Range(-15, 21);
+            Z = Random.Range(-69, 7);
+            newPos = new Vector3(X, Y, Z);
+            intersecting = Physics.OverlapSphere(newPos, 0.5f);
+        }
+
         return newPos; 
     }
 
