@@ -7,9 +7,10 @@ using NaughtyAttributes;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Properties")]
+    public PlayerSO player;
     public Joystick joyStick;
-    public float speed = 5.0f;
-    public float rotationSpeed;
+    public float speed;
+   // public float rotationSpeed;
     private bool offloadTrash;
     Rigidbody rb;
     Vector3 movementDirection = Vector3.zero;
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         offloadTrash = false;
+        speed = player.playerSpeed;
         playerAudio = GetComponent<AudioSource>();
         anim = GetComponentInChildren<Animator>();
         GameManager.Score = 0;
@@ -103,11 +105,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (movementDirection != Vector3.zero)
-            rb.MovePosition(transform.position + movementDirection * speed * Time.fixedDeltaTime);
+            rb.MovePosition(transform.position + movementDirection * player.playerSpeed * Time.fixedDeltaTime);
         if (movementDirection != Vector3.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, player.playerRotationSpeed * Time.deltaTime);
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -210,7 +212,7 @@ public class PlayerController : MonoBehaviour
         if (PlayerAbilitySlider.value == 3)
             return;
         PlayerAbilitySlider.value++;
-        speed *= 1.2f;
+        player.playerSpeed *= 1.2f;
     }
 
     public void DowngradePlayerAbility()
@@ -218,7 +220,7 @@ public class PlayerController : MonoBehaviour
         if (PlayerAbilitySlider.value == 0)
             return;
         PlayerAbilitySlider.value--;
-        speed /= 1.2f;
+        player.playerSpeed /= 1.2f;
     }
 
     public void UpgradeVacuumAbility()
