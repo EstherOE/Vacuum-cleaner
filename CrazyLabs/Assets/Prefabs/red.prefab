@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 6
+  spawnRate: 5
   itemType: 1
 --- !u!1001 &2151497913248203790
 PrefabInstance:

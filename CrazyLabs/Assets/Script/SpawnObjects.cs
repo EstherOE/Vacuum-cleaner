@@ -10,7 +10,11 @@ public class SpawnObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnDirt", 0, spawnTimer);
+        //InvokeRepeating("SpawnDirt", 0, spawnTimer);
+        for (int i = 0; i < dirt.Length; i++)
+        {
+            StartCoroutine(SpawnItem(dirt[i].GetComponent<Item>(), i));
+        }
     }
 
 
@@ -25,6 +29,16 @@ public class SpawnObjects : MonoBehaviour
             }
         }
     }
+
+    IEnumerator SpawnItem(Item t, int id)
+    {
+        while (t.spawnRate > 0 && !GameManager.instance.gameOver)
+        {
+            yield return new WaitForSeconds(t.spawnRate);
+            Instantiate(dirt[id], RandomPos(id), Quaternion.identity);
+        }
+    }
+
     Vector3 RandomPos(int id)
     {
         //bool validSpawnPoint = false;

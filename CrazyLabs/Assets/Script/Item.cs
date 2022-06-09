@@ -5,6 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public float timer;
+    public float spawnRate;
 
     public enum ItemType
     {
