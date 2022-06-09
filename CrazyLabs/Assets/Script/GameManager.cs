@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameEvent OnGameLose;
 
     [Header("Game Stats")]
+    public bool gameOver;
     public  int currentScore;
     public  int processorCapacity;
     public int processorMax;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         coinText.text = playerCoins.playerCurrency.ToString();
+        gameOver = false;
     }
 
     // Start is called before the first frame update
@@ -47,12 +49,14 @@ public class GameManager : MonoBehaviour
     public void PlayerWin() 
     {
         OnGameWin.Raise();
+        gameOver = true;
         Debug.Log("You have Won");
     }
 
     public void PlayerLose() 
     {
         OnGameLose.Raise();
+        gameOver = true;
         Debug.Log("You have lost");
     }
 
