@@ -5,36 +5,27 @@ using System.Collections;
 public class GameTimer : MonoBehaviour
 {
     public TextMeshProUGUI timer;
-    public TextMeshProUGUI finalTime;
+    // public TextMeshProUGUI finalTime;
     // private float startTime = 0f;
     private float maxTime;
     public string timeSpent;
     public bool timerCalled = false;
-    public static bool inDanger;
-    public static GameTimer instance;
     public float currentTime;
-    public GameEvent OnInDanger;
-    public GameEvent OnBestTime;
-    private float flashTimer;
-    private float flashDuration = 1f;
-    private Color timerColour;
 
+    public static GameTimer instance;
 
     private void Awake()
     {
         instance = this;
-        // timerColour = timer.GetComponent<TextMeshProUGUI>().VertexColor;
+    
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        //maxTime 
-
-        if (maxTime > 20)
-        {
-            inDanger = false;
-        }
+        maxTime = 300f;
+        timer.text = maxTime.ToString() + " minutes "; 
+       
     }
 
     // Update is called once per frame
@@ -44,13 +35,6 @@ public class GameTimer : MonoBehaviour
         {
             CountTime();
         }
-
-        if (maxTime <= 20)
-        {
-            inDanger = true;
-            //  OnInDanger.Raise();
-            StartCoroutine(FlashTimer());
-        }
     }
 
 
@@ -59,57 +43,16 @@ public class GameTimer : MonoBehaviour
         timerCalled = true;
 
         maxTime -= Time.deltaTime;
-        //Debug.Log(maxTime);
-        //float t = Time.time - startTime;
-
         string minutes = ((int)maxTime / 60).ToString();
         string seconds = (maxTime % 60).ToString("f2");
         timeSpent = minutes + ":" + seconds;
         timer.text = timeSpent;
-        finalTime.text = timer.text;
         if (maxTime <= 0f)
         {
-           // JigsawManager.instance.LoseGame();
+            GameManager.instance.PlayerLose();
             PauseTime();
-            inDanger = false;
+           // inDanger = false;
         }
-
-        /*  if (maxTime > JigsawManager.instance.jigsawSo.currentBestTime)
-
-          {
-              maxTime = JigsawManager.instance.jigsawSo.currentBestTime;
-              OnBestTime.Raise();
-          }
-  */
-    }
-    private IEnumerator FlashTimer()
-    {
-        while (inDanger)
-        {
-
-            if (timer.isActiveAndEnabled)
-            {
-                timer.enabled = false;
-
-            }
-            else
-            {
-                timer.enabled = true;
-                //timerColour = new Color(255, 244, 219, 255);
-                timerColour = new Color32(205, 58, 7, 255);
-            }
-            yield return new WaitForSeconds(2f);
-        }
-        yield break;
-    }
-    public void SetFlashTimer(bool enabled)
-    {
-        timer.enabled = enabled;
-    }
-
-    public void CheckTimer()
-    {
-
     }
     public void PauseTime()
     {

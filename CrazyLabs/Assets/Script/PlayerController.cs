@@ -10,26 +10,28 @@ public class PlayerController : MonoBehaviour
     public PlayerSO player;
     public Joystick joyStick;
     public float speed;
+    public int offloadRate = 1;
+    
+
    // public float rotationSpeed;
-    private bool offloadTrash;
+    private bool offloadItems; 
     Rigidbody rb;
     Vector3 movementDirection = Vector3.zero;
     public Transform spawnPoint;
     public Slider PlayerAbilitySlider;
     Animator anim;
    
+
     [Header("Audio Properties")]
-    public AudioClip collectible;
-    public AudioClip vacuum;
     private AudioSource playerAudio;
 
 
     [Header("Vacuum Properties")]
     public SuctionDeviceSO playerDevice;
+    private int _deviceCapacity=0;
     public bool isVacuumOn = false;
     public Text currentVacuumCapacity;
     public Slider VacuumAbilitySlider;
-    
     public Text scoreText;
 
     [Header("SO Events")]
@@ -57,17 +59,21 @@ public class PlayerController : MonoBehaviour
     //private int vacuumCapacity;
 
 
+    private void Awake()
+    {
+       
+    }
 
     private void Start()
     {
-        offloadTrash = false;
+        offloadItems = false;
         speed = player.playerSpeed;
         playerAudio = GetComponent<AudioSource>();
         anim = GetComponentInChildren<Animator>();
-        GameManager.Score = 0;
-        GameManager.VacuumCapacity = 0;
-        scoreText.text = "Score: " + GameManager.Score;
-        currentVacuumCapacity.text = GameManager.VacuumCapacity + "/50";
+        GameManager.instance.currentScore = 0;
+        GameManager.instance.processorCapacity = 0;
+        scoreText.text = "Score: " + GameManager.instance.currentScore;
+        currentVacuumCapacity.text = _deviceCapacity.ToString() + " / " + playerDevice.deviceCapacity.ToString();
         rb = GetComponent<Rigidbody>();
         /*        anim.enabled = false;
                 GetComponent<RigBuilder>().Build();
@@ -92,12 +98,13 @@ public class PlayerController : MonoBehaviour
         if (anim)
             anim.SetFloat("speed", movementDirection.magnitude);
 
-        if (GameManager.VacuumCapacity == 50)
+        if (_deviceCapacity==playerDevice.deviceCapacity)
         {
             isVacuumOn = false;
             OnVacuumOff.Raise();
             OnVacuumFull.Raise();
         }
+        
 
         //transform.Translate(movementDirection * Time.deltaTime * speed, Space.World);
         //look in the direction of movement
@@ -106,7 +113,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (movementDirection != Vector3.zero)
-            rb.MovePosition(transform.position + movementDirection * player.playerSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(transform.position + movementDirection *speed * Time.fixedDeltaTime);
         if (movementDirection != Vector3.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
@@ -123,9 +130,9 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("trashcan"))
         {
-            offloadTrash = true;
+            offloadItems = true;
             //Debug.Log("entered");
-            StartCoroutine(OffloadTrash());
+            StartCoroutine(OffloadItems());
         }
 
         if (!isVacuumOn)
@@ -147,21 +154,23 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("trashcan"))
-            offloadTrash = false;
+            offloadItems = false;
         
     }
 
-    IEnumerator OffloadTrash()
+    IEnumerator OffloadItems()
     {
-        while (GameManager.VacuumCapacity > 0 && offloadTrash)
+        while (_deviceCapacity > 0 && offloadItems && !isVacuumOn)
         {
             yield return new WaitForSeconds(0.1f);
   
-            GameManager.VacuumCapacity -= 1;
-            GameManager.Score += 1;
-            scoreText.text = "Score: " + GameManager.Score;
+            _deviceCapacity -= playerDevice.offloadRate;
+            speed += 0.5f;
+            GameManager.instance.currentScore += playerDevice.offloadRate;
+            GameManager.instance.processorCapacity += playerDevice.offloadRate;;
+            scoreText.text = "Score: " + GameManager.instance.currentScore;
             //Debug.Log("entered1");
-            currentVacuumCapacity.text = GameManager.VacuumCapacity + "/50";
+            currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + playerDevice.deviceCapacity.ToString();
             OnItemProcess.Raise();
         }
         //Debug.Log("entered2");
@@ -181,7 +190,6 @@ public class PlayerController : MonoBehaviour
             t.localScale = Vector3.MoveTowards(t.localScale, Vector3.one * 0.1f, Time.deltaTime * 2);
             if (timeTaken > 1.25f)
                 break;
-
         }
         
         Extracted(other);
@@ -194,18 +202,16 @@ public class PlayerController : MonoBehaviour
       if (!isVacuumOn)
       return;
      
-        //GameManager.Score += 1;
-        GameManager.VacuumCapacity += 1;
+        _deviceCapacity += 1;
+        speed -= 0.5f;
         OnExtracted.Raise();
         Destroy(other.gameObject);
-        //scoreText.text = "Score: " + GameManager.Score;
-        currentVacuumCapacity.text = GameManager.VacuumCapacity + "/50";
+        currentVacuumCapacity.text = _deviceCapacity + "/ "+ playerDevice.deviceCapacity.ToString();
         for (int i = 0; i < goals.Length; i++)
         {
-            if (GameManager.Score == goals[i].targetGoal)
+            if (GameManager.instance.currentScore == goals[i].targetGoal)
                 goals[i].onReachedGoal?.Invoke();
         }
-
     }
 
     public void UpgradePlayerAbility()

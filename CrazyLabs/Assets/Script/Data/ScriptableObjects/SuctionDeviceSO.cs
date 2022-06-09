@@ -5,5 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SuctionDeviceSo", menuName = "CrazyLabs/New Device")]
 public class SuctionDeviceSO : ScriptableObject
 {
-   
+    public int deviceCapacity;
+    public int offloadRate;
+    
 }
