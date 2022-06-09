@@ -329,7 +329,7 @@ public class PlayerController : MonoBehaviour
             return;
         PlayerAbilitySlider.value++;
         //player.playerSpeed *= 1.2f;
-        speed *= 1.2f;
+        speed +=2f;
     }
 
     public void DowngradePlayerAbility()
@@ -338,7 +338,7 @@ public class PlayerController : MonoBehaviour
             return;
         PlayerAbilitySlider.value--;
         //player.playerSpeed /= 1.2f;
-        speed /= 1.2f;
+        speed -= 2f;
     }
 
     public void UpgradeVacuumAbility()

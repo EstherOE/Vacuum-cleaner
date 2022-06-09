@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3036316124302422314}
   - component: {fileID: -3738763533635682024}
   m_Layer: 0
-  m_Name: red
+  m_Name: bad
   m_TagString: damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
