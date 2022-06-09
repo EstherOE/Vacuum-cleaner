@@ -195,20 +195,23 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator OffloadItems()
     {
-        while (_deviceCapacity > 0 && offloadItems && !isVacuumOn)
+        while (_deviceCapacity > 0 && offloadItems)
         {
             yield return new WaitForSeconds(0.1f);
 
-            if (_deviceCapacity < offloadRate)
+            if (_deviceCapacity > offloadRate)
             {
                 _deviceCapacity -= offloadRate;
+                GameManager.instance._AddCoins(offloadRate * 3);
                 GameManager.instance.currentScore += offloadRate;
                 GameManager.instance.processorCapacity += offloadRate;
             }
             else
             {
+                
                 GameManager.instance.currentScore += _deviceCapacity;
                 GameManager.instance.processorCapacity += _deviceCapacity;
+                GameManager.instance._AddCoins(_deviceCapacity * 3);
                 _deviceCapacity = 0;
             }
             speed += 0.5f;

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using NaughtyAttributes;
-
+using TMPro;
+        
 public class GameManager : MonoBehaviour
 {
     [Header("SO Events")]
@@ -16,11 +17,16 @@ public class GameManager : MonoBehaviour
     public  int processorCapacity;
     public int processorMax;
 
+    [Header("Currency Properties")]
+    public CurrencySO playerCoins;
+    public TextMeshProUGUI coinText;
+
     public static GameManager instance;
 
     private void Awake()
     {
         instance = this;
+        coinText.text = playerCoins.playerCurrency.ToString();
     }
 
     // Start is called before the first frame update
@@ -50,5 +56,15 @@ public class GameManager : MonoBehaviour
         Debug.Log("You have lost");
     }
 
+    public void _AddCoins(int coins) 
+    {
+        playerCoins.AddCoins(coins);
+        coinText.text = playerCoins.playerCurrency.ToString();
+    }
 
+    public void _SubtractCoins(int coins)
+    {
+        playerCoins.SubtractCoins(coins);
+
+    }
 }
