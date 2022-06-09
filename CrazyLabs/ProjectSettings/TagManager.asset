@@ -7,6 +7,10 @@ TagManager:
   - dirt
   - damage
   - trashcan
+  - range
+  - speedboost
+  - reducespeed
+  - immunity
   layers:
   - Default
   - TransparentFX

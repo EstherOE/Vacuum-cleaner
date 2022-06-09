@@ -55,7 +55,7 @@ public class SpawnObjects : MonoBehaviour
     {
         int id = Random.Range(0, dirt.Length);
         float probability = Random.Range(0f, 1.0f);
-         while (dirt[id].CompareTag("damage") && probability > 0.2)
+         while (dirt[id].GetComponent<Item>().itemType == Item.ItemType.Bad && probability > 0.2)
             id = Random.Range(0, dirt.Length);
 
         Instantiate(dirt[id], RandomPos(id), Quaternion.identity);
