@@ -27,11 +27,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-<<<<<<< Updated upstream
         coinText.text = playerCoins.playerCurrency.ToString();
-=======
         gameOver = false;
->>>>>>> Stashed changes
     }
 
     // Start is called before the first frame update
