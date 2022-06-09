@@ -242,7 +242,7 @@ public class PlayerController : MonoBehaviour
     {
         float timeTaken = 0;
         other.enabled = false;
-        while (Vector3.Distance(t.position, spawnPoint.position) > 0.01f)
+        while (Vector3.Distance(t.position, spawnPoint.position) > 0.01f && other.gameObject)
         {
             yield return null;
             timeTaken += Time.deltaTime;
