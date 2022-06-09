@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "playerso", menuName = "CrazyLabs/playerso") ]
+[CreateAssetMenu(fileName = "PlayerSo", menuName = "CrazyLabs/New Player") ]
 public class PlayerSO : ScriptableObject
 {
     public float playerSpeed;

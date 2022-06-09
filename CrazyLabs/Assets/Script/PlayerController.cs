@@ -22,9 +22,10 @@ public class PlayerController : MonoBehaviour
     public AudioClip collectible;
     public AudioClip vacuum;
     private AudioSource playerAudio;
-    
+
 
     [Header("Vacuum Properties")]
+    public SuctionDeviceSO playerDevice;
     public bool isVacuumOn = false;
     public Text currentVacuumCapacity;
     public Slider VacuumAbilitySlider;
