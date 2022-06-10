@@ -347,7 +347,7 @@ public class PlayerController : MonoBehaviour
         if (VacuumAbilitySlider.value == 3)
             return;
         VacuumAbilitySlider.value++;
-        float newZ;
+        //float newZ;
         Vector3 ColliderSize = gameObject.GetComponent<BoxCollider>().size;
         Vector3 ColliderPosition = gameObject.GetComponent<BoxCollider>().center;
         gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z + .2f);
@@ -362,7 +362,7 @@ public class PlayerController : MonoBehaviour
         if (VacuumAbilitySlider.value == 0)
             return;
         VacuumAbilitySlider.value--;
-        float newZ;
+        //float newZ;
         Vector3 ColliderSize = gameObject.GetComponent<BoxCollider>().size;
         Vector3 ColliderPosition = gameObject.GetComponent<BoxCollider>().center;
         gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z - .2f);
