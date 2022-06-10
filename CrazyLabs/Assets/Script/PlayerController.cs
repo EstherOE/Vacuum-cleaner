@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource playerAudio;
 
 
+
     [Header("Vacuum Properties")]
     public SuctionDeviceSO playerDevice;
     private int _deviceCapacity=0;
@@ -79,7 +80,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         GameManager.instance.currentScore = 0;
         GameManager.instance.processorCapacity = 0;
-        scoreText.text = "Score: " + GameManager.instance.currentScore;
+        scoreText.text = "Score: " + GameManager.instance.currentScore +"/" +GameManager.instance.processorMax;
         currentVacuumCapacity.text = _deviceCapacity.ToString() + " / " + vacuumCapacity.ToString();
         rb = GetComponent<Rigidbody>();
         /*        anim.enabled = false;
@@ -113,8 +114,7 @@ public class PlayerController : MonoBehaviour
 
         if (_deviceCapacity==vacuumCapacity)
         {
-            isVacuumOn = false;
-            OnVacuumOff.Raise();
+            ToggleSwitchOff();
             OnVacuumFull.Raise();
         }
         
@@ -143,33 +143,40 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("trashcan"))
         {
+           
             offloadItems = true;
             //Debug.Log("entered");
+            ToggleSwitchOff();
             StartCoroutine(OffloadItems());
+            
         }
 
-        float effectTime = other.gameObject.GetComponent<Item>().effectTime;
+        
 
         if (other.CompareTag("speedboost"))
         {
+            float effectTime = other.gameObject.GetComponent<Item>().effectTime;
             StartCoroutine(IncreaseSpeed(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
         }
 
         if (other.CompareTag("reducespeed"))
         {
+            float effectTime = other.gameObject.GetComponent<Item>().effectTime;
             StartCoroutine(DecreaseSpeed(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
         }
 
         if (other.CompareTag("immunity"))
         {
+            float effectTime = other.gameObject.GetComponent<Item>().effectTime;
             StartCoroutine(VacuumImmunity(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
         }
 
         if (other.CompareTag("range"))
         {
+            float effectTime = other.gameObject.GetComponent<Item>().effectTime;
             StartCoroutine(VacuumRange(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
         }
@@ -197,7 +204,10 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("trashcan"))
+        {
             offloadItems = false;
+           // ToggleSwitchOn();
+        }
 
         if (other.CompareTag("pickup"))
             OnDrop.Raise();
@@ -210,6 +220,7 @@ public class PlayerController : MonoBehaviour
         while (_deviceCapacity > 0 && offloadItems)
         {
             yield return new WaitForSeconds(0.1f);
+             OnItemProcess.Raise();
 
             if (_deviceCapacity > offloadRate)
             {
@@ -227,7 +238,7 @@ public class PlayerController : MonoBehaviour
                 _deviceCapacity = 0;
             }
             speed += 0.5f;
-            scoreText.text = "Score: " + GameManager.instance.currentScore;
+            scoreText.text = "Score: " + GameManager.instance.currentScore + "/" + GameManager.instance.processorMax;
             /*
             if (GameManager.VacuumCapacity >= offloadRate)
             {
@@ -243,18 +254,16 @@ public class PlayerController : MonoBehaviour
             scoreText.text = "Score: " + GameManager.Score;*/
             //Debug.Log("entered1");
             currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
-            OnItemProcess.Raise();
+            
         }
-        //Debug.Log("entered2");
-        isVacuumOn = true;
-        OnVacuumOn.Raise();
+        ToggleSwitchOn();
     }
 
     IEnumerator MoverObject(Transform t, Collider other)
     {
         float timeTaken = 0;
         other.enabled = false;
-        while (Vector3.Distance(t.position, spawnPoint.position) > 0.01f && other.gameObject)
+        while (Vector3.Distance(t.position, spawnPoint.position) > 0.01f && other.gameObject != null)
         {
             yield return null;
             timeTaken += Time.deltaTime;

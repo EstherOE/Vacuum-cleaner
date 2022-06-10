@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Player1
   m_EditorClassIdentifier: 
   playerSpeed: 9
-  playerRotationSpeed: 720
+  playerRotationSpeed: 700

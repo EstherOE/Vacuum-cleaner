@@ -12,11 +12,18 @@ public class LoadScenceAfterTime : MonoBehaviour
 
     void Update()
     {
-        timeElapsed += Time.deltaTime;
+      /*  timeElapsed += Time.deltaTime;
 
         if (timeElapsed > delayTime)
         {
             SceneManager.LoadScene(nextSceneName);
         }
+      */
+    }
+    public void Load(string scene)
+    {
+       
+            SceneManager.LoadScene(scene);
+        
     }
 }

@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 9
+  effectTime: 10
   spawnRate: 6
   itemType: 3
 --- !u!1 &4874584068824114141

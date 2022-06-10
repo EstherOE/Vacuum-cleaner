@@ -17,7 +17,7 @@ public class GameTimer : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        maxTime = 300f;
+        maxTime = 600f;
 
     }
 
