@@ -42,23 +42,28 @@ public class SpawnObjects : MonoBehaviour
     Vector3 RandomPos(int id)
     {
         //bool validSpawnPoint = false;
-        float Y = 2.0f;
-        float X = Random.Range(-15, 21);
+        float Y = 3.0f;
+        float X = Random.Range(2, 48);
         /*if (dirt[id].CompareTag("damage"))
             Y = 0.5f;
         else
             Y = 0.25f;*/
-        float Z = Random.Range(-69, 7);
+        float Z = Random.Range(-46, 63);
 
         Vector3 newPos = new Vector3(X,Y,Z);
         Collider[] intersecting = Physics.OverlapSphere(newPos, 0.5f);
 
-        while (intersecting.Length != 0)
+        while (intersecting.Length != 0 && !intersecting[0].CompareTag("validspawnpoint"))
         {
-            X = Random.Range(-15, 21);
-            Z = Random.Range(-69, 7);
+            X = Random.Range(2, 48);
+            Z = Random.Range(-46, 63);
             newPos = new Vector3(X, Y, Z);
             intersecting = Physics.OverlapSphere(newPos, 0.5f);
+        }
+
+        while (intersecting.Length != 0 && intersecting[0].CompareTag("validspawnpoint"))
+        {
+            Y += 1.0f;
         }
 
         return newPos; 
