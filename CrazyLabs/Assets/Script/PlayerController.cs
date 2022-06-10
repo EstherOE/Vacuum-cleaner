@@ -146,27 +146,29 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(OffloadItems());
         }
 
+        float effectTime = other.gameObject.GetComponent<Item>().effectTime;
+
         if (other.CompareTag("speedboost"))
         {
-            StartCoroutine(IncreaseSpeed());
+            StartCoroutine(IncreaseSpeed(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
         }
 
         if (other.CompareTag("reducespeed"))
         {
-            StartCoroutine(DecreaseSpeed());
+            StartCoroutine(DecreaseSpeed(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
         }
 
         if (other.CompareTag("immunity"))
         {
-            StartCoroutine(VacuumImmunity());
+            StartCoroutine(VacuumImmunity(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
         }
 
         if (other.CompareTag("range"))
         {
-            StartCoroutine(VacuumRange());
+            StartCoroutine(VacuumRange(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
         }
 
@@ -274,39 +276,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public IEnumerator VacuumImmunity()
+    public IEnumerator VacuumImmunity(float timer)
     {
         isVacuumImmune = true;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(timer);
         isVacuumImmune = false;
     }
 
-    public IEnumerator VacuumRange()
+    public IEnumerator VacuumRange(float timer)
     {
         if (VacuumAbilitySlider.value != 3)
         {
             UpgradeVacuumAbility();
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(timer);
             DowngradeVacuumAbility();
         }
     }
 
-    public IEnumerator IncreaseSpeed()
+    public IEnumerator IncreaseSpeed(float timer)
     {
         if (PlayerAbilitySlider.value != 3)
         {
             UpgradePlayerAbility();
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(timer);
             DowngradePlayerAbility();
         }
     }
 
-    public IEnumerator DecreaseSpeed()
+    public IEnumerator DecreaseSpeed(float timer)
     {
         if (PlayerAbilitySlider.value != 0)
         {
             DowngradePlayerAbility();
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(timer);
             UpgradePlayerAbility();
         }
     }
