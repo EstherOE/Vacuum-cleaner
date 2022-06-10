@@ -313,13 +313,14 @@ public class PlayerController : MonoBehaviour
 
     public void UpgradeVacuumCapacity()
     {
-        //playerDevice.deviceCapacity += 10;
+        playerDevice.deviceCapacity += 10;
         vacuumCapacity += 10;
         currentVacuumCapacity.text = _deviceCapacity + "/ " + vacuumCapacity.ToString();
     }
 
     public void UpgradeProcessingSpeed()
     {
+        playerDevice.offloadRate++;
         offloadRate++;
     }
 
@@ -349,11 +350,11 @@ public class PlayerController : MonoBehaviour
         float newZ;
         Vector3 ColliderSize = gameObject.GetComponent<BoxCollider>().size;
         Vector3 ColliderPosition = gameObject.GetComponent<BoxCollider>().center;
-        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z * 1.2f);
+        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z + .2f);
 
-        newZ = (ColliderSize.z * 1.2f) / 2 + 1;
+        //newZ = (ColliderSize.z * 1.2f) / 2 + 1;
 
-        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, newZ);
+        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, ColliderPosition.z + .1f);
     }
 
     public void DowngradeVacuumAbility()
@@ -364,11 +365,11 @@ public class PlayerController : MonoBehaviour
         float newZ;
         Vector3 ColliderSize = gameObject.GetComponent<BoxCollider>().size;
         Vector3 ColliderPosition = gameObject.GetComponent<BoxCollider>().center;
-        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z / 1.2f);
+        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z - .2f);
 
-        newZ = (ColliderSize.z / 1.2f) / 2 + 1;
+        //newZ = (ColliderSize.z / 1.2f) / 2 + 1;
 
-        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, newZ);
+        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, ColliderPosition.z - .1f);
     }
 
     public void ReadInput(string s)
