@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnVacuumDamage;
     public GameEvent OnVacuumRepair;
     public GameEvent OnItemProcess;
+    public GameEvent OnPickUp;
+    public GameEvent OnDrop;
 
     [Space]
     public Goals[] goals;
@@ -169,6 +171,10 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(VacuumRange());
             StartCoroutine(MoverObject(other.gameObject.transform, other));
         }
+        if(other.CompareTag("pickup")) 
+        {
+            OnPickUp.Raise();
+        }
 
         if (!isVacuumOn)
         return;
@@ -190,6 +196,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("trashcan"))
             offloadItems = false;
+
+        if (other.CompareTag("pickup"))
+            OnDrop.Raise();
+        
         
     }
 
