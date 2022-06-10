@@ -64,6 +64,8 @@ public class SpawnObjects : MonoBehaviour
         while (intersecting.Length != 0 && intersecting[0].CompareTag("validspawnpoint"))
         {
             Y += 1.0f;
+            newPos = new Vector3(X, Y, Z);
+            intersecting = Physics.OverlapSphere(newPos, 0.5f);
         }
 
         return newPos; 
