@@ -17,14 +17,15 @@ public class GameTimer : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    
+        maxTime = 300f;
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        maxTime = 300f;
-        timer.text = maxTime.ToString() + " minutes "; 
+        CountTime();
+       // timer.text = maxTime.ToString() + " minutes "; 
        
     }
 
@@ -62,7 +63,7 @@ public class GameTimer : MonoBehaviour
     public void ResetTimer()
     {
         //   startTime = 0;
-       // maxTime = JigsawManager.instance.jigsawSo.puzzleTime;
+       // 
     }
 }
 

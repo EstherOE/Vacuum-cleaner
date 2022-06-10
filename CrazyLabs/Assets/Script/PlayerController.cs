@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public bool isVacuumOn = false;
     public bool isVacuumImmune = false;
     //public int offloadRate = 1;
-    public int vacuumCapacity = 10;
+    private int vacuumCapacity;
     public Text currentVacuumCapacity;
     public Slider VacuumAbilitySlider;
     public Text scoreText;
