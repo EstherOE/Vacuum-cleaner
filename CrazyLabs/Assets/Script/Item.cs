@@ -26,15 +26,19 @@ public class Item : MonoBehaviour
     void Start()
     {
         intersecting = Physics.OverlapSphere(new Vector3(transform.position.x, 1.5f, transform.position.z), 0.5f);
-        initialX = intersecting[0].gameObject.transform.position.x;
+        if (intersecting.Length != 0)
+            initialX = intersecting[0].gameObject.transform.position.x;
         StartCoroutine(Countdown());
     }
 
     // Update is called once per frame
     void Update()
     {
-        deviation = intersecting[0].gameObject.transform.position.x - initialX;
-        transform.position = new Vector3(transform.position.x + deviation, transform.position.y, transform.position.z);
+        if (intersecting.Length != 0)
+        {
+            deviation = intersecting[0].gameObject.transform.position.x - initialX;
+            transform.position = new Vector3(transform.position.x + deviation, transform.position.y, transform.position.z);
+        }
     }
 
     IEnumerator Countdown()
