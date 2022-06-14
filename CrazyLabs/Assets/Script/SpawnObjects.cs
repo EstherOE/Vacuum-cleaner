@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class SpawnObjects : MonoBehaviour
 {
+    //public LevelSO Level;
     public GameObject[] dirt;
     public float spawnTimer = 2.5f;
   
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < dirt.Length; i++)
+        {
+            Item temp = dirt[i].GetComponent<Item>();
+            temp.collectible.timer = GameManager.instance.Levels[GameManager.currentLevelId].CollectiblesTimers[i];
+            temp.collectible.effectTime = GameManager.instance.Levels[GameManager.currentLevelId].CollectiblesEffectTimes[i];
+            temp.collectible.spawnRate = GameManager.instance.Levels[GameManager.currentLevelId].CollectiblesSpawnRates[i];
+        }
+
         //InvokeRepeating("SpawnDirt", 0, spawnTimer);
         for (int i = 0; i < dirt.Length; i++)
         {
@@ -32,9 +41,9 @@ public class SpawnObjects : MonoBehaviour
 
     IEnumerator SpawnItem(Item t, int id)
     {
-        while (t.spawnRate > 0 && !GameManager.instance.gameOver)
+        while (t.collectible.spawnRate > 0 && !GameManager.instance.gameOver)
         {
-            yield return new WaitForSeconds(t.spawnRate);
+            yield return new WaitForSeconds(t.collectible.spawnRate);
             Instantiate(dirt[id], RandomPos(id), Quaternion.identity);
         }
     }

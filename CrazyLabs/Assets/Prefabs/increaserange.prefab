@@ -204,7 +204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d520d71ea13754fb6b1a284179d9cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 10
-  effectTime: 10
-  spawnRate: 5
+  collectible: {fileID: 11400000, guid: 7e3ee2496c1d1b84587bdb3939327d70, type: 2}
+  intersecting: []
   itemType: 6

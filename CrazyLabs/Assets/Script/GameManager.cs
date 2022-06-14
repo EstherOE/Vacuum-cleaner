@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public CurrencySO playerCoins;
     public TextMeshProUGUI coinText;
 
+    public static int currentLevelId;
+    public LevelSO[] Levels;
     public static GameManager instance;
 
     private void Awake()
@@ -70,5 +72,10 @@ public class GameManager : MonoBehaviour
     {
         playerCoins.SubtractCoins(coins);
 
+    }
+
+    public void SelectLevel(int levelId)
+    {
+        currentLevelId = levelId;
     }
 }

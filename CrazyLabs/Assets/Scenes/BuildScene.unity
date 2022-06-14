@@ -272,7 +272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &23190869
 Transform:
   m_ObjectHideFlags: 0
@@ -13731,7 +13731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &983351833
 Transform:
   m_ObjectHideFlags: 0
@@ -14563,6 +14563,8 @@ MonoBehaviour:
   processorMax: 50
   playerCoins: {fileID: 11400000, guid: f5cf3fe1293a5cc41941e549a92cca32, type: 2}
   coinText: {fileID: 2128775104}
+  Levels:
+  - {fileID: 11400000, guid: 17b6906b993e6d0479a077af993b1c62, type: 2}
 --- !u!4 &1049456144
 Transform:
   m_ObjectHideFlags: 0
@@ -19575,7 +19577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1224359411
 Transform:
   m_ObjectHideFlags: 0
@@ -25047,7 +25049,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1756175832
 Transform:
   m_ObjectHideFlags: 0
@@ -28853,6 +28855,7 @@ MonoBehaviour:
   - {fileID: 3036316124302422313, guid: 29e602a06589ce547be99d6d8265ab88, type: 3}
   - {fileID: 6585237318902071861, guid: ea46164a64b21e448886b432d908614b, type: 3}
   - {fileID: 3402643601064290119, guid: c560f1ca69bb7b4428165c9d220c3bea, type: 3}
+  - {fileID: 3402643601064290119, guid: 84ad035ee10213548bb09f3ceaa63f30, type: 3}
   spawnTimer: 2.5
 --- !u!4 &2094976327
 Transform:

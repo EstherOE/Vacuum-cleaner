@@ -155,32 +155,38 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("speedboost"))
         {
-            float effectTime = other.gameObject.GetComponent<Item>().effectTime;
+            float effectTime = other.gameObject.GetComponent<Item>().collectible.effectTime;
             StartCoroutine(IncreaseSpeed(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
         }
 
         if (other.CompareTag("reducespeed"))
         {
-            float effectTime = other.gameObject.GetComponent<Item>().effectTime;
+            float effectTime = other.gameObject.GetComponent<Item>().collectible.effectTime;
             StartCoroutine(DecreaseSpeed(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
         }
 
         if (other.CompareTag("immunity"))
         {
-            float effectTime = other.gameObject.GetComponent<Item>().effectTime;
+            float effectTime = other.gameObject.GetComponent<Item>().collectible.effectTime;
             StartCoroutine(VacuumImmunity(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
         }
 
         if (other.CompareTag("range"))
         {
-            float effectTime = other.gameObject.GetComponent<Item>().effectTime;
+            float effectTime = other.gameObject.GetComponent<Item>().collectible.effectTime;
             StartCoroutine(VacuumRange(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
         }
-        if(other.CompareTag("pickup")) 
+
+        if (other.CompareTag("coin"))
+        {
+            StartCoroutine(MoverObject(other.gameObject.transform, other));
+        }
+
+        if (other.CompareTag("pickup")) 
         {
             OnPickUp.Raise();
         }
@@ -274,6 +280,7 @@ public class PlayerController : MonoBehaviour
         }
         
         if (other.CompareTag("dirt")) Extracted(other);
+        if (other.CompareTag("coin")) GameManager.instance._AddCoins(3);
         //need to destroy objects on the event that they don't get sucked in completely
         Destroy(other.gameObject);
     }

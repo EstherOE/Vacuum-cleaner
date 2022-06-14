@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 3402643601064290118}
   - component: {fileID: 2795774906950587815}
   m_Layer: 0
-  m_Name: green
-  m_TagString: speedboost
+  m_Name: Coin
+  m_TagString: coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 72ef2bcb4f3b64a4281ef273cb89fbc8, type: 2}
+  - {fileID: 2100000, guid: 00bb37938762b7d4c83ef0b9253540fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,9 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d520d71ea13754fb6b1a284179d9cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectible: {fileID: 11400000, guid: 4b5336054aa4b64449f6a54bc5fc9f00, type: 2}
+  collectible: {fileID: 11400000, guid: 7f3912e926423ee429ad9a56467cc354, type: 2}
   intersecting: []
-  itemType: 3
+  itemType: 2
 --- !u!1 &4874584068824114141
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 72ef2bcb4f3b64a4281ef273cb89fbc8, type: 2}
+  - {fileID: 2100000, guid: 00bb37938762b7d4c83ef0b9253540fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

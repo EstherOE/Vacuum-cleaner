@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public float timer;
-    public float effectTime;
-    public float spawnRate;
+    public CollectibleSO collectible;
     private float deviation;
     private float initialX;
     public Collider[] intersecting;
@@ -41,7 +39,7 @@ public class Item : MonoBehaviour
 
     IEnumerator Countdown()
     {
-        yield return new WaitForSeconds(timer);
+        yield return new WaitForSeconds(collectible.timer);
         Destroy(gameObject);
     }
 }
