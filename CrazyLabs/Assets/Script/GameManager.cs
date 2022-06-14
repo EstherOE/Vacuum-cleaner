@@ -22,13 +22,14 @@ public class GameManager : MonoBehaviour
     public CurrencySO playerCoins;
     public TextMeshProUGUI coinText;
 
-    public static int currentLevelId;
+    public int currentLevelId;
     public LevelSO[] Levels;
     public static GameManager instance;
 
     private void Awake()
     {
         instance = this;
+        currentLevelId = PlayerPrefs.GetInt("CurrentLevelID");
         coinText.text = playerCoins.playerCurrency.ToString();
         gameOver = false;
     }
@@ -72,10 +73,5 @@ public class GameManager : MonoBehaviour
     {
         playerCoins.SubtractCoins(coins);
 
-    }
-
-    public void SelectLevel(int levelId)
-    {
-        currentLevelId = levelId;
     }
 }
