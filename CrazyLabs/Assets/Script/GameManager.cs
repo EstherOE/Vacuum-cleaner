@@ -72,6 +72,5 @@ public class GameManager : MonoBehaviour
     public void _SubtractCoins(int coins)
     {
         playerCoins.SubtractCoins(coins);
-
     }
 }
