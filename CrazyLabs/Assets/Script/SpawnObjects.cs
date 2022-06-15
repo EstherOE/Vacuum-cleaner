@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class SpawnObjects : MonoBehaviour
 {
+    //public LevelSO Level;
     public GameObject[] dirt;
     public float spawnTimer = 2.5f;
   
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < dirt.Length; i++)
+        {
+            Item temp = dirt[i].GetComponent<Item>();
+            temp.collectible.timer = GameManager.instance.Levels[GameManager.instance.currentLevelId].CollectiblesTimers[i];
+            temp.collectible.effectTime = GameManager.instance.Levels[GameManager.instance.currentLevelId].CollectiblesEffectTimes[i];
+            temp.collectible.spawnRate = GameManager.instance.Levels[GameManager.instance.currentLevelId].CollectiblesSpawnRates[i];
+        }
+
         //InvokeRepeating("SpawnDirt", 0, spawnTimer);
         for (int i = 0; i < dirt.Length; i++)
         {
@@ -32,9 +41,9 @@ public class SpawnObjects : MonoBehaviour
 
     IEnumerator SpawnItem(Item t, int id)
     {
-        while (t.spawnRate > 0 && !GameManager.instance.gameOver)
+        while (t.collectible.spawnRate > 0 && !GameManager.instance.gameOver)
         {
-            yield return new WaitForSeconds(t.spawnRate);
+            yield return new WaitForSeconds(t.collectible.spawnRate);
             Instantiate(dirt[id], RandomPos(id), Quaternion.identity);
         }
     }
@@ -51,15 +60,19 @@ public class SpawnObjects : MonoBehaviour
         float Z = Random.Range(-46, 63);
 
         Vector3 newPos = new Vector3(X,Y,Z);
-        Collider[] intersecting = Physics.OverlapSphere(newPos, 0.5f);
+        Collider[] intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 1.5f, newPos.z), 0.5f);
+        Collider[] surface = Physics.OverlapSphere(newPos, 0.5f);
 
-        while (intersecting.Length != 0 && !intersecting[0].CompareTag("validspawnpoint"))
+        while (intersecting.Length == 0 || (surface.Length != 0 && !surface[0].CompareTag("validspawnpoint")))
         {
             X = Random.Range(2, 48);
             Z = Random.Range(-46, 63);
             newPos = new Vector3(X, Y, Z);
-            intersecting = Physics.OverlapSphere(newPos, 0.5f);
+            surface = Physics.OverlapSphere(newPos, 0.5f);
+            intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 1.5f, newPos.z), 0.5f);
         }
+
+        intersecting = Physics.OverlapSphere(newPos, 0.5f);
 
         while (intersecting.Length != 0 && intersecting[0].CompareTag("validspawnpoint"))
         {

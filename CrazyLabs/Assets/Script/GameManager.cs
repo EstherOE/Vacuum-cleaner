@@ -22,11 +22,14 @@ public class GameManager : MonoBehaviour
     public CurrencySO playerCoins;
     public TextMeshProUGUI coinText;
 
+    public int currentLevelId;
+    public LevelSO[] Levels;
     public static GameManager instance;
 
     private void Awake()
     {
         instance = this;
+        currentLevelId = PlayerPrefs.GetInt("CurrentLevelID");
         coinText.text = playerCoins.playerCurrency.ToString();
         gameOver = false;
     }
