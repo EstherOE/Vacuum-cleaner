@@ -69,8 +69,8 @@ public class ShareButton : MonoBehaviour
 
     public void ShareBtn()
     {
-        // StartCoroutine(TakeScreenshotAndShare());
+        StartCoroutine(TakeScreenshotAndShare());
 
-        StartCoroutine(TakeSSAndShare(screenshot_image));
+        // StartCoroutine(TakeSSAndShare(screenshot_image));
     }
 }
