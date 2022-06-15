@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnVacuumDamage;
     public GameEvent OnVacuumRepair;
     public GameEvent OnItemProcess;
+    public GameEvent OnPlayerHit;
     public GameEvent OnPickUp;
     public GameEvent OnDrop;
 
@@ -116,6 +117,10 @@ public class PlayerController : MonoBehaviour
         {
             ToggleSwitchOff();
             OnVacuumFull.Raise();
+        }
+        if (_deviceCapacity < 0)
+        {
+            _deviceCapacity = 0;
         }
         
 
@@ -202,9 +207,18 @@ public class PlayerController : MonoBehaviour
 
         if(other.CompareTag("damage"))
         {
-            if (!isVacuumImmune) DamageVacuum();
+            if (!isVacuumImmune)
+            StartCoroutine(MoverObject(other.gameObject.transform, other));
+            DamageVacuum();
             Destroy(other.gameObject);
         }
+        if (other.CompareTag("MovableObstacle"))
+        {
+            OnPlayerHit.Raise();
+            currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
+            _deviceCapacity -= 2;
+        }
+
     }
 
     private void OnTriggerExit(Collider other)

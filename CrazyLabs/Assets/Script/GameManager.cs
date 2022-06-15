@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public CurrencySO playerCoins;
     public TextMeshProUGUI coinText;
 
+    [Header("Level Attributes")]
     public int currentLevelId;
     public LevelSO[] Levels;
     public static GameManager instance;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
         currentLevelId = PlayerPrefs.GetInt("CurrentLevelID");
         coinText.text = playerCoins.playerCurrency.ToString();
         gameOver = false;
+        //Instantiate(Levels[currentLevelId].levelPrefab,)
     }
 
     // Start is called before the first frame update
