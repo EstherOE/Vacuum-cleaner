@@ -15,6 +15,9 @@ TagManager:
   - validspawnpoint
   - river
   - coin
+  - Pathpoint
+  - MultiPathpoint
+  - MovableObstacle
   layers:
   - Default
   - TransparentFX

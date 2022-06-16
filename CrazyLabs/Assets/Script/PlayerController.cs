@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     Vector3 movementDirection = Vector3.zero;
     public Transform spawnPoint;
     public Slider PlayerAbilitySlider;
+    public GameObject Vacuum;
     Animator anim;
    
 
@@ -176,6 +177,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("range"))
         {
+            Vacuum.SetActive(true);
             float effectTime = other.gameObject.GetComponent<Item>().collectible.effectTime;
             StartCoroutine(VacuumRange(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
@@ -315,6 +317,7 @@ public class PlayerController : MonoBehaviour
         {
             UpgradeVacuumAbility();
             yield return new WaitForSeconds(timer);
+            Vacuum.SetActive(false);
             DowngradeVacuumAbility();
         }
     }
@@ -378,11 +381,11 @@ public class PlayerController : MonoBehaviour
         //float newZ;
         Vector3 ColliderSize = gameObject.GetComponent<BoxCollider>().size;
         Vector3 ColliderPosition = gameObject.GetComponent<BoxCollider>().center;
-        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z + .2f);
+        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z + 1.0f);
 
         //newZ = (ColliderSize.z * 1.2f) / 2 + 1;
 
-        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, ColliderPosition.z + .1f);
+        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, ColliderPosition.z + .5f);
     }
 
     public void DowngradeVacuumAbility()
@@ -393,11 +396,11 @@ public class PlayerController : MonoBehaviour
         //float newZ;
         Vector3 ColliderSize = gameObject.GetComponent<BoxCollider>().size;
         Vector3 ColliderPosition = gameObject.GetComponent<BoxCollider>().center;
-        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z - .2f);
+        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z - 1.0f);
 
         //newZ = (ColliderSize.z / 1.2f) / 2 + 1;
 
-        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, ColliderPosition.z - .1f);
+        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, ColliderPosition.z - .5f);
     }
 
     public void ReadInput(string s)
