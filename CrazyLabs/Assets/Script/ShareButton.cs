@@ -7,6 +7,8 @@ public class ShareButton : MonoBehaviour
 {
     public Image screenshot_image;
 
+    private bool isProductionScreenshot = false;
+
     void Update()
     {
         //if( Input.GetMouseButtonDown( 0 ) )
@@ -69,8 +71,13 @@ public class ShareButton : MonoBehaviour
 
     public void ShareBtn()
     {
-        StartCoroutine(TakeScreenshotAndShare());
-
-        // StartCoroutine(TakeSSAndShare(screenshot_image));
+        if(isProductionScreenshot)
+        {
+            StartCoroutine(TakeSSAndShare(screenshot_image));
+        }
+        else 
+        {
+            StartCoroutine(TakeScreenshotAndShare());
+        }
     }
 }
