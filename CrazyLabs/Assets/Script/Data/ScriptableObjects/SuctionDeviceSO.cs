@@ -7,5 +7,6 @@ public class SuctionDeviceSO : ScriptableObject
 {
     public int deviceCapacity;
     public int offloadRate;
+    public int pickUpRate;
     
 }

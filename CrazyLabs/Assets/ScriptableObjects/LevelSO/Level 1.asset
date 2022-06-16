@@ -36,3 +36,5 @@ MonoBehaviour:
   - 8
   - 10
   - 11
+  levelPrefab: {fileID: 2070580777718596000, guid: 162cfb335cd697a45ac4935bde0a4fe3, type: 3}
+  levelPosition: {x: 0, y: 0, z: 1}
