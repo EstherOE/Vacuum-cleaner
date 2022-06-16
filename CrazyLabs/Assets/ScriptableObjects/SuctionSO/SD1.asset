@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deviceCapacity: 10
   offloadRate: 1
+  pickUpRate: 1

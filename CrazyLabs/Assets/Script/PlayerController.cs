@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
     
 
    // public float rotationSpeed;
-    private bool offloadItems; 
+    private bool offloadItems;
+    private bool pickUpItems;
     Rigidbody rb;
     Vector3 movementDirection = Vector3.zero;
     public Transform spawnPoint;
@@ -74,6 +75,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         offloadItems = false;
+        pickUpItems = false;
         speed = player.playerSpeed;
         vacuumCapacity = playerDevice.deviceCapacity;
         offloadRate = playerDevice.offloadRate;
@@ -148,7 +150,6 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("trashcan"))
         {
-           
             offloadItems = true;
             //Debug.Log("entered");
             ToggleSwitchOff();
@@ -193,7 +194,9 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("pickup")) 
         {
+            pickUpItems = true;
             OnPickUp.Raise();
+            StartCoroutine(_PickUpItems());
         }
 
         if (!isVacuumOn)
@@ -230,11 +233,26 @@ public class PlayerController : MonoBehaviour
         }
 
         if (other.CompareTag("pickup"))
+        {
+            pickUpItems = false;
             OnDrop.Raise();
-        
+            ToggleSwitchOff();    
+        }
         
     }
+    IEnumerator _PickUpItems() 
+    {
+        while (_deviceCapacity < playerDevice.deviceCapacity && pickUpItems)
+        {
+            yield return new WaitForSeconds(0.1f);
+            _deviceCapacity += playerDevice.pickUpRate;
+            currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
+        }
 
+        ToggleSwitchOn();
+    }
+
+     
     IEnumerator OffloadItems()
     {
         while (_deviceCapacity > 0 && offloadItems)
