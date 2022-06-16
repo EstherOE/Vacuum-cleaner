@@ -12,12 +12,11 @@ public class Item : MonoBehaviour
     public enum ItemType
     {
         Normal,
-        Bad,
         Coin,
         PlayerSpeedIncrease,
         PlayerSpeedDecrease,
         Immunity,
-        Range
+        Vacuum,
     }
 
     public ItemType itemType;

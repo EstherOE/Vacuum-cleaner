@@ -206,4 +206,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectible: {fileID: 11400000, guid: 7e3ee2496c1d1b84587bdb3939327d70, type: 2}
   intersecting: []
-  itemType: 6
+  itemType: 5
