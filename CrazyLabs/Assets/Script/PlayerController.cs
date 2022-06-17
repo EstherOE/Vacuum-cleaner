@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using NaughtyAttributes;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
     private int vacuumCapacity;
     public Text currentVacuumCapacity;
     public Slider VacuumAbilitySlider;
-    public Text scoreText;
+    public GameObject scoreText;
 
     [Header("SO Events")]
     public GameEvent OnExtracted;
@@ -52,15 +53,7 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnPickUp;
     public GameEvent OnDrop;
 
-    [Space]
-    public Goals[] goals;
-
-    [System.Serializable]
-    public class Goals
-    {
-        public int targetGoal;
-        public UnityEvent onReachedGoal;
-    }
+   
 
 
 
@@ -79,12 +72,12 @@ public class PlayerController : MonoBehaviour
         pickUpItems = false;
         speed = player.playerSpeed;
         vacuumCapacity = playerDevice.deviceCapacity;
-        offloadRate = playerDevice.offloadRate;
+        offloadRate = playerDevice.offloadRate; 
         playerAudio = GetComponent<AudioSource>();
         anim = GetComponentInChildren<Animator>();
         GameManager.instance.currentScore = 0;
         GameManager.instance.processorCapacity = 0;
-        scoreText.text = "Score: " + GameManager.instance.currentScore +"/" +GameManager.instance.processorMax;
+        scoreText.GetComponent<TextMeshProUGUI>().text = GameManager.instance.currentScore +"/" +GameManager.instance.processorMax;
         currentVacuumCapacity.text = _deviceCapacity.ToString() + " / " + vacuumCapacity.ToString();
         rb = GetComponent<Rigidbody>();
         /*        anim.enabled = false;
@@ -277,7 +270,7 @@ public class PlayerController : MonoBehaviour
                 _deviceCapacity = 0;
             }
             speed += 0.5f;
-            scoreText.text = "Score: " + GameManager.instance.currentScore + "/" + GameManager.instance.processorMax;
+            scoreText.GetComponent<TextMeshProUGUI>().text = GameManager.instance.currentScore + "/" + GameManager.instance.processorMax;
             /*
             if (GameManager.VacuumCapacity >= offloadRate)
             {

@@ -21,9 +21,9 @@ public class SpawnObjects : MonoBehaviour
         for (int i = 0; i < dirt.Length; i++)
         {
             Item temp = dirt[i].GetComponent<Item>();
-            temp.collectible.timer = GameManager.instance.Levels[GameManager.instance.currentLevelId].CollectiblesTimers[i];
-            temp.collectible.effectTime = GameManager.instance.Levels[GameManager.instance.currentLevelId].CollectiblesEffectTimes[i];
-            temp.collectible.spawnRate = GameManager.instance.Levels[GameManager.instance.currentLevelId].CollectiblesSpawnRates[i];
+            temp.collectible.timer = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].CollectiblesTimers[i];
+            temp.collectible.effectTime = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].CollectiblesEffectTimes[i];
+            temp.collectible.spawnRate = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].CollectiblesSpawnRates[i];
         }
 
         //InvokeRepeating("SpawnDirt", 0, spawnTimer);

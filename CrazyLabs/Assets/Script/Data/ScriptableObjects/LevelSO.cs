@@ -10,9 +10,16 @@ public class LevelSO : ScriptableObject
     public float[] CollectiblesTimers;
     public float[] CollectiblesEffectTimes;
     public float[] CollectiblesSpawnRates;
+    public GameObject[] itemsSpawnedInScene;
 
     [Header("LevelPrefab Attributes")]
     public GameObject levelPrefab;
     public Vector3 levelPosition;
+
+
+    public void LoadLevelScene(int id) 
+    {
+
+           }
 
 }

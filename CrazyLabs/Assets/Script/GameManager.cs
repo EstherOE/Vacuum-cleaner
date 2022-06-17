@@ -24,14 +24,17 @@ public class GameManager : MonoBehaviour
 
     [Header("Level Attributes")]
     public int currentLevelId;
-    public LevelSO[] Levels;
+    public LevelSO[] gameLevel;
     public static GameManager instance;
 
     private void Awake()
     {
-        instance = this;
-        playerCoins.CurrencyInitializer();
         currentLevelId = PlayerPrefs.GetInt("CurrentLevelID");
+       
+        instance = this;
+        SetLevel();
+        playerCoins.CurrencyInitializer();
+       
         coinText.text = playerCoins.playerCurrency.ToString();
         gameOver = false;
         //Instantiate(Levels[currentLevelId].levelPrefab,)
@@ -76,5 +79,14 @@ public class GameManager : MonoBehaviour
     public void _SubtractCoins(int coins)
     {
         playerCoins.SubtractCoins(coins);
+    }
+
+    public void SetLevel() 
+    {
+
+        gameLevel[currentLevelId].levelPrefab.SetActive(true);
+        Instantiate(gameLevel[currentLevelId].levelPrefab, gameLevel[currentLevelId].levelPosition, gameLevel[currentLevelId].levelPrefab.transform.rotation);
+        
+
     }
 }
