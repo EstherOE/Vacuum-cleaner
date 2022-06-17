@@ -7,4 +7,7 @@ public class PlayerSO : ScriptableObject
 {
     public float playerSpeed;
     public float playerRotationSpeed;
+    public int upgradeAbilityPrice;
+    public int upgradeProcessorPrice;
+    public int upgradeCapacityPrice;
 }
