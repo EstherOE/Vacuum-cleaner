@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e31b23a4cd289c4f97ee6ae36199b9e, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: 
-  timer: 0
-  effectTime: 0
-  spawnRate: 0
+  timer: 9
+  effectTime: 10
+  spawnRate: 10

@@ -153,7 +153,6 @@ public class PlayerController : MonoBehaviour
         {
             offloadItems = true;
             //Debug.Log("entered");
-            ToggleSwitchOff();
             StartCoroutine(OffloadItems());
             
         }
@@ -201,8 +200,8 @@ public class PlayerController : MonoBehaviour
            // StartCoroutine(_PickUpItems());
         }
 
-        if (!isVacuumOn)
-        return;
+       // if (!isVacuumOn)
+       // return;
         
         if (other.CompareTag("dirt"))
         {
@@ -251,7 +250,7 @@ public class PlayerController : MonoBehaviour
             currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
         }
 
-        ToggleSwitchOn();
+      //  ToggleSwitchOn();
     }
 
      
@@ -296,7 +295,6 @@ public class PlayerController : MonoBehaviour
             currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
             
         }
-        ToggleSwitchOn();
     }
 
     IEnumerator MoverObject(Transform t, Collider other)
@@ -307,7 +305,7 @@ public class PlayerController : MonoBehaviour
         {
             yield return null;
             timeTaken += Time.deltaTime;
-            t.position = Vector3.MoveTowards(t.position, spawnPoint.position, Time.deltaTime * 15);
+            t.position = Vector3.MoveTowards(t.position, spawnPoint.position, Time.deltaTime * 20);
             t.localScale = Vector3.MoveTowards(t.localScale, Vector3.one * 0.1f, Time.deltaTime * 2);
             if (timeTaken > 1.25f)
                 break;
@@ -321,19 +319,13 @@ public class PlayerController : MonoBehaviour
     private void Extracted(Collider other)
     {
         
-      if (!isVacuumOn)
-      return;
-     
+     // if (!isVacuumOn)
+     // return;
         _deviceCapacity += 1;
         speed -= 0.5f;
         OnExtracted.Raise();
         Destroy(other.gameObject);
         currentVacuumCapacity.text = _deviceCapacity + "/ "+ vacuumCapacity.ToString();
-        for (int i = 0; i < goals.Length; i++)
-        {
-            if (GameManager.instance.currentScore == goals[i].targetGoal)
-                goals[i].onReachedGoal?.Invoke();
-        }
     }
 
     public IEnumerator VacuumImmunity(float timer)

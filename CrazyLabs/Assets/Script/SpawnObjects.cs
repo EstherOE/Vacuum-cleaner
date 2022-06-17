@@ -6,6 +6,13 @@ public class SpawnObjects : MonoBehaviour
 {
     //public LevelSO Level;
     public GameObject[] dirt;
+    public Transform xPositive;
+    public Transform xNegative;
+    public Transform zPositive;
+    public Transform zNegative;
+
+    private float colliderRadius = 1f;
+
     public float spawnTimer = 2.5f;
   
     // Start is called before the first frame update
@@ -51,34 +58,34 @@ public class SpawnObjects : MonoBehaviour
     Vector3 RandomPos(int id)
     {
         //bool validSpawnPoint = false;
-        float Y = 0.0f;
-        float X = Random.Range(2, 48);
+        float Y = 0.3f;
+        float X = Random.Range(xNegative.position.x, xPositive.position.x);
         /*if (dirt[id].CompareTag("damage"))
             Y = 0.5f;
         else
             Y = 0.25f;*/
-        float Z = Random.Range(-46, 63);
+        float Z = Random.Range(zNegative.position.z, zPositive.position.z);
 
         Vector3 newPos = new Vector3(X,Y,Z);
-        Collider[] intersecting = Physics.OverlapSphere(new Vector3(newPos.x, -1.0f, newPos.z), 0.5f);
-        Collider[] surface = Physics.OverlapSphere(newPos, 0.5f);
+        Collider[] intersecting = Physics.OverlapSphere(new Vector3(newPos.x, -1.0f, newPos.z), colliderRadius);
+        Collider[] surface = Physics.OverlapSphere(newPos, colliderRadius);
 
         while (intersecting.Length == 0 || (surface.Length != 0 && !surface[0].CompareTag("validspawnpoint")))
         {
-            X = Random.Range(2, 48);
-            Z = Random.Range(-46, 63);
+            X = Random.Range(xNegative.position.x, xPositive.position.x);
+            Z = Random.Range(zNegative.position.z, zPositive.position.z);
             newPos = new Vector3(X, Y, Z);
-            surface = Physics.OverlapSphere(newPos, 0.5f);
-            intersecting = Physics.OverlapSphere(new Vector3(newPos.x, -1.0f, newPos.z), 0.5f);
+            surface = Physics.OverlapSphere(newPos, colliderRadius);
+            intersecting = Physics.OverlapSphere(new Vector3(newPos.x, -1.0f, newPos.z), colliderRadius);
         }
 
-        intersecting = Physics.OverlapSphere(newPos, 0.5f);
+        intersecting = Physics.OverlapSphere(newPos, colliderRadius);
 
         while (intersecting.Length != 0 && intersecting[0].CompareTag("validspawnpoint"))
         {
             Y += 1.0f;
             newPos = new Vector3(X, Y, Z);
-            intersecting = Physics.OverlapSphere(newPos, 0.5f);
+            intersecting = Physics.OverlapSphere(newPos, colliderRadius);
         }
 
         return newPos; 
