@@ -196,9 +196,9 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("pickup")) 
         {
-            pickUpItems = true;
+          //  pickUpItems = true;
             OnPickUp.Raise();
-            StartCoroutine(_PickUpItems());
+           // StartCoroutine(_PickUpItems());
         }
 
         if (!isVacuumOn)
@@ -236,9 +236,9 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("pickup"))
         {
-            pickUpItems = false;
+            //pickUpItems = false;
             OnDrop.Raise();
-            ToggleSwitchOff();    
+           // ToggleSwitchOff();    
         }
         
     }
