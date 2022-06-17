@@ -6,6 +6,7 @@ public class FollowPlayer : MonoBehaviour
 
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
+    public bool lookAtTraget = false;
 
     void FixedUpdate()
     {
@@ -14,6 +15,10 @@ public class FollowPlayer : MonoBehaviour
         transform.position = smoothPosition;
 
         transform.LookAt(target);
+        if (lookAtTraget)
+        {
+            transform.LookAt(target);
+        }
     }
 
     public void ReadInput(string s)
