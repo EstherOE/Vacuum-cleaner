@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         currentLevelId = PlayerPrefs.GetInt("CurrentLevelID");
        
         instance = this;
-        SetLevel();
+      //  SetLevel();
         playerCoins.CurrencyInitializer();
        
         coinText.text = playerCoins.playerCurrency.ToString();

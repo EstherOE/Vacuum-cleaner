@@ -53,7 +53,15 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnPickUp;
     public GameEvent OnDrop;
 
-   
+    [Space]
+    public Goals[] goals;
+
+    [System.Serializable]
+    public class Goals
+    {
+        public int targetGoal;
+        public UnityEvent onReachedGoal;
+    }
 
 
 
