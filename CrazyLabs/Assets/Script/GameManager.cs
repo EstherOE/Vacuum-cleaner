@@ -30,8 +30,9 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         currentLevelId = PlayerPrefs.GetInt("CurrentLevelID");
-        SetLevel();
+       
         instance = this;
+        SetLevel();
         playerCoins.CurrencyInitializer();
        
         coinText.text = playerCoins.playerCurrency.ToString();
@@ -84,6 +85,7 @@ public class GameManager : MonoBehaviour
     {
 
         gameLevel[currentLevelId].levelPrefab.SetActive(true);
+        Instantiate(gameLevel[currentLevelId].levelPrefab, gameLevel[currentLevelId].levelPosition, gameLevel[currentLevelId].levelPrefab.transform.rotation);
         
 
     }
