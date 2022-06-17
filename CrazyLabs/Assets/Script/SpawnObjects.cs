@@ -51,7 +51,7 @@ public class SpawnObjects : MonoBehaviour
     Vector3 RandomPos(int id)
     {
         //bool validSpawnPoint = false;
-        float Y = 3.0f;
+        float Y = 0.0f;
         float X = Random.Range(2, 48);
         /*if (dirt[id].CompareTag("damage"))
             Y = 0.5f;
@@ -60,7 +60,7 @@ public class SpawnObjects : MonoBehaviour
         float Z = Random.Range(-46, 63);
 
         Vector3 newPos = new Vector3(X,Y,Z);
-        Collider[] intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 1.5f, newPos.z), 0.5f);
+        Collider[] intersecting = Physics.OverlapSphere(new Vector3(newPos.x, -1.0f, newPos.z), 0.5f);
         Collider[] surface = Physics.OverlapSphere(newPos, 0.5f);
 
         while (intersecting.Length == 0 || (surface.Length != 0 && !surface[0].CompareTag("validspawnpoint")))
@@ -69,7 +69,7 @@ public class SpawnObjects : MonoBehaviour
             Z = Random.Range(-46, 63);
             newPos = new Vector3(X, Y, Z);
             surface = Physics.OverlapSphere(newPos, 0.5f);
-            intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 1.5f, newPos.z), 0.5f);
+            intersecting = Physics.OverlapSphere(new Vector3(newPos.x, -1.0f, newPos.z), 0.5f);
         }
 
         intersecting = Physics.OverlapSphere(newPos, 0.5f);
