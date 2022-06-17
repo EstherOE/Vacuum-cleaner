@@ -1668,7 +1668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirt:
-  - {fileID: 7691085870917865958, guid: fa619b48c1fc6b948a06ce16b2cc5219, type: 3}
+  - {fileID: 339801431449744323, guid: c98a5a39f3f7136458c9ab0d91432b6b, type: 3}
   spawnTimer: 2.5
 --- !u!4 &219152409
 Transform:
@@ -3673,7 +3673,7 @@ GameObject:
   - component: {fileID: 528974423}
   m_Layer: 0
   m_Name: TerrainMesh
-  m_TagString: Untagged
+  m_TagString: validspawnpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

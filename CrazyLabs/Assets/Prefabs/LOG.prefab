@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1152049821214534009}
-  - component: {fileID: 609778463730464179}
   - component: {fileID: -777073563501337465}
   m_Layer: 0
   m_Name: LOG
@@ -38,25 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 456.839, z: 0}
---- !u!95 &609778463730464179
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339801431449744323}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 40c05b97106e7774385f2644a4253bee, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &-777073563501337465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4887,6 +4867,7 @@ GameObject:
   - component: {fileID: 4901298663576860731}
   - component: {fileID: 7526130062272881306}
   - component: {fileID: 6234810171169356403}
+  - component: {fileID: 1593622148776571436}
   m_Layer: 0
   m_Name: Cylinder003
   m_TagString: Untagged
@@ -4901,7 +4882,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5203824020934287696}
-  m_LocalRotation: {x: 0.000000020192028, y: 0.000000008363812, z: 0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.04371948, y: 0.24982277, z: -0.00310379}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4957,6 +4938,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &1593622148776571436
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5203824020934287696}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 40c05b97106e7774385f2644a4253bee, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5820962953600703647
 GameObject:
   m_ObjectHideFlags: 0
