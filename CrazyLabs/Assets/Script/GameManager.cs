@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        playerCoins.CurrencyInitializer();
         currentLevelId = PlayerPrefs.GetInt("CurrentLevelID");
         coinText.text = playerCoins.playerCurrency.ToString();
         gameOver = false;
