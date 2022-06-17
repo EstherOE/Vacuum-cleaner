@@ -36,5 +36,8 @@ MonoBehaviour:
   - 8
   - 10
   - 11
-  levelPrefab: {fileID: 2070580777718596000, guid: 162cfb335cd697a45ac4935bde0a4fe3, type: 3}
-  levelPosition: {x: 0, y: 0, z: 1}
+  itemsSpawnedInScene:
+  - {fileID: 339801431449744323, guid: c98a5a39f3f7136458c9ab0d91432b6b, type: 3}
+  - {fileID: 5810480174954791084, guid: fb0a2808ebfc1dc4089b4da43db24eb3, type: 3}
+  levelPrefab: {fileID: 467922394494630612, guid: 59391099adbe09e4394ab02cefe3b050, type: 3}
+  levelPosition: {x: 0, y: 0, z: 0}
