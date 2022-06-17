@@ -63,7 +63,7 @@ public class SpawnObjects : MonoBehaviour
         Collider[] intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 1.5f, newPos.z), 0.5f);
         Collider[] surface = Physics.OverlapSphere(newPos, 0.5f);
 
-        while (intersecting.Length == 0 || !intersecting[0].CompareTag("validspawnpoint") || (surface.Length != 0 && !surface[0].CompareTag("validspawnpoint")))
+        while (intersecting.Length == 0 || (surface.Length != 0 && !surface[0].CompareTag("validspawnpoint")))
         {
             X = Random.Range(2, 48);
             Z = Random.Range(-46, 63);

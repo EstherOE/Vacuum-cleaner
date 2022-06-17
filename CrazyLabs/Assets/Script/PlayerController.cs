@@ -184,7 +184,6 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("range"))
         {
             Vacuum.SetActive(true);
-            ToggleSwitchOn();
             float effectTime = other.gameObject.GetComponent<Item>().collectible.effectTime;
             StartCoroutine(VacuumRange(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
@@ -202,8 +201,8 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(_PickUpItems());
         }
 
-        /*if (!isVacuumOn)
-        return;*/
+        if (!isVacuumOn)
+        return;
         
         if (other.CompareTag("dirt"))
         {
@@ -211,13 +210,13 @@ public class PlayerController : MonoBehaviour
             //other.transform.DOScale(0, 0.95f);
         }
 
-        /*if(other.CompareTag("damage"))
+        if(other.CompareTag("damage"))
         {
             if (!isVacuumImmune)
             StartCoroutine(MoverObject(other.gameObject.transform, other));
             DamageVacuum();
             Destroy(other.gameObject);
-        }*/
+        }
         if (other.CompareTag("MovableObstacle"))
         {
             OnPlayerHit.Raise();
@@ -322,8 +321,8 @@ public class PlayerController : MonoBehaviour
     private void Extracted(Collider other)
     {
         
-      /*if (!isVacuumOn)
-      return;*/
+      if (!isVacuumOn)
+      return;
      
         _deviceCapacity += 1;
         speed -= 0.5f;
@@ -351,7 +350,6 @@ public class PlayerController : MonoBehaviour
             UpgradeVacuumAbility();
             yield return new WaitForSeconds(timer);
             Vacuum.SetActive(false);
-            ToggleSwitchOff();
             DowngradeVacuumAbility();
         }
     }
@@ -415,11 +413,11 @@ public class PlayerController : MonoBehaviour
         //float newZ;
         Vector3 ColliderSize = gameObject.GetComponent<BoxCollider>().size;
         Vector3 ColliderPosition = gameObject.GetComponent<BoxCollider>().center;
-        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z + 1.6f);
+        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z + 1.0f);
 
         //newZ = (ColliderSize.z * 1.2f) / 2 + 1;
 
-        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, ColliderPosition.z + .8f);
+        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, ColliderPosition.z + .5f);
     }
 
     public void DowngradeVacuumAbility()
@@ -430,11 +428,11 @@ public class PlayerController : MonoBehaviour
         //float newZ;
         Vector3 ColliderSize = gameObject.GetComponent<BoxCollider>().size;
         Vector3 ColliderPosition = gameObject.GetComponent<BoxCollider>().center;
-        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z - 1.6f);
+        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z - 1.0f);
 
         //newZ = (ColliderSize.z / 1.2f) / 2 + 1;
 
-        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, ColliderPosition.z - .8f);
+        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, ColliderPosition.z - .5f);
     }
 
     public void ReadInput(string s)
