@@ -8,7 +8,7 @@ public class ChasePlayer : MonoBehaviour
     {
         idle,
         chase,
-        attack,
+        back,
     }
 
     public Animator FoxAnimation;
@@ -32,8 +32,20 @@ public class ChasePlayer : MonoBehaviour
             FindTarget();
             break;
         case State.chase:
+            destination = Player.position;
             transform.LookAt(destination);
-            if (transform.position == initialPosition)
+            //transform.MoveTowards_NoPhysics(destination,10f);
+                if (Vector3.Distance(transform.position, destination) < 16.0f)
+            {
+                state = State.back;
+                FoxAnimation.SetBool("chase", false);
+            }
+            break;
+        case State.back:
+            destination = initialPosition;
+            transform.LookAt(initialPosition);
+            //transform.MoveTowards_NoPhysics(destination, 10f);
+            if (Vector3.Distance(transform.position, destination) < 16.0f)
             {
                 state = State.idle;
                 FoxAnimation.SetBool("chase", false);
@@ -44,11 +56,13 @@ public class ChasePlayer : MonoBehaviour
 
     public void FindTarget()
     {
-        if (Vector3.Distance(transform.position, Player.position) < 50f)
+        if (Vector3.Distance(transform.position, Player.position) < 25f)
         {
             state = State.chase;
+            transform.LookAt(destination);
             FoxAnimation.SetBool("chase", true);
             destination = Player.position;
+            //StartCoroutine(TimeChase());
         }
     }
 
@@ -56,5 +70,7 @@ public class ChasePlayer : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         destination = initialPosition;
+        state = State.back;
+        FoxAnimation.SetBool("chase", true);
     }
 }
