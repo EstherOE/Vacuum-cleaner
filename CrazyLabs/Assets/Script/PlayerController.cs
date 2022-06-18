@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
         /*        anim.enabled = false;
                 GetComponent<RigBuilder>().Build();
                 anim.enabled = true;*/
-        InitializeSliders();
+        //InitializeSliders();
     }
 
 
@@ -108,7 +108,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
   
-    { 
+    {
+        speed = player.playerSpeed;
+        vacuumCapacity = playerDevice.deviceCapacity;
+        offloadRate = playerDevice.offloadRate;
         //move the player
         float horizontalInput = joyStick.Horizontal;
         float verticalInput = joyStick.Vertical;
@@ -160,7 +163,7 @@ public class PlayerController : MonoBehaviour
 
         
 
-        if (other.CompareTag("speedboost"))
+        /*if (other.CompareTag("speedboost"))
         {
             float effectTime = other.gameObject.GetComponent<Item>().collectible.effectTime;
             StartCoroutine(IncreaseSpeed(effectTime));
@@ -187,7 +190,7 @@ public class PlayerController : MonoBehaviour
             float effectTime = other.gameObject.GetComponent<Item>().collectible.effectTime;
             StartCoroutine(VacuumRange(effectTime));
             StartCoroutine(MoverObject(other.gameObject.transform, other));
-        }
+        }*/
 
         if (other.CompareTag("coin"))
         {
@@ -335,7 +338,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(timer);
         isVacuumImmune = false;
     }
-
+    /*
     public IEnumerator VacuumRange(float timer)
     {
         if (VacuumAbilitySlider.value != 3)
@@ -366,38 +369,9 @@ public class PlayerController : MonoBehaviour
             UpgradePlayerAbility();
         }
     }
+    */
 
-    public void UpgradeVacuumCapacity()
-    {
-        playerDevice.deviceCapacity += 10;
-        vacuumCapacity += 10;
-        currentVacuumCapacity.text = _deviceCapacity + "/ " + vacuumCapacity.ToString();
-    }
-
-    public void UpgradeProcessingSpeed()
-    {
-        playerDevice.offloadRate++;
-        offloadRate++;
-    }
-
-    public void UpgradePlayerAbility()
-    {
-        if (PlayerAbilitySlider.value == 3)
-            return;
-        PlayerAbilitySlider.value++;
-        //player.playerSpeed *= 1.2f;
-        speed +=2f;
-    }
-
-    public void DowngradePlayerAbility()
-    {
-        if (PlayerAbilitySlider.value == 0)
-            return;
-        PlayerAbilitySlider.value--;
-        //player.playerSpeed /= 1.2f;
-        speed -= 2f;
-    }
-
+    /*
     public void UpgradeVacuumAbility()
     {
         if (VacuumAbilitySlider.value == 3)
@@ -427,7 +401,7 @@ public class PlayerController : MonoBehaviour
 
         gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, ColliderPosition.z - .5f);
     }
-
+    */
     public void ReadInput(string s)
     {
         speed = float.Parse(s);
