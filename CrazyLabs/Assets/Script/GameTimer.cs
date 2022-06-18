@@ -7,7 +7,7 @@ public class GameTimer : MonoBehaviour
     public TextMeshProUGUI timer;
     // public TextMeshProUGUI finalTime;
     // private float startTime = 0f;
-    private float maxTime;
+    public float maxTime;
     public string timeSpent;
     public bool timerCalled = false;
     public float currentTime;
@@ -17,16 +17,14 @@ public class GameTimer : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        maxTime = 600f;
-
     }
 
     // Start is called before the first frame update
     void Start()
     {
-       // CountTime();
-       // timer.text = maxTime.ToString() + " minutes "; 
-       
+        // CountTime();
+        // timer.text = maxTime.ToString() + " minutes "; 
+        maxTime = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].levelTime;
     }
 
     // Update is called once per frame

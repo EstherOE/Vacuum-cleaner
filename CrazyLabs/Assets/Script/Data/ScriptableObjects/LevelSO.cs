@@ -13,8 +13,14 @@ public class LevelSO : ScriptableObject
     public GameObject[] itemsSpawnedInScene;
 
     [Header("LevelPrefab Attributes")]
-    public GameObject levelPrefab;
-    public Vector3 levelPosition;
+    public float levelTime;
+   // public GameObject levelPrefab;
+    //public Vector3 levelPosition;
+    public int scoreToReach;
+
+   
+
+   
 
 
     public void LoadLevelScene(int id) 

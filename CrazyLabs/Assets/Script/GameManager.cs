@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         instance = this;
       //  SetLevel();
         playerCoins.CurrencyInitializer();
-       
+        processorMax = gameLevel[currentLevelId].scoreToReach;
         coinText.text = playerCoins.playerCurrency.ToString();
         hasGamestarted = false;
         gameOver = false;
@@ -93,8 +93,8 @@ public class GameManager : MonoBehaviour
     public void SetLevel() 
     {
 
-        gameLevel[currentLevelId].levelPrefab.SetActive(true);
-        Instantiate(gameLevel[currentLevelId].levelPrefab, gameLevel[currentLevelId].levelPosition, gameLevel[currentLevelId].levelPrefab.transform.rotation);
+      //  gameLevel[currentLevelId].levelPrefab.SetActive(true);
+        //Instantiate(gameLevel[currentLevelId].levelPrefab, gameLevel[currentLevelId].levelPosition, gameLevel[currentLevelId].levelPrefab.transform.rotation);
         
 
     }

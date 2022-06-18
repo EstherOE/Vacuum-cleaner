@@ -21321,7 +21321,7 @@ MonoBehaviour:
   gameOver: 0
   currentScore: 0
   processorCapacity: 0
-  processorMax: 50
+  processorMax: 0
   playerCoins: {fileID: 11400000, guid: f5cf3fe1293a5cc41941e549a92cca32, type: 2}
   coinText: {fileID: 8284000364098801563}
   currentLevelId: 0
