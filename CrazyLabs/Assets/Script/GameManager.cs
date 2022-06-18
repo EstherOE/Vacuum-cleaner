@@ -8,6 +8,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [Header("SO Events")]
+    public GameEvent OnGameStart;
     public GameEvent OnProcessorMaxed;
     public GameEvent OnGameWin;
     public GameEvent OnGameLose;
@@ -25,7 +26,9 @@ public class GameManager : MonoBehaviour
     [Header("Level Attributes")]
     public int currentLevelId;
     public LevelSO[] gameLevel;
+    public bool hasGamestarted = false;
     public static GameManager instance;
+
 
     private void Awake()
     {
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
         playerCoins.CurrencyInitializer();
        
         coinText.text = playerCoins.playerCurrency.ToString();
+        hasGamestarted = false;
         gameOver = false;
         //Instantiate(Levels[currentLevelId].levelPrefab,)
     }
@@ -62,7 +66,11 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         Debug.Log("You have Won");
     }
-
+    public void StartGame() 
+    {
+        hasGamestarted = true;
+        OnGameStart.Raise();
+    }
     public void PlayerLose() 
     {
         OnGameLose.Raise();
@@ -79,6 +87,7 @@ public class GameManager : MonoBehaviour
     public void _SubtractCoins(int coins)
     {
         playerCoins.SubtractCoins(coins);
+        coinText.text = playerCoins.playerCurrency.ToString();
     }
 
     public void SetLevel() 

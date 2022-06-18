@@ -21,7 +21,7 @@ public class Upgrade : MonoBehaviour
         PlayerAbilitySlider.value = 0;*/
         upgradeAbilityPrice.text = player.upgradeAbilityPrice + "coins";
         upgradeCapacityPrice.text = player.upgradeCapacityPrice + "coins";
-        upgradeProcessorPrice.text = player.upgradeProcessorPrice + "coins";
+        //upgradeProcessorPrice.text = player.upgradeProcessorPrice + "coins";
     }
 
     // Update is called once per frame
@@ -65,7 +65,7 @@ public class Upgrade : MonoBehaviour
             return;
         PlayerAbilitySlider.value++;*/
         //player.playerSpeed *= 1.2f;
-        player.playerSpeed += 2f;
+        player.playerSpeed += 0.5f;
         player.upgradeAbilityPrice *= 2;
         upgradeAbilityPrice.text = player.upgradeAbilityPrice + "coins";
     }

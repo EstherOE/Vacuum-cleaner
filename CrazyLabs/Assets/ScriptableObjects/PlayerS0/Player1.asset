@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d7c27432e865b46bcc9ba5cbeb1d92, type: 3}
   m_Name: Player1
   m_EditorClassIdentifier: 
-  playerSpeed: 9
+  playerSpeed: 6
   playerRotationSpeed: 500
+  upgradeAbilityPrice: 20
+  upgradeProcessorPrice: 10
+  upgradeCapacityPrice: 30

@@ -24,7 +24,7 @@ public class GameTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CountTime();
+       // CountTime();
        // timer.text = maxTime.ToString() + " minutes "; 
        
     }
@@ -32,7 +32,7 @@ public class GameTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timerCalled)
+        if (GameManager.instance.hasGamestarted)
         {
             CountTime();
         }

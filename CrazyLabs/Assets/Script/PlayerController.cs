@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private int _deviceCapacity=0;
     public bool isVacuumOn = false;
     public bool isVacuumImmune = false;
+    public bool isBagFull = false;
     //public int offloadRate = 1;
     private int vacuumCapacity;
     public Text currentVacuumCapacity;
@@ -46,8 +47,7 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnVacuumOn;
     public GameEvent OnVacuumOff;
     public GameEvent OnVacuumFull;
-    public GameEvent OnVacuumDamage;
-    public GameEvent OnVacuumRepair;
+    public GameEvent OnVacuumCanCarry;
     public GameEvent OnItemProcess;
     public GameEvent OnPlayerHit;
     public GameEvent OnPickUp;
@@ -109,6 +109,8 @@ public class PlayerController : MonoBehaviour
     void Update()
   
     {
+        if (!GameManager.instance.hasGamestarted)
+        return;
         speed = player.playerSpeed;
         vacuumCapacity = playerDevice.deviceCapacity;
         offloadRate = playerDevice.offloadRate;
@@ -124,6 +126,7 @@ public class PlayerController : MonoBehaviour
         {
             ToggleSwitchOff();
             OnVacuumFull.Raise();
+            isBagFull = true;
         }
         if (_deviceCapacity < 0)
         {
@@ -297,6 +300,7 @@ public class PlayerController : MonoBehaviour
             scoreText.text = "Score: " + GameManager.Score;*/
             //Debug.Log("entered1");
             currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
+            EnableBag();
             
         }
     }
@@ -323,8 +327,8 @@ public class PlayerController : MonoBehaviour
     private void Extracted(Collider other)
     {
         
-     // if (!isVacuumOn)
-     // return;
+      if (isBagFull)
+      return;
         _deviceCapacity += 1;
         speed -= 0.5f;
         OnExtracted.Raise();
@@ -338,70 +342,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(timer);
         isVacuumImmune = false;
     }
-    /*
-    public IEnumerator VacuumRange(float timer)
-    {
-        if (VacuumAbilitySlider.value != 3)
-        {
-            UpgradeVacuumAbility();
-            yield return new WaitForSeconds(timer);
-            Vacuum.SetActive(false);
-            DowngradeVacuumAbility();
-        }
-    }
-
-    public IEnumerator IncreaseSpeed(float timer)
-    {
-        if (PlayerAbilitySlider.value != 3)
-        {
-            UpgradePlayerAbility();
-            yield return new WaitForSeconds(timer);
-            DowngradePlayerAbility();
-        }
-    }
-
-    public IEnumerator DecreaseSpeed(float timer)
-    {
-        if (PlayerAbilitySlider.value != 0)
-        {
-            DowngradePlayerAbility();
-            yield return new WaitForSeconds(timer);
-            UpgradePlayerAbility();
-        }
-    }
-    */
-
-    /*
-    public void UpgradeVacuumAbility()
-    {
-        if (VacuumAbilitySlider.value == 3)
-            return;
-        VacuumAbilitySlider.value++;
-        //float newZ;
-        Vector3 ColliderSize = gameObject.GetComponent<BoxCollider>().size;
-        Vector3 ColliderPosition = gameObject.GetComponent<BoxCollider>().center;
-        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z + 1.0f);
-
-        //newZ = (ColliderSize.z * 1.2f) / 2 + 1;
-
-        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, ColliderPosition.z + .5f);
-    }
-
-    public void DowngradeVacuumAbility()
-    {
-        if (VacuumAbilitySlider.value == 0)
-            return;
-        VacuumAbilitySlider.value--;
-        //float newZ;
-        Vector3 ColliderSize = gameObject.GetComponent<BoxCollider>().size;
-        Vector3 ColliderPosition = gameObject.GetComponent<BoxCollider>().center;
-        gameObject.GetComponent<BoxCollider>().size = new Vector3(ColliderSize.x, ColliderSize.y, ColliderSize.z - 1.0f);
-
-        //newZ = (ColliderSize.z / 1.2f) / 2 + 1;
-
-        gameObject.GetComponent<BoxCollider>().center = new Vector3(ColliderPosition.x, ColliderPosition.y, ColliderPosition.z - .5f);
-    }
-    */
+ 
     public void ReadInput(string s)
     {
         speed = float.Parse(s);
@@ -435,11 +376,11 @@ public class PlayerController : MonoBehaviour
     {
         isVacuumOn= false;
         playerAudio.Stop();
-        OnVacuumDamage.Raise();
+       // OnVacuumDamage.Raise();
     }
-    public void RepairVacuum()
+    public void EnableBag()
     {
-        OnVacuumRepair.Raise();
+        OnVacuumCanCarry.Raise();
     }
 
 }
