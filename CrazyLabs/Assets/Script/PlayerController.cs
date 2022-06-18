@@ -301,7 +301,7 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("entered1");
             currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
             EnableBag();
-            
+            isBagFull = false;
         }
     }
 
