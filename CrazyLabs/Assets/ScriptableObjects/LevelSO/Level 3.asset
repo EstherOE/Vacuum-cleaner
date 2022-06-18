@@ -13,31 +13,16 @@ MonoBehaviour:
   m_Name: Level 3
   m_EditorClassIdentifier: 
   CollectiblesTimers:
-  - 10
-  - 9
-  - 16
-  - 11
-  - 9
-  - 9
+  - 15
   - 10
   CollectiblesEffectTimes:
-  - 10
-  - 10
   - 0
-  - 0
-  - 10
-  - 10
   - 0
   CollectiblesSpawnRates:
-  - 8
-  - 9
-  - 10
-  - 4
-  - 6
   - 10
   - 11
   itemsSpawnedInScene:
   - {fileID: 339801431449744323, guid: c98a5a39f3f7136458c9ab0d91432b6b, type: 3}
   - {fileID: 5810480174954791084, guid: fb0a2808ebfc1dc4089b4da43db24eb3, type: 3}
   levelTime: 390
-  scoreToReach: 20
+  scoreToReach: 22

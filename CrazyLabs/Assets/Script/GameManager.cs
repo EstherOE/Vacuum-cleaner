@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [Header("Currency Properties")]
     public CurrencySO playerCoins;
     public TextMeshProUGUI coinText;
+    public TextMeshProUGUI instructionText;
 
     [Header("Level Attributes")]
     public int currentLevelId;
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
         instance = this;
       //  SetLevel();
         playerCoins.CurrencyInitializer();
+        instructionText.text = "GATHER " + gameLevel[currentLevelId].scoreToReach + " LOGS TO ESCAPE THE ISLAND";
         processorMax = gameLevel[currentLevelId].scoreToReach;
         coinText.text = playerCoins.playerCurrency.ToString();
         hasGamestarted = false;

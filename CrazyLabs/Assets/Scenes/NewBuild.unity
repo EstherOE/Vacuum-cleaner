@@ -9863,7 +9863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1181622673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9882,8 +9882,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -32.2912, y: 6.458252}
+  m_SizeDelta: {x: 245.4131, y: 142.0815}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1181622674
 MonoBehaviour:
@@ -22049,6 +22049,7 @@ MonoBehaviour:
   processorMax: 0
   playerCoins: {fileID: 11400000, guid: f5cf3fe1293a5cc41941e549a92cca32, type: 2}
   coinText: {fileID: 8284000364098801563}
+  instructionText: {fileID: 1097823342}
   currentLevelId: 0
   gameLevel:
   - {fileID: 11400000, guid: 17b6906b993e6d0479a077af993b1c62, type: 2}
