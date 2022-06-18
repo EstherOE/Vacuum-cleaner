@@ -641,7 +641,7 @@ MonoBehaviour:
     m_Bits: 64
   health: 0
   walkPoint: {x: -19.3, y: 0, z: 10}
-  walkPointRange: 5
+  walkPointRange: 3
   timeBetweenAttacks: 0.5
   sightRange: 10
   attackRange: 3
@@ -9882,7 +9882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -32.2912, y: 6.458252}
+  m_AnchoredPosition: {x: -32.29126, y: 6.458252}
   m_SizeDelta: {x: 245.4131, y: 142.0815}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1181622674
@@ -27466,7 +27466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &8284000363841074568
 GameObject:
   m_ObjectHideFlags: 0
