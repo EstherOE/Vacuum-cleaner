@@ -8,7 +8,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public Transform player;
 
-    //public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask whatIsGround, whatIsPlayer;
 
     public float health;
 
@@ -30,15 +30,15 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void Awake()
     {
-        //player = GameObject.Find("PlayerObj").transform;
+        player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
         //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange);
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange,whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange,whatIsPlayer);
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
@@ -47,12 +47,12 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void Patroling()
     {
-        FoxAnimation.SetBool("chase", false);
+      
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
             agent.SetDestination(walkPoint);
-
+        FoxAnimation.SetBool("chase", false);
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         //Walkpoint reached
@@ -67,14 +67,14 @@ public class EnemyAiTutorial : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f))
+        if (Physics.Raycast(walkPoint, -transform.up, 2f,whatIsGround))
             walkPointSet = true;
     }
 
     private void ChasePlayer()
     {
-        FoxAnimation.SetBool("chase", true);
         agent.SetDestination(player.position);
+        FoxAnimation.SetBool("chase", true);
     }
 
     private void AttackPlayer()
@@ -122,5 +122,8 @@ public class EnemyAiTutorial : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.DrawLine(transform.position, walkPoint);
+        Gizmos.DrawLine(transform.position, player.position);
+
     }
 }
