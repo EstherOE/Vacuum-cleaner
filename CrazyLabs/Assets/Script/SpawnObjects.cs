@@ -10,6 +10,7 @@ public class SpawnObjects : MonoBehaviour
     public Transform xNegative;
     public Transform zPositive;
     public Transform zNegative;
+    public Transform yPos;
 
     private float colliderRadius = 1f;
 
@@ -60,7 +61,7 @@ public class SpawnObjects : MonoBehaviour
     Vector3 RandomPos(int id)
     {
         //bool validSpawnPoint = false;
-        float Y = 0.3f;
+        float Y = yPos.position.y;
         float X = Random.Range(xNegative.position.x, xPositive.position.x);
         /*if (dirt[id].CompareTag("damage"))
             Y = 0.5f;
