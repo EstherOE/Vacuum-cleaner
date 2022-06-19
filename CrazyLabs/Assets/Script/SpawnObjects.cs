@@ -5,14 +5,14 @@ using UnityEngine;
 public class SpawnObjects : MonoBehaviour
 {
     //public LevelSO Level;
-    public GameObject[] dirt;
+   // public GameObject[] dirt;
     public Transform xPositive;
     public Transform xNegative;
     public Transform zPositive;
     public Transform zNegative;
     public Transform yPos;
 
-    private float colliderRadius = 1f;
+    public float colliderRadius = 0.2f;
 
     public float spawnTimer = 2.5f;
   
@@ -39,14 +39,7 @@ public class SpawnObjects : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene.Length; i++)
-        {
-            
-            if (GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].tag=="damage")
-            {
-                
-            }
-        }
+        
     }
 
     IEnumerator SpawnItem(Item t, int id)
@@ -63,14 +56,16 @@ public class SpawnObjects : MonoBehaviour
         //bool validSpawnPoint = false;
         float Y = yPos.position.y;
         float X = Random.Range(xNegative.position.x, xPositive.position.x);
+        
         /*if (dirt[id].CompareTag("damage"))
             Y = 0.5f;
         else
             Y = 0.25f;*/
+        
         float Z = Random.Range(zNegative.position.z, zPositive.position.z);
 
         Vector3 newPos = new Vector3(X,Y,Z);
-        Collider[] intersecting = Physics.OverlapSphere(new Vector3(newPos.x, -1.0f, newPos.z), colliderRadius);
+        Collider[] intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 17.7f, newPos.z), colliderRadius);
         Collider[] surface = Physics.OverlapSphere(newPos, colliderRadius);
 
         while (intersecting.Length == 0 || (surface.Length != 0 && !surface[0].CompareTag("validspawnpoint")))
@@ -79,7 +74,7 @@ public class SpawnObjects : MonoBehaviour
             Z = Random.Range(zNegative.position.z, zPositive.position.z);
             newPos = new Vector3(X, Y, Z);
             surface = Physics.OverlapSphere(newPos, colliderRadius);
-            intersecting = Physics.OverlapSphere(new Vector3(newPos.x, -1.0f, newPos.z), colliderRadius);
+            intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 17.7f, newPos.z), colliderRadius);
         }
 
         intersecting = Physics.OverlapSphere(newPos, colliderRadius);
@@ -105,4 +100,15 @@ public class SpawnObjects : MonoBehaviour
         Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(id), Quaternion.identity);
     }
 
+
+    private void OnDrawGizmosSelected()
+    {
+        for (int i = 0; i < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene.Length; i++)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].transform.position, colliderRadius);
+
+        }
+        
+    }
 }

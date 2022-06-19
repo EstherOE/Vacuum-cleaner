@@ -226,8 +226,15 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("MovableObstacle"))
         {
             OnPlayerHit.Raise();
+            if(_deviceCapacity >= 2) 
+            {
+                _deviceCapacity -= 2;
+            }
+            else
+            {
+                _deviceCapacity = 0;
+            }
             currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
-            _deviceCapacity -= 2;
         }
 
     }
