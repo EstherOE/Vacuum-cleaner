@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         currentLevelId = PlayerPrefs.GetInt("CurrentLevelID");
        
         instance = this;
-      //  SetLevel();
+       SetLevel();
         playerCoins.CurrencyInitializer();
         instructionText.text = "GATHER " + gameLevel[currentLevelId].scoreToReach + " LOGS TO ESCAPE THE ISLAND";
         processorMax = gameLevel[currentLevelId].scoreToReach;
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
     {
 
       //  gameLevel[currentLevelId].levelPrefab.SetActive(true);
-        //Instantiate(gameLevel[currentLevelId].levelPrefab, gameLevel[currentLevelId].levelPosition, gameLevel[currentLevelId].levelPrefab.transform.rotation);
+        Instantiate(gameLevel[currentLevelId].levelPrefab, gameLevel[currentLevelId].levelPosition, gameLevel[currentLevelId].levelPrefab.transform.rotation);
         
 
     }

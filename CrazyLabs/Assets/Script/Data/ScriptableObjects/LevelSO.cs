@@ -14,8 +14,8 @@ public class LevelSO : ScriptableObject
 
     [Header("LevelPrefab Attributes")]
     public float levelTime;
-   // public GameObject levelPrefab;
-    //public Vector3 levelPosition;
+    public GameObject levelPrefab;
+    public Vector3 levelPosition;
     public int scoreToReach;
 
    
