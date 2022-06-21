@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         currentLevelId = PlayerPrefs.GetInt("CurrentLevelID");
        
         instance = this;
-       SetLevel();
+       //SetLevel();
         playerCoins.CurrencyInitializer();
         instructionText.text = "GATHER " + gameLevel[currentLevelId].scoreToReach + " LOGS TO ESCAPE THE ISLAND";
         processorMax = gameLevel[currentLevelId].scoreToReach;

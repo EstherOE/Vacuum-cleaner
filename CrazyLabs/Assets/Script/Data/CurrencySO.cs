@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CurrencySo", menuName = "CrazyLabs/New Currency")]
 public class CurrencySO : ScriptableObject
 {
-    public int playerCurrency;
+    public int playerCurrency;   
 
-
+      
     public void CurrencyInitializer() 
     {
         playerCurrency =   PlayerPrefs.GetInt("currency");

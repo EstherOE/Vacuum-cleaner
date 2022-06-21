@@ -18,6 +18,7 @@ TagManager:
   - Pathpoint
   - MultiPathpoint
   - MovableObstacle
+  - Enemy
   layers:
   - Default
   - TransparentFX
