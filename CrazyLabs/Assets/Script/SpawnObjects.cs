@@ -22,17 +22,28 @@ public class SpawnObjects : MonoBehaviour
         //dirt[] = 
         for (int i = 0; i < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene.Length; i++)
         {
-           // Item temp = dirt[i].GetComponent<Item>();
-          Item temp = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].GetComponent<Item>();
-            temp.collectible.timer = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].CollectiblesTimers[i];
-            temp.collectible.effectTime = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].CollectiblesEffectTimes[i];
-            temp.collectible.spawnRate = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].CollectiblesSpawnRates[i];
+            // Item temp = dirt[i].GetComponent<Item>();
+            if (GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("coin"))
+            {
+                Item temp = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].GetComponent<Item>();
+                temp.collectible.timer = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].CollectiblesTimers[i];
+                temp.collectible.effectTime = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].CollectiblesEffectTimes[i];
+                temp.collectible.spawnRate = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].CollectiblesSpawnRates[i];
+            }
         }
 
         //InvokeRepeating("SpawnDirt", 0, spawnTimer);
         for (int i = 0; i < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene.Length; i++)
         {
-            StartCoroutine(SpawnItem(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].GetComponent<Item>(), i));
+            if (GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("coin"))
+            {
+                StartCoroutine(SpawnItem(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].GetComponent<Item>(), i));
+            }
+            else
+            {
+                for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickCount; j++)
+                    Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(i), Quaternion.identity);
+            }
         }
     }
 
@@ -65,7 +76,7 @@ public class SpawnObjects : MonoBehaviour
         float Z = Random.Range(zNegative.position.z, zPositive.position.z);
 
         Vector3 newPos = new Vector3(X,Y,Z);
-        Collider[] intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 17.7f, newPos.z), colliderRadius);
+        Collider[] intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 2.5f, newPos.z), colliderRadius);
         Collider[] surface = Physics.OverlapSphere(newPos, colliderRadius);
 
         while (intersecting.Length == 0 || (surface.Length != 0 && !surface[0].CompareTag("validspawnpoint")))
@@ -74,7 +85,7 @@ public class SpawnObjects : MonoBehaviour
             Z = Random.Range(zNegative.position.z, zPositive.position.z);
             newPos = new Vector3(X, Y, Z);
             surface = Physics.OverlapSphere(newPos, colliderRadius);
-            intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 17.7f, newPos.z), colliderRadius);
+            intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 2.5f, newPos.z), colliderRadius);
         }
 
         intersecting = Physics.OverlapSphere(newPos, colliderRadius);
