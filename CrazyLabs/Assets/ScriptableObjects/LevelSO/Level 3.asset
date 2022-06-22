@@ -22,8 +22,9 @@ MonoBehaviour:
   - 10
   - 11
   itemsSpawnedInScene:
-  - {fileID: 339801431449744323, guid: c98a5a39f3f7136458c9ab0d91432b6b, type: 3}
+  - {fileID: 3844719916176761684, guid: d7ad11583853409478edf4eb5b9ffd79, type: 3}
   - {fileID: 5810480174954791084, guid: fb0a2808ebfc1dc4089b4da43db24eb3, type: 3}
+  chickCount: 5
   levelTime: 390
   levelPrefab: {fileID: 5622217860112033971, guid: 59391099adbe09e4394ab02cefe3b050, type: 3}
   levelPosition: {x: 0, y: 13.13, z: 0}
