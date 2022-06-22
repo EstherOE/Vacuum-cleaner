@@ -34,6 +34,12 @@ public class EnemyAiTutorial : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
+    private void Start()
+    {
+        agent.speed = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henSpeed;
+        sightRange = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henSightRange;
+    }
+
     private void Update()
     {
         //Check for sight and attack range

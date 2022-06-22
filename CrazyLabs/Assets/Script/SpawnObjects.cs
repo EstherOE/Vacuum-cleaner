@@ -41,6 +41,11 @@ public class SpawnObjects : MonoBehaviour
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].eggCount; j++)
                     Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(i), Quaternion.identity);
             }
+            else if (GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("Enemy"))
+            {
+                for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henCount; j++)
+                    Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(i), Quaternion.identity);
+            }
             else
             {
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickCount; j++)
