@@ -13,6 +13,7 @@ public class LevelSO : ScriptableObject
     public GameObject[] itemsSpawnedInScene;
 
     [Header("LevelPrefab Attributes")]
+    public int eggCount;
     public int chickCount;
     public float levelTime;
     public GameObject levelPrefab;
