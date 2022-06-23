@@ -27,7 +27,7 @@ public class Item : MonoBehaviour
         intersecting = Physics.OverlapSphere(new Vector3(transform.position.x, 1.5f, transform.position.z), 0.5f);
         if (intersecting.Length != 0)
             initialX = intersecting[0].gameObject.transform.position.x;
-        StartCoroutine(Countdown());
+        //StartCoroutine(Countdown());
     }
 
     // Update is called once per frame
