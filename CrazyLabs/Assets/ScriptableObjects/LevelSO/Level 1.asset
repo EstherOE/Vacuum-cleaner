@@ -24,8 +24,15 @@ MonoBehaviour:
   itemsSpawnedInScene:
   - {fileID: 3844719916176761684, guid: d7ad11583853409478edf4eb5b9ffd79, type: 3}
   - {fileID: 5810480174954791084, guid: fb0a2808ebfc1dc4089b4da43db24eb3, type: 3}
+  henCount: 1
+  henSpeed: 5
+  henSightRange: 10
+  henWalkPointRange: 3
   eggCount: 0
   chickCount: 1
+  chickSpeed: 5
+  chickSightRange: 5
+  chickWalkpointRange: 5
   levelTime: 300
   levelPrefab: {fileID: 4326574659984937117, guid: 2a3fbf9c4c39ade4bbc456a0b6eb77ac, type: 3}
   levelPosition: {x: 0, y: 13.13, z: 0}

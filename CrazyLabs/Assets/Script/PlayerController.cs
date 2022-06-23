@@ -164,37 +164,6 @@ public class PlayerController : MonoBehaviour
             
         }
 
-        
-
-        /*if (other.CompareTag("speedboost"))
-        {
-            float effectTime = other.gameObject.GetComponent<Item>().collectible.effectTime;
-            StartCoroutine(IncreaseSpeed(effectTime));
-            StartCoroutine(MoverObject(other.gameObject.transform, other));
-        }
-
-        if (other.CompareTag("reducespeed"))
-        {
-            float effectTime = other.gameObject.GetComponent<Item>().collectible.effectTime;
-            StartCoroutine(DecreaseSpeed(effectTime));
-            StartCoroutine(MoverObject(other.gameObject.transform, other));
-        }
-
-        if (other.CompareTag("immunity"))
-        {
-            float effectTime = other.gameObject.GetComponent<Item>().collectible.effectTime;
-            StartCoroutine(VacuumImmunity(effectTime));
-            StartCoroutine(MoverObject(other.gameObject.transform, other));
-        }
-
-        if (other.CompareTag("range"))
-        {
-            Vacuum.SetActive(true);
-            float effectTime = other.gameObject.GetComponent<Item>().collectible.effectTime;
-            StartCoroutine(VacuumRange(effectTime));
-            StartCoroutine(MoverObject(other.gameObject.transform, other));
-        }*/
-
         if (other.CompareTag("coin"))
         {
             StartCoroutine(MoverObject(other.gameObject.transform, other));
@@ -237,6 +206,11 @@ public class PlayerController : MonoBehaviour
             currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
         }
 
+        if (other.CompareTag("Enemy")) 
+        {
+            GameManager.instance.hasGamestarted = false;
+            GameManager.instance.PlayerLose();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -252,8 +226,7 @@ public class PlayerController : MonoBehaviour
             //pickUpItems = false;
             OnDrop.Raise();
            // ToggleSwitchOff();    
-        }
-        
+        }        
     }
     IEnumerator _PickUpItems() 
     {
@@ -292,20 +265,6 @@ public class PlayerController : MonoBehaviour
             }
             speed += 0.5f;
             scoreText.GetComponent<TextMeshProUGUI>().text = GameManager.instance.currentScore + "/" + GameManager.instance.processorMax;
-            /*
-            if (GameManager.VacuumCapacity >= offloadRate)
-            {
-                GameManager.Score += offloadRate;
-                GameManager.VacuumCapacity -= offloadRate;
-            }
-            else
-            {
-                GameManager.Score += GameManager.VacuumCapacity;
-                GameManager.VacuumCapacity = 0;
-            }
-            
-            scoreText.text = "Score: " + GameManager.Score;*/
-            //Debug.Log("entered1");
             currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
             EnableBag();
             isBagFull = false;
@@ -337,7 +296,6 @@ public class PlayerController : MonoBehaviour
       if (isBagFull)
       return;
         _deviceCapacity += 1;
-        speed -= 0.5f;
         OnExtracted.Raise();
         Destroy(other.gameObject);
         currentVacuumCapacity.text = _deviceCapacity + "/ "+ vacuumCapacity.ToString();

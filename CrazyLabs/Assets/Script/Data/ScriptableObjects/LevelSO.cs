@@ -12,27 +12,26 @@ public class LevelSO : ScriptableObject
     public float[] CollectiblesSpawnRates;
     public GameObject[] itemsSpawnedInScene;
 
-    [Header("LevelPrefab Attributes")]
+
+
+    [Header("Hen AI Attributes")]
     public int henCount;
-    public int eggCount;
-    public int chickCount;
-    public float levelTime;
     public float henSpeed;
-    public float chickSpeed;
     public float henSightRange;
+    public float henWalkPointRange;
+    public int eggCount;
+
+    [Header("Chick AI Attributes")]
+    public int chickCount;
+    public float chickSpeed;
     public float chickSightRange;
+    public float chickWalkpointRange;
+
+
+    [Header("LevelPrefab Attributes")]
+    public float levelTime;
     public GameObject levelPrefab;
     public Vector3 levelPosition;
     public int scoreToReach;
-
-   
-
-   
-
-
-    public void LoadLevelScene(int id) 
-    {
-
-           }
 
 }

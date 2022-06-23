@@ -28,7 +28,7 @@ public class ChickAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
-    public Animator FoxAnimation;
+    public Animator chickAnimation;
 
     private void Awake()
     {
@@ -42,6 +42,7 @@ public class ChickAI : MonoBehaviour
         enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
         agent.speed = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickSpeed;
         sightRange = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickSightRange;
+        walkPointRange = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickWalkpointRange;
     }
 
     private void Update()
@@ -63,7 +64,7 @@ public class ChickAI : MonoBehaviour
 
         if (walkPointSet)
             agent.SetDestination(walkPoint);
-        FoxAnimation.SetBool("chase", false);
+        chickAnimation.SetBool("chase", false);
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         //Walkpoint reached
@@ -86,7 +87,7 @@ public class ChickAI : MonoBehaviour
     private void RunAway()
     {
         agent.SetDestination(enemy.position);
-        FoxAnimation.SetBool("chase", true);
+        chickAnimation.SetBool("chase", true);
     }
 
     private void ResetChick()
@@ -99,21 +100,16 @@ public class ChickAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            ///Attack code here
-            /*Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            ///End of attack code*/
 
             alreadyAttacked = true;
-            FoxAnimation.SetBool("chase", false);
-            FoxAnimation.SetBool("attack", true);
+            chickAnimation.SetBool("chase", false);
+            chickAnimation.SetBool("attack", true);
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
     private void ResetAttack()
     {
-        //FoxAnimation.SetBool("attack", false);
+        //chickAnimation.SetBool("attack", false);
         alreadyAttacked = false;
     }
 

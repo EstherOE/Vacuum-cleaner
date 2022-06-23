@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         instance = this;
        //SetLevel();
         playerCoins.CurrencyInitializer();
-        instructionText.text = "GATHER " + gameLevel[currentLevelId].scoreToReach + " LOGS TO ESCAPE THE ISLAND";
+        instructionText.text = "PUT THE " + gameLevel[currentLevelId].scoreToReach + " CHICKS BACK IN THE COOP";
         processorMax = gameLevel[currentLevelId].scoreToReach;
         coinText.text = playerCoins.playerCurrency.ToString();
         hasGamestarted = false;
@@ -59,6 +59,10 @@ public class GameManager : MonoBehaviour
         if(processorCapacity >= processorMax) 
         {
             PlayerWin();
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            hasGamestarted = true;
         }
     }
 

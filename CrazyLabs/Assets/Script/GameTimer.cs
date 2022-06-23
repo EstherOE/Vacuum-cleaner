@@ -48,7 +48,7 @@ public class GameTimer : MonoBehaviour
         timer.text = timeSpent;
         if (maxTime <= 0f)
         {
-            GameManager.instance.PlayerLose();
+           // GameManager.instance.PlayerLose();
             PauseTime();
            // inDanger = false;
         }

@@ -26,7 +26,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
-    public Animator FoxAnimation;
+    public Animator enemyAnimation;
 
     private void Awake()
     {
@@ -38,6 +38,7 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         agent.speed = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henSpeed;
         sightRange = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henSightRange;
+        walkPointRange = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henWalkPointRange;
     }
 
     private void Update()
@@ -58,7 +59,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (walkPointSet)
             agent.SetDestination(walkPoint);
-        FoxAnimation.SetBool("chase", false);
+        enemyAnimation.SetBool("chase", false);
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         //Walkpoint reached
@@ -80,7 +81,7 @@ public class EnemyAiTutorial : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
-        FoxAnimation.SetBool("chase", true);
+        enemyAnimation.SetBool("chase", true);
     }
 
     private void AttackPlayer()
@@ -93,15 +94,11 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            ///Attack code here
-            /*Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            ///End of attack code*/
+           
 
             alreadyAttacked = true;
-            FoxAnimation.SetBool("chase", false);
-            FoxAnimation.SetBool("attack", true);
+            enemyAnimation.SetBool("chase", false);
+            enemyAnimation.SetBool("attack", true);
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
