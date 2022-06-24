@@ -99,9 +99,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameManager.instance.hasGamestarted)
         return;
-        speed = player.playerSpeed;
-        vacuumCapacity = playerDevice.deviceCapacity;
-        offloadRate = playerDevice.offloadRate;
+        
         //move the player
         float horizontalInput = joyStick.Horizontal;
         float verticalInput = joyStick.Vertical;
@@ -140,6 +138,15 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, player.playerRotationSpeed * Time.deltaTime);
         }
     }
+
+    public void UpdateStats()
+    {
+        speed = player.playerSpeed;
+        vacuumCapacity = playerDevice.deviceCapacity;
+        //offloadRate = playerDevice.offloadRate;
+        currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log(collision.gameObject.name);

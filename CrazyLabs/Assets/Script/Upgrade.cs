@@ -36,7 +36,7 @@ public class Upgrade : MonoBehaviour
         player.upgradeCapacityPrice *= 2;
         upgradeCapacityPrice.text = player.upgradeCapacityPrice + "coins";
         //vacuumCapacity += 10;
-        PlayerController.userPlayer.currentVacuumCapacity.text = PlayerController.userPlayer._deviceCapacity.ToString() + "/ " + PlayerController.userPlayer.vacuumCapacity.ToString();
+        PlayerController.userPlayer.UpdateStats();
     }
 
 
@@ -49,5 +49,6 @@ public class Upgrade : MonoBehaviour
         player.playerSpeed += 0.5f;
         player.upgradeAbilityPrice *= 2;
         upgradeAbilityPrice.text = player.upgradeAbilityPrice + "coins";
+        PlayerController.userPlayer.UpdateStats();
     }
 }
