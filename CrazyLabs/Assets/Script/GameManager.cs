@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
     {
         OnGameWin.Raise();
         gameOver = true;
+        PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
         Debug.Log("You have Won");
     }
     public void StartGame() 
