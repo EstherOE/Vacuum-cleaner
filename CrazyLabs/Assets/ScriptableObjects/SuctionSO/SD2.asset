@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7786056624399b045938b00282861723, type: 3}
   m_Name: SD2
   m_EditorClassIdentifier: 
-  deviceCapacity: 15
+  deviceCapacity: 1
   offloadRate: 3
+  pickUpRate: 0

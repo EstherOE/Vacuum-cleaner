@@ -9,25 +9,15 @@ public class Upgrade : MonoBehaviour
     public PlayerSO player;
     public TextMeshProUGUI upgradeCapacityPrice;
     public TextMeshProUGUI upgradeAbilityPrice;
-    public TextMeshProUGUI upgradeProcessorPrice;
-    //public Slider PlayerAbilitySlider;
     public SuctionDeviceSO playerDevice;
 
     // Start is called before the first frame update
     void Start()
     {
-        /*PlayerAbilitySlider.maxValue = 3;
-        PlayerAbilitySlider.minValue = 0;
-        PlayerAbilitySlider.value = 0;*/
-        //player.playerSpeed = 6;
-        //playerDevice.deviceCapacity = 10;
-        //playerDevice.offloadRate = 1;
-        //player.upgradeCapacityPrice = 10;
-        //player.upgradeAbilityPrice = 10;
-      //  player.upgradeProcessorPrice = 10;
-        upgradeAbilityPrice.text = player.upgradeAbilityPrice + "coins";
-        upgradeCapacityPrice.text = player.upgradeCapacityPrice + "coins";
-        //upgradeProcessorPrice.text = player.upgradeProcessorPrice + "coins";
+      
+        upgradeAbilityPrice.text = player.upgradeAbilityPrice.ToString() + "eggs";
+        upgradeCapacityPrice.text = player.upgradeCapacityPrice.ToString() + "eggs";
+       
     }
 
     // Update is called once per frame
@@ -42,24 +32,13 @@ public class Upgrade : MonoBehaviour
             return;
 
         GameManager.instance._SubtractCoins(player.upgradeCapacityPrice);
-        playerDevice.deviceCapacity += 10;
+        playerDevice.deviceCapacity += 1;
         player.upgradeCapacityPrice *= 2;
         upgradeCapacityPrice.text = player.upgradeCapacityPrice + "coins";
         //vacuumCapacity += 10;
-        //currentVacuumCapacity.text = _deviceCapacity + "/ " + vacuumCapacity.ToString();
+        PlayerController.userPlayer.currentVacuumCapacity.text = PlayerController.userPlayer._deviceCapacity.ToString() + "/ " + PlayerController.userPlayer.vacuumCapacity.ToString();
     }
 
-    public void UpgradeProcessingSpeed()
-    {
-        if (GameManager.instance.playerCoins.playerCurrency < player.upgradeProcessorPrice)
-            return;
-
-        GameManager.instance._SubtractCoins(player.upgradeProcessorPrice);
-        playerDevice.offloadRate++;
-        player.upgradeProcessorPrice *= 2;
-        upgradeProcessorPrice.text = player.upgradeProcessorPrice + "coins";
-        //playerDevice.offloadRate++;
-    }
 
     public void UpgradePlayerAbility()
     {
@@ -67,22 +46,8 @@ public class Upgrade : MonoBehaviour
             return;
 
         GameManager.instance._SubtractCoins(player.upgradeAbilityPrice);
-        /*if (PlayerAbilitySlider.value == 3)
-            return;
-        PlayerAbilitySlider.value++;*/
-        //player.playerSpeed *= 1.2f;
         player.playerSpeed += 0.5f;
         player.upgradeAbilityPrice *= 2;
         upgradeAbilityPrice.text = player.upgradeAbilityPrice + "coins";
     }
-
-    /*
-    public void DowngradePlayerAbility()
-    {
-        if (PlayerAbilitySlider.value == 0)
-            return;
-        PlayerAbilitySlider.value--;
-        //player.playerSpeed /= 1.2f;
-        player.playerSpeed -= 2f;
-    }*/
 }

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 6
   playerRotationSpeed: 500
-  upgradeAbilityPrice: 20
+  upgradeAbilityPrice: 10
   upgradeProcessorPrice: 10
-  upgradeCapacityPrice: 30
+  upgradeCapacityPrice: 10

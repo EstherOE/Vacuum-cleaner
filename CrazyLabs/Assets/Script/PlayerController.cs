@@ -7,6 +7,8 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController userPlayer;
+   
     [Header("Player Properties")]
     public PlayerSO player;
     public Joystick joyStick;
@@ -27,9 +29,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Container Properties")]
     public SuctionDeviceSO playerDevice;
-    private int _deviceCapacity=0;
+    public int _deviceCapacity=0;
     public bool isBagFull = false;
-    private int vacuumCapacity;
+    public int vacuumCapacity;
     public TextMeshProUGUI currentVacuumCapacity;
     public GameObject scoreText;
 
@@ -40,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("SO Events")]
     public GameEvent OnExtracted;
-    public GameEvent OnVacuumOn;
+    public GameEvent OnExtractedCoin;
     public GameEvent OnVacuumOff;
     public GameEvent OnVacuumFull;
     public GameEvent OnVacuumCanCarry;
@@ -113,8 +115,9 @@ public class PlayerController : MonoBehaviour
             if (GameManager.instance.currentLevelId > 2) 
             {
                 OnVacuumFull.Raise();
+                isBagFull = true;
             }
-            isBagFull = true;
+           
 
 
         }
@@ -164,12 +167,9 @@ public class PlayerController : MonoBehaviour
             OnPickUp.Raise();
            // StartCoroutine(_PickUpItems());
         }
-
-       
         
         if (other.CompareTag("dirt"))
         {
-            
             if (isBagFull)
             {
                 return;
@@ -179,7 +179,6 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(MoverObject(other.gameObject.transform, other));
                 //other.transform.DOScale(0, 0.95f);
             }
-
         }
 
         if (other.CompareTag("MovableObstacle"))
@@ -241,7 +240,7 @@ public class PlayerController : MonoBehaviour
             if (_deviceCapacity > offloadRate)
             {
                 _deviceCapacity -= offloadRate;
-                GameManager.instance._AddCoins(offloadRate * 3);
+              //  GameManager.instance._AddCoins(offloadRate * 3);
                 GameManager.instance.currentScore += offloadRate;
                 GameManager.instance.processorCapacity += offloadRate;
             }
@@ -250,7 +249,7 @@ public class PlayerController : MonoBehaviour
                 
                 GameManager.instance.currentScore += _deviceCapacity;
                 GameManager.instance.processorCapacity += _deviceCapacity;
-                GameManager.instance._AddCoins(_deviceCapacity * 3);
+              //  GameManager.instance._AddCoins(_deviceCapacity * 3);
                 _deviceCapacity = 0;
             }
             speed += 0.5f;
@@ -269,26 +268,44 @@ public class PlayerController : MonoBehaviour
         {
             yield return null;
             timeTaken += Time.deltaTime;
-            t.position = Vector3.MoveTowards(t.position, spawnPoint.position, Time.deltaTime * 20);
-            t.localScale = Vector3.MoveTowards(t.localScale, Vector3.one * 0.1f, Time.deltaTime * 2);
-            if (timeTaken > 1.25f)
+            t.position = Vector3.MoveTowards(t.position, spawnPoint.position, Time.deltaTime *100);
+            t.localScale = Vector3.MoveTowards(t.localScale, Vector3.one * 0.1f, Time.deltaTime * 50);
+            if (timeTaken > 0.9f)
                 break;
         }
+
+        if (other.CompareTag("dirt"))
+        {
+            ExtractChick(other);
+           
+           
+        }
         
-        if (other.CompareTag("dirt")) Extracted(other);
-        if (other.CompareTag("coin")) GameManager.instance._AddCoins(3);
+        if (other.CompareTag("coin")) 
+        {
+            ExtractCoin(other);
+            
+        }
         //need to destroy objects on the event that they don't get sucked in completely
         Destroy(other.gameObject);
     }
-    private void Extracted(Collider other)
+    private void ExtractChick(Collider other)
     {
         
       if (isBagFull)
       return;
+
         _deviceCapacity += 1;
-        OnExtracted.Raise();
+        currentVacuumCapacity.text = _deviceCapacity + "/ " + vacuumCapacity.ToString();
         Destroy(other.gameObject);
-        currentVacuumCapacity.text = _deviceCapacity + "/ "+ vacuumCapacity.ToString();
+       
+    }
+
+    private void ExtractCoin(Collider other) 
+    {
+        OnExtractedCoin.Raise();
+        Destroy(other.gameObject);
+        GameManager.instance._AddCoins(2);
     }
 
    
