@@ -103,7 +103,7 @@ public class ChickAI : MonoBehaviour
 
             alreadyAttacked = true;
             chickAnimation.SetBool("chase", false);
-            chickAnimation.SetBool("attack", true);
+            //chickAnimation.SetBool("attack", true);
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }

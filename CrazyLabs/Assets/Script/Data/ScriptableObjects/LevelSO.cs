@@ -18,6 +18,10 @@ public class LevelSO : ScriptableObject
     public int henCount;
     public float henSpeed;
     public float henSightRange;
+    public float henXPositive;
+    public float henXNegative;
+    public float henZPositive;
+    public float henZNegative;
     public float henWalkPointRange;
     public int eggCount;
 
@@ -25,6 +29,10 @@ public class LevelSO : ScriptableObject
     public int chickCount;
     public float chickSpeed;
     public float chickSightRange;
+    public float chickXPositive;
+    public float chickXNegative;
+    public float chickZPositive;
+    public float chickZNegative;
     public float chickWalkpointRange;
 
 
