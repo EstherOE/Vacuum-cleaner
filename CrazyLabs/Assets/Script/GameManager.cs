@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
        //SetLevel();
         playerCoins.CurrencyInitializer();
         instructionText.text = "PUT THE " + gameLevel[currentLevelId].scoreToReach + " CHICKS BACK IN THE COOP";
-        processorMax = gameLevel[currentLevelId].scoreToReach;
+        processorMax = gameLevel[currentLevelId].chickCount;
         coinText.text = playerCoins.playerCurrency.ToString();
         hasGamestarted = false;
         cameraCanMove = false;

@@ -22,17 +22,13 @@ public class PlayerController : MonoBehaviour
     public Transform spawnPoint;
     Animator anim;
    
-
     [Header("Audio Properties")]
     private AudioSource playerAudio;
-
-
 
     [Header("Container Properties")]
     public SuctionDeviceSO playerDevice;
     private int _deviceCapacity=0;
     public bool isBagFull = false;
-    //public int offloadRate = 1;
     private int vacuumCapacity;
     public TextMeshProUGUI currentVacuumCapacity;
     public GameObject scoreText;
@@ -52,6 +48,7 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnPlayerHit;
     public GameEvent OnPickUp;
     public GameEvent OnDrop;
+    public GameEvent OnPrompt;
 
     [Space]
     public Goals[] goals;
@@ -110,12 +107,16 @@ public class PlayerController : MonoBehaviour
         movementDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
         if (anim)
             anim.SetFloat("speed", movementDirection.magnitude);
-
+       
         if (_deviceCapacity==vacuumCapacity)
         {
-            if (GameManager.instance.currentLevelId > 2)
+            if (GameManager.instance.currentLevelId > 2) 
+            {
                 OnVacuumFull.Raise();
+            }
             isBagFull = true;
+
+
         }
         if (_deviceCapacity < 0)
         {
@@ -123,8 +124,7 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        //transform.Translate(movementDirection * Time.deltaTime * speed, Space.World);
-        //look in the direction of movement
+       
     }
 
     private void FixedUpdate()
@@ -165,13 +165,21 @@ public class PlayerController : MonoBehaviour
            // StartCoroutine(_PickUpItems());
         }
 
-       // if (!isVacuumOn)
-       // return;
+       
         
         if (other.CompareTag("dirt"))
         {
-            StartCoroutine(MoverObject(other.gameObject.transform, other));
-            //other.transform.DOScale(0, 0.95f);
+            
+            if (isBagFull)
+            {
+                return;
+            }
+            else
+            {
+                StartCoroutine(MoverObject(other.gameObject.transform, other));
+                //other.transform.DOScale(0, 0.95f);
+            }
+
         }
 
         if (other.CompareTag("MovableObstacle"))

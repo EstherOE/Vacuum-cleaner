@@ -37,6 +37,5 @@ MonoBehaviour:
     currentIndex: 0
     probability: 1
     tutorialInstructions:
-    - Collect the egg then collect the chick and place it  in the coop. Make Sure
-      you avoid the Mother hen.
+    - When your bag is full, click on the plus button to upgrade.
   isTutorialFinshed: 0

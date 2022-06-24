@@ -47,6 +47,7 @@ public class TutorialController : MonoBehaviour
           
     }
 
+
     public void ShowNormalInstruction() 
     {
         instructionText.text = "Place all " + " " + GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickCount + " " + "chicks into the coop";
