@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameEvent OnProcessorMaxed;
     public GameEvent OnGameWin;
     public GameEvent OnGameLose;
+    public GameEvent OnGiveInstruction;
 
     [Header("Game Stats")]
     public bool gameOver;
@@ -30,6 +31,8 @@ public class GameManager : MonoBehaviour
     public bool hasGamestarted = false;
     public static GameManager instance;
 
+    [Header("Camera Movement")]
+    public bool cameraCanMove =false;
 
     private void Awake()
     {
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
         processorMax = gameLevel[currentLevelId].scoreToReach;
         coinText.text = playerCoins.playerCurrency.ToString();
         hasGamestarted = false;
+        cameraCanMove = false;
         gameOver = false;
         //Instantiate(Levels[currentLevelId].levelPrefab,)
     }
@@ -49,7 +53,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        TutorialController._tutController.InitialiseConversations(currentLevelId);
     }
    
 
@@ -63,6 +67,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             hasGamestarted = true;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            cameraCanMove = true;
         }
     }
 
@@ -95,6 +104,12 @@ public class GameManager : MonoBehaviour
         playerCoins.SubtractCoins(coins);
         coinText.text = playerCoins.playerCurrency.ToString();
     }
+
+    public void CloseInstruction() 
+    {
+        cameraCanMove = true;
+    }
+
 
     public void SetLevel() 
     {

@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    [Header("Vacuum Properties")]
+    [Header("Container Properties")]
     public SuctionDeviceSO playerDevice;
     private int _deviceCapacity=0;
     public bool isVacuumOn = false;
@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
     public Text currentVacuumCapacity;
     public Slider VacuumAbilitySlider;
     public GameObject scoreText;
+
+    [Header("EggBasket Properties")]
+    public EggBasketSO playerBasket;
+    private int eggBasketCapacity;
+    private int _numberofEggsCollected =0;
 
     [Header("SO Events")]
     public GameEvent OnExtracted;
@@ -156,7 +161,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("trashcan"))
+        if (other.CompareTag("HenCoop"))
         {
             offloadItems = true;
             //Debug.Log("entered");
@@ -215,7 +220,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("trashcan"))
+        if (other.CompareTag("HenCoop"))
         {
             offloadItems = false;
            // ToggleSwitchOn();

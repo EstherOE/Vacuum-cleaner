@@ -6,7 +6,6 @@ TagManager:
   tags:
   - dirt
   - damage
-  - trashcan
   - range
   - speedboost
   - reducespeed
@@ -19,6 +18,7 @@ TagManager:
   - MultiPathpoint
   - MovableObstacle
   - Enemy
+  - HenCoop
   layers:
   - Default
   - TransparentFX
