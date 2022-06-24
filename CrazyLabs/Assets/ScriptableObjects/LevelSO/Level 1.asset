@@ -22,18 +22,34 @@ MonoBehaviour:
   - 9
   - 15
   itemsSpawnedInScene:
-  - {fileID: 3844719916176761684, guid: d7ad11583853409478edf4eb5b9ffd79, type: 3}
-  - {fileID: 5810480174954791084, guid: fb0a2808ebfc1dc4089b4da43db24eb3, type: 3}
-  henCount: 1
-  henSpeed: 5
-  henSightRange: 10
-  henWalkPointRange: 3
+  - {fileID: 2244161356582078427, guid: 0d8ed574c12992a4e9704960db648114, type: 3}
+  - {fileID: 6692554359614464997, guid: 225c12f5e56f65e48a02158d29d499ae, type: 3}
+  - {fileID: 2237154057215456247, guid: 62c77d2cfadc83048b37b10637b94751, type: 3}
+  henCount: 0
+  henSpeed: 0
+  henSightRange: 0
+  henXPositive: 15
+  henXNegative: 6.5
+  henZPositive: 18
+  henZNegative: 7
+  henWalkPointRange: 0
   eggCount: 0
+  eggXPositive: 0
+  eggXNegative: 0
+  eggZPositive: 0
+  eggZNegative: 0
   chickCount: 1
-  chickSpeed: 5
-  chickSightRange: 5
-  chickWalkpointRange: 5
-  levelTime: 300
+  chickSpeed: 0
+  chickSightRange: 0
+  chickXPositive: 10
+  chickXNegative: 0
+  chickZPositive: -5
+  chickZNegative: -15
+  chickWalkpointRange: 0
+  levelTime: 60
+  doesLevelHaveTimer: 1
+  hasTutorial: 1
   levelPrefab: {fileID: 4326574659984937117, guid: 2a3fbf9c4c39ade4bbc456a0b6eb77ac, type: 3}
   levelPosition: {x: 0, y: 13.13, z: 0}
-  scoreToReach: 15
+  scoreToReach: 1
+  levelInstructions: Place all  1 chicks into the coop

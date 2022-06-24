@@ -39,7 +39,10 @@ public class ChickAI : MonoBehaviour
 
     private void Start()
     {
-        enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
+        if(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henCount > 0)
+        {
+            enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
+        }
         agent.speed = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickSpeed;
         sightRange = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickSightRange;
         walkPointRange = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickWalkpointRange;

@@ -929,15 +929,11 @@ MonoBehaviour:
   speed: 0
   offloadRate: 0
   spawnPoint: {fileID: 4481133433550234740}
-  PlayerAbilitySlider: {fileID: 0}
-  Vacuum: {fileID: 0}
   playerDevice: {fileID: 11400000, guid: 1767c3161b49fe04abeeb06ee4be5d13, type: 2}
-  isVacuumOn: 0
-  isVacuumImmune: 0
   isBagFull: 0
   currentVacuumCapacity: {fileID: 0}
-  VacuumAbilitySlider: {fileID: 0}
   scoreText: {fileID: 0}
+  playerBasket: {fileID: 0}
   OnExtracted: {fileID: 11400000, guid: 9c37621fcfdee6d4c87be1de8436183e, type: 2}
   OnVacuumOn: {fileID: 11400000, guid: 190ee0018e3514b4abcf000f8927c083, type: 2}
   OnVacuumOff: {fileID: 11400000, guid: f6b4e60011273184ea1e7127d9caf6ed, type: 2}

@@ -11,12 +11,16 @@ public class GameTimer : MonoBehaviour
     public string timeSpent;
     public bool timerCalled = false;
     public float currentTime;
+    private string minutes;
+    private string seconds;
+    public GameObject timerContainer;
 
     public static GameTimer instance;
 
     private void Awake()
     {
         instance = this;
+       
     }
 
     // Start is called before the first frame update
@@ -25,6 +29,23 @@ public class GameTimer : MonoBehaviour
         // CountTime();
         // timer.text = maxTime.ToString() + " minutes "; 
         maxTime = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].levelTime;
+         minutes = ((int)maxTime / 60).ToString();
+        seconds = (maxTime % 60).ToString();
+        timeSpent = minutes + " : " + seconds+"0";
+        timer.text = timeSpent;
+
+        CheckForTime();
+    }
+    public void CheckForTime() 
+    {
+        if (GameManager.instance.gameLevel[GameManager.instance.currentLevelId].doesLevelHaveTimer == true)
+        {
+            timerContainer.SetActive(true);
+        }
+        else
+        {
+            timerContainer.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -42,13 +63,13 @@ public class GameTimer : MonoBehaviour
         timerCalled = true;
 
         maxTime -= Time.deltaTime;
-        string minutes = ((int)maxTime / 60).ToString();
-        string seconds = (maxTime % 60).ToString("f2");
+        minutes = ((int)maxTime / 60).ToString();
+        seconds = (maxTime % 60).ToString("f2");
         timeSpent = minutes + ":" + seconds;
         timer.text = timeSpent;
-        if (maxTime <= 0f)
+        if (maxTime <= 0f && GameManager.instance.gameLevel[GameManager.instance.currentLevelId].doesLevelHaveTimer ==true)
         {
-           // GameManager.instance.PlayerLose();
+            GameManager.instance.PlayerLose();
             PauseTime();
            // inDanger = false;
         }

@@ -23,7 +23,13 @@ public class LevelSO : ScriptableObject
     public float henZPositive;
     public float henZNegative;
     public float henWalkPointRange;
+   
+    [Header("Egg Attributes")]
     public int eggCount;
+    public float eggXPositive;
+    public float eggXNegative;
+    public float eggZPositive;
+    public float eggZNegative;
 
     [Header("Chick AI Attributes")]
     public int chickCount;
@@ -38,8 +44,18 @@ public class LevelSO : ScriptableObject
 
     [Header("LevelPrefab Attributes")]
     public float levelTime;
+    public bool doesLevelHaveTimer;
+    public bool hasTutorial;
     public GameObject levelPrefab;
     public Vector3 levelPosition;
     public int scoreToReach;
+    public string levelInstructions;
+
+
+    public void SendInstructions() 
+    {
+        levelInstructions = "Place all " + " " + chickCount + " " + "chicks into the coop";
+       
+    }
 
 }

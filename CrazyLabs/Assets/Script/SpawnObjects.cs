@@ -11,6 +11,7 @@ public class SpawnObjects : MonoBehaviour
     public float zPositive;
     public float zNegative;
     public Transform yPos;
+    public float yOffset;
 
     public float colliderRadius = 0.2f;
 
@@ -19,18 +20,6 @@ public class SpawnObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //dirt[] = 
-        for (int i = 0; i < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene.Length; i++)
-        {
-            // Item temp = dirt[i].GetComponent<Item>();
-            if (GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("coin"))
-            {
-                Item temp = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].GetComponent<Item>();
-                temp.collectible.timer = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].CollectiblesTimers[i];
-                temp.collectible.effectTime = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].CollectiblesEffectTimes[i];
-                temp.collectible.spawnRate = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].CollectiblesSpawnRates[i];
-            }
-        }
 
         //InvokeRepeating("SpawnDirt", 0, spawnTimer);
         for (int i = 0; i < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene.Length; i++)
@@ -41,9 +30,11 @@ public class SpawnObjects : MonoBehaviour
                 xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickXNegative;
                 zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickZPositive;
                 zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickZNegative;
+                yOffset = 1.5f  ;
                 //StartCoroutine(SpawnItem(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].GetComponent<Item>(), i));
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].eggCount; j++)
-                    Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(i), Quaternion.identity);
+               
+                    Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(), Quaternion.identity);
             }
             else if (GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("Enemy"))
             {
@@ -51,17 +42,20 @@ public class SpawnObjects : MonoBehaviour
                 xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henXNegative;
                 zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henZPositive;
                 zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henZNegative;
+                yOffset =0;
+                
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henCount; j++)
-                    Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(i), Quaternion.identity);
+                    Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(), Quaternion.identity);
             }
-            else
+            else if(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("dirt"))
             {
                 xPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickXPositive;
                 xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickXNegative;
                 zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickZPositive;
                 zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickZNegative;
+                yOffset = 0;
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickCount; j++)
-                    Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(i), Quaternion.identity);
+                    Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(), Quaternion.identity);
             }
         }
     }
@@ -77,14 +71,14 @@ public class SpawnObjects : MonoBehaviour
         while (t.collectible.spawnRate > 0 && !GameManager.instance.gameOver)
         {
             yield return new WaitForSeconds(t.collectible.spawnRate);
-            Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(id), Quaternion.identity);
+            Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(), Quaternion.identity);
         }
     }
 
-    Vector3 RandomPos(int id)
+    Vector3 RandomPos()
     {
         //bool validSpawnPoint = false;
-        float Y = yPos.position.y;
+        float Y = yPos.position.y + yOffset;
         float X = Random.Range(xNegative, xPositive);
         
         /*if (dirt[id].CompareTag("damage"))
@@ -95,7 +89,7 @@ public class SpawnObjects : MonoBehaviour
         float Z = Random.Range(zNegative, zPositive);
 
         Vector3 newPos = new Vector3(X,Y,Z);
-        Collider[] intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 2.5f, newPos.z), colliderRadius);
+       /* Collider[] intersecting = Physics.OverlapSphere(new Vector3(newPos.x, -1f, newPos.z), colliderRadius);
         Collider[] surface = Physics.OverlapSphere(newPos, colliderRadius);
 
         while (intersecting.Length == 0 || (surface.Length != 0 && !surface[0].CompareTag("validspawnpoint")))
@@ -104,7 +98,7 @@ public class SpawnObjects : MonoBehaviour
             Z = Random.Range(zNegative, zPositive);
             newPos = new Vector3(X, Y, Z);
             surface = Physics.OverlapSphere(newPos, colliderRadius);
-            intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 2.5f, newPos.z), colliderRadius);
+            intersecting = Physics.OverlapSphere(new Vector3(newPos.x, -1f, newPos.z), colliderRadius);
         }
 
         intersecting = Physics.OverlapSphere(newPos, colliderRadius);
@@ -114,7 +108,7 @@ public class SpawnObjects : MonoBehaviour
             Y += 1.0f;
             newPos = new Vector3(X, Y, Z);
             intersecting = Physics.OverlapSphere(newPos, colliderRadius);
-        }
+        }*/
 
         return newPos; 
     }
@@ -127,18 +121,6 @@ public class SpawnObjects : MonoBehaviour
          while (GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id].GetComponent<Item>().itemType == Item.ItemType.Vacuum && probability > 0.2)
             id = Random.Range(0, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene.Length);
 
-        Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(id), Quaternion.identity);
-    }
-
-
-    private void OnDrawGizmosSelected()
-    {
-        for (int i = 0; i < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene.Length; i++)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].transform.position, colliderRadius);
-
-        }
-        
+        Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(), Quaternion.identity);
     }
 }

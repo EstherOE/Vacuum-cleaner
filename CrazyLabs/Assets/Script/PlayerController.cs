@@ -20,8 +20,6 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     Vector3 movementDirection = Vector3.zero;
     public Transform spawnPoint;
-    public Slider PlayerAbilitySlider;
-    public GameObject Vacuum;
     Animator anim;
    
 
@@ -33,13 +31,10 @@ public class PlayerController : MonoBehaviour
     [Header("Container Properties")]
     public SuctionDeviceSO playerDevice;
     private int _deviceCapacity=0;
-    public bool isVacuumOn = false;
-    public bool isVacuumImmune = false;
     public bool isBagFull = false;
     //public int offloadRate = 1;
     private int vacuumCapacity;
-    public Text currentVacuumCapacity;
-    public Slider VacuumAbilitySlider;
+    public TextMeshProUGUI currentVacuumCapacity;
     public GameObject scoreText;
 
     [Header("EggBasket Properties")]
@@ -99,17 +94,6 @@ public class PlayerController : MonoBehaviour
         //InitializeSliders();
     }
 
-
-    void InitializeSliders()
-    {
-        PlayerAbilitySlider.maxValue = 3;
-        VacuumAbilitySlider.maxValue = 3;
-        PlayerAbilitySlider.minValue = 0;
-        VacuumAbilitySlider.minValue = 0;
-        PlayerAbilitySlider.value = 0;
-        VacuumAbilitySlider.value = 0;
-    }
-
     // Update is called once per frame
     void Update()
   
@@ -129,7 +113,6 @@ public class PlayerController : MonoBehaviour
 
         if (_deviceCapacity==vacuumCapacity)
         {
-            ToggleSwitchOff();
             OnVacuumFull.Raise();
             isBagFull = true;
         }
@@ -190,13 +173,6 @@ public class PlayerController : MonoBehaviour
             //other.transform.DOScale(0, 0.95f);
         }
 
-        if(other.CompareTag("damage"))
-        {
-            if (!isVacuumImmune)
-            StartCoroutine(MoverObject(other.gameObject.transform, other));
-            DamageVacuum();
-            Destroy(other.gameObject);
-        }
         if (other.CompareTag("MovableObstacle"))
         {
             OnPlayerHit.Raise();
@@ -306,48 +282,14 @@ public class PlayerController : MonoBehaviour
         currentVacuumCapacity.text = _deviceCapacity + "/ "+ vacuumCapacity.ToString();
     }
 
-    public IEnumerator VacuumImmunity(float timer)
-    {
-        isVacuumImmune = true;
-        yield return new WaitForSeconds(timer);
-        isVacuumImmune = false;
-    }
+   
  
     public void ReadInput(string s)
     {
         speed = float.Parse(s);
     }
 
-    public void ToggleSwitchOn()
-    {
-        if (!isVacuumOn)
-        {
-            isVacuumOn = true;  
-             playerAudio.Play();
-            OnVacuumOn.Raise();  
-        }
-                else
-                {
-                    isVacuumOn=false;
-                    OnVacuumOff.Raise();
-                }
-    }
-
-     public void ToggleSwitchOff()
-    {
-        if (!isVacuumOn)
-      return;
-      isVacuumOn=false;
-      playerAudio.Stop();
-      OnVacuumOff.Raise();
-                
-    }
-    public void DamageVacuum()
-    {
-        isVacuumOn= false;
-        playerAudio.Stop();
-       // OnVacuumDamage.Raise();
-    }
+   
     public void EnableBag()
     {
         OnVacuumCanCarry.Raise();

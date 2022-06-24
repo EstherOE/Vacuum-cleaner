@@ -1,87 +1,239 @@
 fileFormatVersion: 2
 guid: f42b93cfa5b31304fa6a4f57f78da0e8
-timeCreated: 1535103303
-licenseType: Store
 ModelImporter:
-  serializedVersion: 22
-  fileIDToRecycleName:
-    100000: chest
-    100002: chest2
-    100004: chest_ctrl
-    100006: head
-    100008: //RootNode
-    100010: hen
-    100012: hen_armature
-    100014: ik_leg_L
-    100016: ik_leg_R
-    100018: ik_neck
-    100020: leg1_L
-    100022: leg1_R
-    100024: leg2_L
-    100026: leg2_R
-    100028: leg3_L
-    100030: leg3_R
-    100032: neck1
-    100034: neck2
-    100036: neck_loro
-    100038: root
-    100040: tail
-    100042: toe_L
-    100044: toe_R
-    100046: wing1_L
-    100048: wing1_R
-    100050: wing2_L
-    100052: wing2_R
-    400000: chest
-    400002: chest2
-    400004: chest_ctrl
-    400006: head
-    400008: //RootNode
-    400010: hen
-    400012: hen_armature
-    400014: ik_leg_L
-    400016: ik_leg_R
-    400018: ik_neck
-    400020: leg1_L
-    400022: leg1_R
-    400024: leg2_L
-    400026: leg2_R
-    400028: leg3_L
-    400030: leg3_R
-    400032: neck1
-    400034: neck2
-    400036: neck_loro
-    400038: root
-    400040: tail
-    400042: toe_L
-    400044: toe_R
-    400046: wing1_L
-    400048: wing1_R
-    400050: wing2_L
-    400052: wing2_R
-    2100000: hen_body
-    2100002: hen_face
-    2100004: hen_body2
-    2100006: hen_toes
-    4300000: hen
-    7400000: chicken_danger
-    7400002: chicken_dead
-    7400004: chicken_eat1
-    7400006: chicken_eat2
-    7400008: chicken_fastwalk
-    7400010: chicken_idle1
-    7400012: chicken_idle2
-    7400014: chicken_idle3
-    7400016: chicken_idle4
-    7400018: chicken_jump
-    7400020: chicken_run
-    7400022: chicken_sleep1
-    7400024: chicken_sleep2
-    7400026: chicken_walk
-    7400028: chicken_walk_search
-    7400030: chicken_danger (1)
-    9500000: //RootNode
-    13700000: hen
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: chest
+  - first:
+      1: 100002
+    second: chest2
+  - first:
+      1: 100004
+    second: chest_ctrl
+  - first:
+      1: 100006
+    second: head
+  - first:
+      1: 100008
+    second: //RootNode
+  - first:
+      1: 100010
+    second: hen
+  - first:
+      1: 100012
+    second: hen_armature
+  - first:
+      1: 100014
+    second: ik_leg_L
+  - first:
+      1: 100016
+    second: ik_leg_R
+  - first:
+      1: 100018
+    second: ik_neck
+  - first:
+      1: 100020
+    second: leg1_L
+  - first:
+      1: 100022
+    second: leg1_R
+  - first:
+      1: 100024
+    second: leg2_L
+  - first:
+      1: 100026
+    second: leg2_R
+  - first:
+      1: 100028
+    second: leg3_L
+  - first:
+      1: 100030
+    second: leg3_R
+  - first:
+      1: 100032
+    second: neck1
+  - first:
+      1: 100034
+    second: neck2
+  - first:
+      1: 100036
+    second: neck_loro
+  - first:
+      1: 100038
+    second: root
+  - first:
+      1: 100040
+    second: tail
+  - first:
+      1: 100042
+    second: toe_L
+  - first:
+      1: 100044
+    second: toe_R
+  - first:
+      1: 100046
+    second: wing1_L
+  - first:
+      1: 100048
+    second: wing1_R
+  - first:
+      1: 100050
+    second: wing2_L
+  - first:
+      1: 100052
+    second: wing2_R
+  - first:
+      4: 400000
+    second: chest
+  - first:
+      4: 400002
+    second: chest2
+  - first:
+      4: 400004
+    second: chest_ctrl
+  - first:
+      4: 400006
+    second: head
+  - first:
+      4: 400008
+    second: //RootNode
+  - first:
+      4: 400010
+    second: hen
+  - first:
+      4: 400012
+    second: hen_armature
+  - first:
+      4: 400014
+    second: ik_leg_L
+  - first:
+      4: 400016
+    second: ik_leg_R
+  - first:
+      4: 400018
+    second: ik_neck
+  - first:
+      4: 400020
+    second: leg1_L
+  - first:
+      4: 400022
+    second: leg1_R
+  - first:
+      4: 400024
+    second: leg2_L
+  - first:
+      4: 400026
+    second: leg2_R
+  - first:
+      4: 400028
+    second: leg3_L
+  - first:
+      4: 400030
+    second: leg3_R
+  - first:
+      4: 400032
+    second: neck1
+  - first:
+      4: 400034
+    second: neck2
+  - first:
+      4: 400036
+    second: neck_loro
+  - first:
+      4: 400038
+    second: root
+  - first:
+      4: 400040
+    second: tail
+  - first:
+      4: 400042
+    second: toe_L
+  - first:
+      4: 400044
+    second: toe_R
+  - first:
+      4: 400046
+    second: wing1_L
+  - first:
+      4: 400048
+    second: wing1_R
+  - first:
+      4: 400050
+    second: wing2_L
+  - first:
+      4: 400052
+    second: wing2_R
+  - first:
+      21: 2100000
+    second: hen_body
+  - first:
+      21: 2100002
+    second: hen_face
+  - first:
+      21: 2100004
+    second: hen_body2
+  - first:
+      21: 2100006
+    second: hen_toes
+  - first:
+      43: 4300000
+    second: hen
+  - first:
+      74: 7400000
+    second: chicken_danger
+  - first:
+      74: 7400002
+    second: chicken_dead
+  - first:
+      74: 7400004
+    second: chicken_eat1
+  - first:
+      74: 7400006
+    second: chicken_eat2
+  - first:
+      74: 7400008
+    second: chicken_fastwalk
+  - first:
+      74: 7400010
+    second: chicken_idle1
+  - first:
+      74: 7400012
+    second: chicken_idle2
+  - first:
+      74: 7400014
+    second: chicken_idle3
+  - first:
+      74: 7400016
+    second: chicken_idle4
+  - first:
+      74: 7400018
+    second: chicken_jump
+  - first:
+      74: 7400020
+    second: chicken_run
+  - first:
+      74: 7400022
+    second: chicken_sleep1
+  - first:
+      74: 7400024
+    second: chicken_sleep2
+  - first:
+      74: 7400026
+    second: chicken_walk
+  - first:
+      74: 7400028
+    second: chicken_walk_search
+  - first:
+      74: 7400030
+    second: chicken_danger (1)
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: hen
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -104,7 +256,7 @@ ModelImporter:
       name: hen_toes
     second: {fileID: 2100000, guid: fbd97715afecea54fb4ec07d84e73ea8, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -121,6 +273,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -132,6 +285,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_danger
       takeName: chicken_danger
+      internalID: 0
       firstFrame: -1
       lastFrame: 47
       wrapMode: 0
@@ -160,6 +314,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_dead
       takeName: chicken_dead
+      internalID: 0
       firstFrame: -1
       lastFrame: 39
       wrapMode: 0
@@ -188,6 +343,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_eat1
       takeName: chicken_eat1
+      internalID: 0
       firstFrame: -1
       lastFrame: 39
       wrapMode: 0
@@ -216,6 +372,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_eat2
       takeName: chicken_eat2
+      internalID: 0
       firstFrame: -1
       lastFrame: 54
       wrapMode: 0
@@ -244,6 +401,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_fastwalk
       takeName: chicken_fastwalk
+      internalID: 0
       firstFrame: -1
       lastFrame: 39
       wrapMode: 0
@@ -272,6 +430,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_idle1
       takeName: chicken_idle1
+      internalID: 0
       firstFrame: -1
       lastFrame: 39
       wrapMode: 0
@@ -300,6 +459,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_idle2
       takeName: chicken_idle2
+      internalID: 0
       firstFrame: -1
       lastFrame: 39
       wrapMode: 0
@@ -328,6 +488,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_idle3
       takeName: chicken_idle3
+      internalID: 0
       firstFrame: -1
       lastFrame: 39
       wrapMode: 0
@@ -356,6 +517,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_idle4
       takeName: chicken_idle4
+      internalID: 0
       firstFrame: -1
       lastFrame: 39
       wrapMode: 0
@@ -364,7 +526,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -384,6 +546,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_jump
       takeName: chicken_jump
+      internalID: 0
       firstFrame: -1
       lastFrame: 70
       wrapMode: 0
@@ -412,6 +575,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_run
       takeName: chicken_run
+      internalID: 0
       firstFrame: -1
       lastFrame: 31
       wrapMode: 0
@@ -420,7 +584,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -440,6 +604,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_sleep1
       takeName: chicken_sleep1
+      internalID: 0
       firstFrame: -1
       lastFrame: 39
       wrapMode: 0
@@ -468,6 +633,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_sleep2
       takeName: chicken_sleep2
+      internalID: 0
       firstFrame: -1
       lastFrame: 39
       wrapMode: 0
@@ -496,6 +662,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_walk
       takeName: chicken_walk
+      internalID: 0
       firstFrame: -1
       lastFrame: 39
       wrapMode: 0
@@ -524,6 +691,7 @@ ModelImporter:
     - serializedVersion: 16
       name: chicken_walk_search
       takeName: chicken_walk_search
+      internalID: 0
       firstFrame: -1
       lastFrame: 39
       wrapMode: 0
@@ -555,21 +723,31 @@ ModelImporter:
     globalScale: 0.15
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 0
   tangentSpace:
@@ -577,10 +755,13 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -590,14 +771,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.15
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
