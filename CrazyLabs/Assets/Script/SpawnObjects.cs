@@ -6,10 +6,10 @@ public class SpawnObjects : MonoBehaviour
 {
     //public LevelSO Level;
    // public GameObject[] dirt;
-    public Transform xPositive;
-    public Transform xNegative;
-    public Transform zPositive;
-    public Transform zNegative;
+    public float xPositive;
+    public float xNegative;
+    public float zPositive;
+    public float zNegative;
     public Transform yPos;
 
     public float colliderRadius = 0.2f;
@@ -37,17 +37,29 @@ public class SpawnObjects : MonoBehaviour
         {
             if (GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("coin"))
             {
+                xPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickXPositive;
+                xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickXNegative;
+                zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickZPositive;
+                zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickZNegative;
                 //StartCoroutine(SpawnItem(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].GetComponent<Item>(), i));
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].eggCount; j++)
                     Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(i), Quaternion.identity);
             }
             else if (GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("Enemy"))
             {
+                xPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henXPositive;
+                xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henXNegative;
+                zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henZPositive;
+                zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henZNegative;
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henCount; j++)
                     Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(i), Quaternion.identity);
             }
             else
             {
+                xPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickXPositive;
+                xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickXNegative;
+                zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickZPositive;
+                zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickZNegative;
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickCount; j++)
                     Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(i), Quaternion.identity);
             }
@@ -73,14 +85,14 @@ public class SpawnObjects : MonoBehaviour
     {
         //bool validSpawnPoint = false;
         float Y = yPos.position.y;
-        float X = Random.Range(xNegative.position.x, xPositive.position.x);
+        float X = Random.Range(xNegative, xPositive);
         
         /*if (dirt[id].CompareTag("damage"))
             Y = 0.5f;
         else
             Y = 0.25f;*/
         
-        float Z = Random.Range(zNegative.position.z, zPositive.position.z);
+        float Z = Random.Range(zNegative, zPositive);
 
         Vector3 newPos = new Vector3(X,Y,Z);
         Collider[] intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 2.5f, newPos.z), colliderRadius);
@@ -88,8 +100,8 @@ public class SpawnObjects : MonoBehaviour
 
         while (intersecting.Length == 0 || (surface.Length != 0 && !surface[0].CompareTag("validspawnpoint")))
         {
-            X = Random.Range(xNegative.position.x, xPositive.position.x);
-            Z = Random.Range(zNegative.position.z, zPositive.position.z);
+            X = Random.Range(xNegative, xPositive);
+            Z = Random.Range(zNegative, zPositive);
             newPos = new Vector3(X, Y, Z);
             surface = Physics.OverlapSphere(newPos, colliderRadius);
             intersecting = Physics.OverlapSphere(new Vector3(newPos.x, 2.5f, newPos.z), colliderRadius);
