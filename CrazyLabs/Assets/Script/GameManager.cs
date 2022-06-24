@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using NaughtyAttributes;
 using TMPro;
         
@@ -93,8 +94,12 @@ public class GameManager : MonoBehaviour
     }
     public void NextLevel() 
     {
-            //OnGameComplete.Raise();
+	    if(currentLevelId == gameLevel.Length - 1){
+               OnGameComplete.Raise();
+               return;
+            }
             PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
+            SceneManager.LoadScene("GameScene");
     }
     public void StartGame() 
     {

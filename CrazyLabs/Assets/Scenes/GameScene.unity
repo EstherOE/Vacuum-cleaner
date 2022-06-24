@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1431945747}
-  m_IndirectSpecularColor: {r: 0.49381325, g: 1.0503031, b: 1.0606921, a: 1}
+  m_IndirectSpecularColor: {r: 0.4938131, g: 1.0503027, b: 1.0606912, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8782,6 +8782,7 @@ GameObject:
   - component: {fileID: 3591046975869926684}
   - component: {fileID: 3591046975869926682}
   - component: {fileID: 3591046975869926683}
+  - component: {fileID: 3591046975869926685}
   m_Layer: 0
   m_Name: GameEvents
   m_TagString: Untagged
@@ -8903,6 +8904,52 @@ MonoBehaviour:
       m_Calls: []
   invokeCheckOnEnable: 0
   m_disableFirstEvent: 0
+--- !u!114 &3591046975869926685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591046975869926681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: c4382c7e060543448a10f999efb1a75c, type: 2}
+  delay: 1
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4320285635067223539}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: LevelSelectScene
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3591046976247237469}
+        m_TargetAssemblyTypeName: LoadScenceAfterTime, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: LevelSelectScene
+          m_BoolArgument: 1
+        m_CallState: 2
+  PrivateResponse:
+    m_PersistentCalls:
+      m_Calls: []
+  invokeCheckOnEnable: 0
+  m_disableFirstEvent: 0
 --- !u!114 &3591046976247237444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8952,6 +8999,7 @@ MonoBehaviour:
   OnProcessorMaxed: {fileID: 0}
   OnGameWin: {fileID: 11400000, guid: 995c3d9cc3749ce49b6a78ce57181250, type: 2}
   OnGameLose: {fileID: 11400000, guid: 12459c8a479ec6e418910afda8a7fad4, type: 2}
+  OnGameComplete: {fileID: 11400000, guid: c4382c7e060543448a10f999efb1a75c, type: 2}
   gameOver: 0
   currentScore: 0
   processorCapacity: 0
@@ -11461,18 +11509,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3591046976247237469}
-        m_TargetAssemblyTypeName: LoadScenceAfterTime, Assembly-CSharp
-        m_MethodName: Load
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: GameScene
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 3591046976247237466}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: NextLevel
