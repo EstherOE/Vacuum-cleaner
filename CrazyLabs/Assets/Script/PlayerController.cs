@@ -111,9 +111,10 @@ public class PlayerController : MonoBehaviour
         if (anim)
             anim.SetFloat("speed", movementDirection.magnitude);
 
-        if (_deviceCapacity==vacuumCapacity && GameManager.instance.currentLevelId > 2)
+        if (_deviceCapacity==vacuumCapacity)
         {
-            OnVacuumFull.Raise();
+            if (GameManager.instance.currentLevelId > 2)
+                OnVacuumFull.Raise();
             isBagFull = true;
         }
         if (_deviceCapacity < 0)
