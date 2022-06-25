@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     public bool isBagFull = false;
     public int vacuumCapacity;
     public TextMeshProUGUI currentVacuumCapacity;
-    public GameObject scoreText;
+   // public GameObject scoreText;
 
     [Header("EggBasket Properties")]
     public EggBasketSO playerBasket;
@@ -92,7 +92,6 @@ public class PlayerController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         GameManager.instance.currentScore = 0;
         GameManager.instance.processorCapacity = 0;
-        scoreText.GetComponent<TextMeshProUGUI>().text = GameManager.instance.currentScore +"/" +GameManager.instance.processorMax;
         currentVacuumCapacity.text = _deviceCapacity.ToString() + " / " + vacuumCapacity.ToString();
         upgradeAbilityPrice.text = player.upgradeAbilityPrice.ToString() + "eggs";
         upgradeCapacityPrice.text = player.upgradeCapacityPrice.ToString() + "eggs";
@@ -261,14 +260,13 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                
                 GameManager.instance.currentScore += _deviceCapacity;
                 GameManager.instance.processorCapacity += _deviceCapacity;
               //  GameManager.instance._AddCoins(_deviceCapacity * 3);
                 _deviceCapacity = 0;
             }
             speed += 0.5f;
-            scoreText.GetComponent<TextMeshProUGUI>().text = GameManager.instance.currentScore + "/" + GameManager.instance.processorMax;
+         //   scoreText.GetComponent<TextMeshProUGUI>().text = GameManager.instance.currentScore + "/" + GameManager.instance.processorMax;
             currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
             EnableBag();
             
