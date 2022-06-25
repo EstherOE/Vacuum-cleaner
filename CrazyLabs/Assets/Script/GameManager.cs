@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using NaughtyAttributes;
+using UnityEngine.SceneManagement;
 using TMPro;
         
 public class GameManager : MonoBehaviour
 {
     [Header("SO Events")]
     public GameEvent OnGameStart;
-    public GameEvent OnProcessorMaxed;
     public GameEvent OnGameWin;
     public GameEvent OnGameLose;
     public GameEvent OnGameComplete;
@@ -93,8 +93,13 @@ public class GameManager : MonoBehaviour
     }
     public void NextLevel() 
     {
-            //OnGameComplete.Raise();
-            PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
+        if (currentLevelId == gameLevel.Length - 1)
+        {
+            OnGameComplete.Raise();
+            return;
+        }
+        PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
+        SceneManager.LoadScene("GameScene");
     }
     public void StartGame() 
     {
