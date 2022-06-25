@@ -68,11 +68,24 @@ public class EnemyAiTutorial : MonoBehaviour
     }
     private void SearchWalkPoint()
     {
+        float X, Z;
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        X = transform.position.x + randomX;
+        Z = transform.position.z + randomZ;
+        if(X < -7)
+            X = -6;
+        if(X > 28)
+            X = 27;
+        if(Z < -27)
+            Z = -26;
+        if(Z > 28)
+            Z = 27;
+
+
+        walkPoint = new Vector3(X, transform.position.y, Z);
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f,whatIsGround))
             walkPointSet = true;
