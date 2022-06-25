@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameEvent OnProcessorMaxed;
     public GameEvent OnGameWin;
     public GameEvent OnGameLose;
+    public GameEvent OnGameComplete;
   
 
     [Header("Game Stats")]
@@ -92,7 +93,8 @@ public class GameManager : MonoBehaviour
     }
     public void NextLevel() 
     {
-        PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
+            //OnGameComplete.Raise();
+            PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
     }
     public void StartGame() 
     {
