@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public GameEvent OnProcessorMaxed;
     public GameEvent OnGameWin;
     public GameEvent OnGameLose;
-    public GameEvent OnGiveInstruction;
+  
 
     [Header("Game Stats")]
     public bool gameOver;
@@ -34,11 +34,15 @@ public class GameManager : MonoBehaviour
     [Header("Camera Movement")]
     public bool cameraCanMove =false;
 
+    [Header("AudioProperties")]
+    private AudioSource managerAudio;
+    public AudioClip GameWin;
+    public AudioClip GameLose;
     private void Awake()
     {
         currentLevelId = PlayerPrefs.GetInt("CurrentLevelID");
-       
         instance = this;
+        managerAudio = GetComponent<AudioSource>();
        //SetLevel();
         playerCoins.CurrencyInitializer();
         instructionText.text = "PUT THE " + gameLevel[currentLevelId].scoreToReach + " CHICKS BACK IN THE COOP";
@@ -63,6 +67,7 @@ public class GameManager : MonoBehaviour
         if(processorCapacity >= processorMax) 
         {
             PlayerWin();
+            
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -78,9 +83,12 @@ public class GameManager : MonoBehaviour
     public void PlayerWin() 
     {
         OnGameWin.Raise();
-        gameOver = true;
+    //  managerAudio.PlayOneShot(GameWin);
+        processorMax = 0;
+        hasGamestarted = false;
+       
       
-        Debug.Log("You have Won");
+       // Debug.Log("You have Won");
     }
     public void NextLevel() 
     {
@@ -94,7 +102,8 @@ public class GameManager : MonoBehaviour
     public void PlayerLose() 
     {
         OnGameLose.Raise();
-        gameOver = true;
+        managerAudio.PlayOneShot(GameLose);
+        hasGamestarted = false;
         Debug.Log("You have lost");
     }
 

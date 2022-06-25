@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e12b82f3fe85347b1dc4d435df9036, type: 3}
+  m_Name: CatchChick
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 5186beca816dae649af84980103fd002, type: 3}
+  clips: []
+  isLoop: 0
+  volume: {x: 0.8215473, y: 0.8215473}
+  pitch: {x: 1, y: 1}
+  playOrder: 0
+  audioMixer: {fileID: 7894159483494268369, guid: eecd5b6d30d508646bfd4a734060b727, type: 2}
+  playIndex: 0

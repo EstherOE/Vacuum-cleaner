@@ -8,15 +8,19 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController userPlayer;
+ 
    
     [Header("Player Properties")]
     public PlayerSO player;
     public Joystick joyStick;
     public float speed;
     public int offloadRate = 1;
-    
 
-   // public float rotationSpeed;
+    [Header("UpgradeAtttributes")]
+    public TextMeshProUGUI upgradeCapacityPrice;
+    public TextMeshProUGUI upgradeAbilityPrice;
+
+    // public float rotationSpeed;
     private bool offloadItems;
     private bool pickUpItems;
     Rigidbody rb;
@@ -26,6 +30,10 @@ public class PlayerController : MonoBehaviour
    
     [Header("Audio Properties")]
     private AudioSource playerAudio;
+
+    public AudioClip catchChicken; 
+    public AudioClip bagIsFull;
+
 
     [Header("Container Properties")]
     public SuctionDeviceSO playerDevice;
@@ -86,11 +94,10 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.processorCapacity = 0;
         scoreText.GetComponent<TextMeshProUGUI>().text = GameManager.instance.currentScore +"/" +GameManager.instance.processorMax;
         currentVacuumCapacity.text = _deviceCapacity.ToString() + " / " + vacuumCapacity.ToString();
+        upgradeAbilityPrice.text = player.upgradeAbilityPrice.ToString() + "eggs";
+        upgradeCapacityPrice.text = player.upgradeCapacityPrice.ToString() + "eggs";
         rb = GetComponent<Rigidbody>();
-        /*        anim.enabled = false;
-                GetComponent<RigBuilder>().Build();
-                anim.enabled = true;*/
-        //InitializeSliders();
+      
     }
 
     // Update is called once per frame
@@ -113,6 +120,7 @@ public class PlayerController : MonoBehaviour
             if (GameManager.instance.currentLevelId > 2) 
             {
                 OnVacuumFull.Raise();
+              //  playerAudio.PlayOneShot(bagIsFull);
                 isBagFull = true;
             }
            
@@ -263,7 +271,7 @@ public class PlayerController : MonoBehaviour
             scoreText.GetComponent<TextMeshProUGUI>().text = GameManager.instance.currentScore + "/" + GameManager.instance.processorMax;
             currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
             EnableBag();
-            isBagFull = false;
+            
         }
     }
 
@@ -301,7 +309,7 @@ public class PlayerController : MonoBehaviour
         
       if (isBagFull)
       return;
-
+        playerAudio.PlayOneShot(catchChicken);
         _deviceCapacity += 1;
         currentVacuumCapacity.text = _deviceCapacity + "/ " + vacuumCapacity.ToString();
         Destroy(other.gameObject);
@@ -310,9 +318,17 @@ public class PlayerController : MonoBehaviour
 
     private void ExtractCoin(Collider other) 
     {
-        OnExtractedCoin.Raise();
-        Destroy(other.gameObject);
-        GameManager.instance._AddCoins(2);
+        if (!GameManager.instance.hasGamestarted)
+        {
+            return;
+        }
+        else
+        {
+            OnExtractedCoin.Raise();
+            Destroy(other.gameObject);
+            GameManager.instance._AddCoins(2);
+        }
+        
     }
 
    
@@ -326,6 +342,34 @@ public class PlayerController : MonoBehaviour
     public void EnableBag()
     {
         OnVacuumCanCarry.Raise();
+        isBagFull = false;
+    }
+    public void UpgradeCapacity()
+    {
+        if (GameManager.instance.playerCoins.playerCurrency < player.upgradeCapacityPrice)
+            return;
+
+        GameManager.instance._SubtractCoins(player.upgradeCapacityPrice);
+        playerDevice.deviceCapacity += 1;
+        player.upgradeCapacityPrice *= 2;
+        upgradeCapacityPrice.text = player.upgradeCapacityPrice + "coins";
+        vacuumCapacity = playerDevice.deviceCapacity;
+        currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
+        EnableBag();
+    }
+
+
+    public void UpgradePlayerAbility()
+    {
+        if (GameManager.instance.playerCoins.playerCurrency < player.upgradeAbilityPrice)
+            return;
+
+        GameManager.instance._SubtractCoins(player.upgradeAbilityPrice);
+        player.playerSpeed += 0.5f;
+        player.upgradeAbilityPrice *= 2;
+        speed = player.playerSpeed;
+        upgradeAbilityPrice.text = player.upgradeAbilityPrice + "coins";
+ 
     }
 
 }

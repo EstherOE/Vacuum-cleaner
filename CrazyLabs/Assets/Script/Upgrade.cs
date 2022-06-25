@@ -36,7 +36,7 @@ public class Upgrade : MonoBehaviour
         player.upgradeCapacityPrice *= 2;
         upgradeCapacityPrice.text = player.upgradeCapacityPrice + "coins";
         //vacuumCapacity += 10;
-        PlayerController.userPlayer.UpdateStats();
+      //  PlayerController.userPlayer.UpdateStats();
     }
 
 

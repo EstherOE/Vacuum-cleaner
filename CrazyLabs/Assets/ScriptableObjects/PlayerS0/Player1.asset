@@ -16,4 +16,4 @@ MonoBehaviour:
   playerRotationSpeed: 500
   upgradeAbilityPrice: 10
   upgradeProcessorPrice: 10
-  upgradeCapacityPrice: 10
+  upgradeCapacityPrice: 20
