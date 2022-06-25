@@ -32,7 +32,7 @@ MonoBehaviour:
   henXNegative: 6.5
   henZPositive: 18
   henZNegative: 7
-  henWalkPointRange: 1
+  henWalkPointRange: 5
   eggCount: 3
   eggXPositive: 22
   eggXNegative: 1
@@ -45,7 +45,7 @@ MonoBehaviour:
   chickXNegative: -3
   chickZPositive: -5
   chickZNegative: -15
-  chickWalkpointRange: 3
+  chickWalkpointRange: 5
   levelTime: 300
   doesLevelHaveTimer: 0
   hasTutorial: 0

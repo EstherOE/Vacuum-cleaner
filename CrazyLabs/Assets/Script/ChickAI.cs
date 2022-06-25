@@ -28,6 +28,8 @@ public class ChickAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    public bool isSearching, isCollide;
+
     public Animator chickAnimation;
 
     private void Awake()
@@ -63,6 +65,7 @@ public class ChickAI : MonoBehaviour
 
     private void Patroling()
     {
+        isSearching = false;
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
@@ -73,18 +76,28 @@ public class ChickAI : MonoBehaviour
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
+        isCollide =false;
     }
 
     private void SearchWalkPoint()
     {
+        isSearching = true;
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        walkPoint = new Vector3(transform.position.x - randomX, transform.position.y, transform.position.z - randomZ);
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("wall"))
+        {
+            SearchWalkPoint();
+            isCollide = true;
+        }
     }
 
     private void RunAway()

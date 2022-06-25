@@ -19,6 +19,8 @@ TagManager:
   - MovableObstacle
   - Enemy
   - HenCoop
+  - trashcan
+  - wall
   layers:
   - Default
   - TransparentFX
