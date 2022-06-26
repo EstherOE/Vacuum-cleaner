@@ -113,19 +113,18 @@ public class PlayerController : MonoBehaviour
         movementDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
         if (anim)
             anim.SetFloat("speed", movementDirection.magnitude);
-       
-        if (_deviceCapacity==vacuumCapacity)
+
+
+        if (_deviceCapacity == vacuumCapacity)
         {
-            if (GameManager.instance.currentLevelId > 2) 
+            if (GameManager.instance.currentLevelId > 2)
             {
                 OnVacuumFull.Raise();
-              //  playerAudio.PlayOneShot(bagIsFull);
+                //  playerAudio.PlayOneShot(bagIsFull);
                 isBagFull = true;
             }
-           
-
-
         }
+
         if (_deviceCapacity < 0)
         {
             _deviceCapacity = 0;
@@ -283,7 +282,7 @@ public class PlayerController : MonoBehaviour
             timeTaken += Time.deltaTime;
             t.position = Vector3.MoveTowards(t.position, spawnPoint.position, Time.deltaTime *100);
             t.localScale = Vector3.MoveTowards(t.localScale, Vector3.one * 0.1f, Time.deltaTime * 50);
-            if (timeTaken > 0.9f)
+            if (timeTaken > 0.05f)
                 break;
         }
 
@@ -311,7 +310,8 @@ public class PlayerController : MonoBehaviour
         _deviceCapacity += 1;
         currentVacuumCapacity.text = _deviceCapacity + "/ " + vacuumCapacity.ToString();
         Destroy(other.gameObject);
-       
+        
+      
     }
 
     private void ExtractCoin(Collider other) 

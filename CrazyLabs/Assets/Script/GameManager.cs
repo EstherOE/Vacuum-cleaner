@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public CurrencySO playerCoins;
     public TextMeshProUGUI coinText;
     public TextMeshProUGUI instructionText;
+    public TextMeshProUGUI indicateLevel;
 
     [Header("Level Attributes")]
     public int currentLevelId;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
        //SetLevel();
         playerCoins.CurrencyInitializer();
         instructionText.text = "PUT THE " + gameLevel[currentLevelId].scoreToReach + " CHICKS BACK IN THE COOP";
+        indicateLevel.text = "Level " + (currentLevelId + 1);
         processorMax = gameLevel[currentLevelId].chickCount;
         coinText.text = playerCoins.playerCurrency.ToString();
         hasGamestarted = false;
@@ -139,5 +141,15 @@ public class GameManager : MonoBehaviour
         Instantiate(gameLevel[currentLevelId].levelPrefab, gameLevel[currentLevelId].levelPosition, gameLevel[currentLevelId].levelPrefab.transform.rotation);
         
 
+    }
+
+    public void Pause() 
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void Play()
+    {
+        Time.timeScale = 1f;
     }
 }
