@@ -10,6 +10,8 @@ public class FollowPlayer : MonoBehaviour
     public Vector3 offsetHen;
     public bool lookAtTraget = false;
 
+    private Vector3 desiredPosition;
+
 
     private void Awake()
     {
@@ -21,34 +23,25 @@ public class FollowPlayer : MonoBehaviour
         {
             henTarget = GameObject.Find("Enemy").transform;
         }
-        
     }
 
 
     void FixedUpdate()
     {
-       if(GameManager.instance.cameraCanMove == true) 
+       
+            TargetPlayer();
+  
+    }
+
+   public void TargetPlayer() 
+    {
+        if (GameManager.instance.cameraCanMove == true )
         {
-            Vector3 desiredPosition = target.position + offset;
+           
+                desiredPosition = target.position + offset;
+           
             Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
             transform.position = smoothPosition;
-
-            transform.LookAt(target);
-            if (lookAtTraget)
-            {
-                transform.LookAt(target);
-            }
-
-        }
-
-
-        if (GameManager.instance.gameWon)
-        {
-            Vector3 desiredPosition = henTarget.position;
-            Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-            transform.position = smoothPosition;
-
-           // lookAtTraget = true;
             transform.LookAt(target);
             if (lookAtTraget)
             {
@@ -57,6 +50,18 @@ public class FollowPlayer : MonoBehaviour
         }
     }
 
+    public void TargetHen() 
+    {
+        Vector3 desiredPosition = henTarget.position;
+        Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        transform.position = smoothPosition;
+        // lookAtTraget = true;
+        transform.LookAt(target);
+        if (lookAtTraget)
+        {
+            transform.LookAt(target);
+        }
+    }
     public void ReadInput(string s)
     {
         smoothSpeed = float.Parse(s);

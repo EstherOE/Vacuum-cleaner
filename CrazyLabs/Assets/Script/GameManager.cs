@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public int totalChicksLeft;
     public LevelSO[] gameLevel;
     public bool hasGamestarted = false;
+    public bool gameWon = false;
     public static GameManager instance;
 
     [Header("Camera Movement")]
@@ -57,8 +58,10 @@ public class GameManager : MonoBehaviour
         indicateLevel.text = "Level " + (currentLevelId + 1);
         processorMax = gameLevel[currentLevelId].chickCount;
         coinText.text = playerCoins.playerCurrency.ToString();
+        
         hasGamestarted = false;
         cameraCanMove = false;
+        gameWon = false;
         gameOver = false;
 
         totalChicksLeft = gameLevel[currentLevelId].chickCount;
