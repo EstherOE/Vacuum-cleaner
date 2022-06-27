@@ -63,6 +63,8 @@ public class PlayerController : MonoBehaviour
 
     [Space]
     public Goals[] goals;
+    public Transform winPoint;
+    //private Vector3 initialRotation;
 
     [System.Serializable]
     public class Goals
@@ -79,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-       
+        //initialRotation = transform.rotation.eulerAngles;
     }
 
     private void Start()
@@ -98,7 +100,8 @@ public class PlayerController : MonoBehaviour
         upgradeAbilityPrice.text = player.upgradeAbilityPrice.ToString() + "eggs";
         upgradeCapacityPrice.text = player.upgradeCapacityPrice.ToString() + "eggs";
         rb = GetComponent<Rigidbody>();
-        Debug.Log(character.clip.name);
+        //finalDestination.rotation = Quaternion.identity;
+        //Debug.Log(character.clip.name);
     }
 
     // Update is called once per frame
@@ -140,8 +143,22 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameManager.instance.hasGamestarted)
         {
-            character.clip = character.GetClip("Idle");
-            character.Play();
+            //character.clip = character.GetClip("Idle");
+            //character.Play();
+            if (GameManager.instance.statsRecorded && Vector3.Distance(transform.position, winPoint.position) > 5.0f)
+            {
+                character.clip = character.GetClip("Run");
+                character.Play();
+                transform.LookAt(winPoint);
+                transform.position = Vector3.MoveTowards(transform.position, winPoint.position, .2f);
+                //transform.rotation = Quaternion.Euler(0, transform.rotation.y, transform.rotation.z);
+            }
+            else
+            {
+                //transform.rotation = Quaternion.Euler(initialRotation);
+                character.clip = character.GetClip("Idle");
+                character.Play();
+            }
             return;
         }
 
