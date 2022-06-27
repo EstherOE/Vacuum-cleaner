@@ -85,7 +85,6 @@ public class PlayerController : MonoBehaviour
     {
         offloadItems = false;
         pickUpItems = false;
-        _numberofEggsCollected = 0;
         speed = player.playerSpeed;
         vacuumCapacity = playerDevice.deviceCapacity;
         offloadRate = playerDevice.offloadRate; 
@@ -324,17 +323,11 @@ public class PlayerController : MonoBehaviour
         {
             OnExtractedCoin.Raise();
             Destroy(other.gameObject);
-            _numberofEggsCollected++;
             //GameManager.instance._AddCoins(2);
         }
         
     }
 
-    public void ConvertEggs()
-    {
-        GameManager.instance._AddCoins(2 * _numberofEggsCollected);
-    }
- 
     public void ReadInput(string s)
     {
         speed = float.Parse(s);

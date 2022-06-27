@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     [Header("Level Attributes")]
     public int currentLevelId;
     public bool statsRecorded;
+    public int totalEggsPicked;
     public int totalEggsLeft;
     public int totalChicksLeft;
     public LevelSO[] gameLevel;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
     {
         currentLevelId = PlayerPrefs.GetInt("CurrentLevelID");
         instance = this;
+        totalEggsPicked = 0;
         statsRecorded = false;
         managerAudio = GetComponent<AudioSource>();
        //SetLevel();
@@ -100,7 +102,9 @@ public class GameManager : MonoBehaviour
         if (!statsRecorded)
         {
             CountStars();
-            PlayerController.userPlayer.ConvertEggs();
+            //PlayerController.userPlayer.ConvertEggs();
+            totalEggsPicked = gameLevel[currentLevelId].eggCount - totalEggsLeft;
+            _AddCoins(2 * totalEggsPicked);
             if (currentLevelId != gameLevel.Length - 1)
                 PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
 
@@ -115,7 +119,8 @@ public class GameManager : MonoBehaviour
             OnGameComplete.Raise();
             return;
         }
-            
+
+        //PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
         SceneManager.LoadScene("GameScene");
     }
     public void StartGame() 
@@ -125,7 +130,9 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerLose() 
     {
-        PlayerController.userPlayer.ConvertEggs();
+        //PlayerController.userPlayer.ConvertEggs();
+        totalEggsPicked = gameLevel[currentLevelId].eggCount - totalEggsLeft;
+        _AddCoins(2 * totalEggsPicked);
         OnGameLose.Raise();
         managerAudio.PlayOneShot(GameLose);
         hasGamestarted = false;
@@ -159,16 +166,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void Pause() 
-    {
-        Time.timeScale = 0f;
-    }
-
-    public void Play()
-    {
-        Time.timeScale = 1f;
-    }
-
     public void CountStars()
     {
         if (totalChicksLeft == 0)
@@ -177,5 +174,15 @@ public class GameManager : MonoBehaviour
             gameLevel[currentLevelId].totalStars++;
         if (GameTimer.instance.maxTime > gameLevel[currentLevelId].levelTime / 2)
             gameLevel[currentLevelId].totalStars++;
+    }
+
+    public void Pause() 
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void Play()
+    {
+        Time.timeScale = 1f;
     }
 }
