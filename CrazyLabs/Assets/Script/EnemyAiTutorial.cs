@@ -7,8 +7,9 @@ public class EnemyAiTutorial : MonoBehaviour
     public NavMeshAgent agent;
 
     public Transform player;
+    public Transform coop;
 
-    public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask whatIsGround, whatIsPlayer, whatIsCoop;
 
     public float health;
 
@@ -23,8 +24,8 @@ public class EnemyAiTutorial : MonoBehaviour
     //public GameObject projectile;
 
     //States
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public float sightRange, attackRange, coopRange;
+    public bool playerInSightRange, playerInAttackRange, coopInRange;
 
     public Animator enemyAnimation;
 
@@ -36,6 +37,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void Start()
     {
+        coop = GameObject.FindGameObjectWithTag("HenCoop").transform;
         agent.speed = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henSpeed;
         sightRange = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henSightRange;
         walkPointRange = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henWalkPointRange;
@@ -46,10 +48,15 @@ public class EnemyAiTutorial : MonoBehaviour
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange,whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange,whatIsPlayer);
+        coopInRange = Physics.CheckSphere(transform.position, coopRange, whatIsCoop);
 
+
+      //  if (GameManager.instance.gameWon) EnterCoop();
         if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (playerInSightRange && !playerInAttackRange ) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
+
+
     }
 
     private void Patroling()
@@ -92,9 +99,10 @@ public class EnemyAiTutorial : MonoBehaviour
     }
 
     private void ChasePlayer()
-    {
-        agent.SetDestination(player.position);
-        enemyAnimation.SetBool("chase", true);
+    {  
+            agent.SetDestination(player.position);
+            enemyAnimation.SetBool("chase", true);
+              
     }
 
     private void AttackPlayer()
@@ -107,12 +115,25 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-           
-
             alreadyAttacked = true;
             enemyAnimation.SetBool("chase", false);
             enemyAnimation.SetBool("attack", true);
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
+    }
+
+    private void EnterCoop() 
+    {
+        agent.SetDestination(coop.position);
+        sightRange = 100f;
+     
+        enemyAnimation.SetBool("chase", true);
+      //  transform.LookAt(coop);
+        Debug.Log("Going to coop");
+
+        if (coopInRange) 
+        {
+            Destroy(gameObject);
         }
     }
     private void ResetAttack()
