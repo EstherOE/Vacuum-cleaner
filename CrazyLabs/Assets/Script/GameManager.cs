@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Level Attributes")]
     public int currentLevelId;
+    public bool statsRecorded;
+    public int totalEggsLeft;
+    public int totalChicksLeft;
     public LevelSO[] gameLevel;
     public bool hasGamestarted = false;
     public static GameManager instance;
@@ -44,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         currentLevelId = PlayerPrefs.GetInt("CurrentLevelID");
         instance = this;
+        statsRecorded = false;
         managerAudio = GetComponent<AudioSource>();
        //SetLevel();
         playerCoins.CurrencyInitializer();
@@ -53,6 +57,9 @@ public class GameManager : MonoBehaviour
         hasGamestarted = false;
         cameraCanMove = false;
         gameOver = false;
+
+        totalChicksLeft = gameLevel[currentLevelId].chickCount;
+        totalEggsLeft = gameLevel[currentLevelId].eggCount;
         //Instantiate(Levels[currentLevelId].levelPrefab,)
     }
 
@@ -88,18 +95,27 @@ public class GameManager : MonoBehaviour
     //  managerAudio.PlayOneShot(GameWin);
         processorMax = 0;
         hasGamestarted = false;
-       
-      
-       // Debug.Log("You have Won");
+
+        if (!statsRecorded)
+        {
+            CountStars();
+            PlayerController.userPlayer.ConvertEggs();
+            if (currentLevelId != gameLevel.Length - 1)
+                PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
+
+            statsRecorded = true;
+        }
+        // Debug.Log("You have Won");
     }
     public void NextLevel() 
     {
-	    if(currentLevelId == gameLevel.Length - 1){
-               OnGameComplete.Raise();
-               return;
-            }
-            PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
-            SceneManager.LoadScene("GameScene");
+        if (currentLevelId == gameLevel.Length - 1)
+        {
+            OnGameComplete.Raise();
+            return;
+        }
+            
+        SceneManager.LoadScene("GameScene");
     }
     public void StartGame() 
     {
@@ -108,6 +124,7 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerLose() 
     {
+        PlayerController.userPlayer.ConvertEggs();
         OnGameLose.Raise();
         managerAudio.PlayOneShot(GameLose);
         hasGamestarted = false;
@@ -139,5 +156,15 @@ public class GameManager : MonoBehaviour
         Instantiate(gameLevel[currentLevelId].levelPrefab, gameLevel[currentLevelId].levelPosition, gameLevel[currentLevelId].levelPrefab.transform.rotation);
         
 
+    }
+
+    public void CountStars()
+    {
+        if (totalChicksLeft == 0)
+            gameLevel[currentLevelId].totalStars++;
+        if (totalEggsLeft == 0)
+            gameLevel[currentLevelId].totalStars++;
+        if (GameTimer.instance.maxTime > gameLevel[currentLevelId].levelTime / 2)
+            gameLevel[currentLevelId].totalStars++;
     }
 }

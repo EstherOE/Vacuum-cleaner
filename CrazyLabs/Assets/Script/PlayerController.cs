@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     [Header("EggBasket Properties")]
     public EggBasketSO playerBasket;
     private int eggBasketCapacity;
-    private int _numberofEggsCollected =0;
+    private int _numberofEggsCollected;
 
     [Header("SO Events")]
     public GameEvent OnExtracted;
@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         offloadItems = false;
         pickUpItems = false;
+        _numberofEggsCollected = 0;
         speed = player.playerSpeed;
         vacuumCapacity = playerDevice.deviceCapacity;
         offloadRate = playerDevice.offloadRate; 
@@ -291,15 +292,14 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("dirt"))
         {
+            GameManager.instance.totalChicksLeft--;
             ExtractChick(other);
-           
-           
         }
         
         if (other.CompareTag("coin")) 
         {
+            GameManager.instance.totalEggsLeft--;
             ExtractCoin(other);
-            
         }
         //need to destroy objects on the event that they don't get sucked in completely
         Destroy(other.gameObject);
@@ -326,12 +326,16 @@ public class PlayerController : MonoBehaviour
         {
             OnExtractedCoin.Raise();
             Destroy(other.gameObject);
-            GameManager.instance._AddCoins(2);
+            _numberofEggsCollected++;
+            //GameManager.instance._AddCoins(2);
         }
         
     }
 
-   
+    public void ConvertEggs()
+    {
+        GameManager.instance._AddCoins(2 * _numberofEggsCollected);
+    }
  
     public void ReadInput(string s)
     {
