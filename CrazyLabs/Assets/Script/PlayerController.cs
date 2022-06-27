@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     Vector3 movementDirection = Vector3.zero;
     public Transform spawnPoint;
     Animator anim;
+    Animation character;
    
     [Header("Audio Properties")]
     private AudioSource playerAudio;
@@ -85,6 +86,7 @@ public class PlayerController : MonoBehaviour
     {
         offloadItems = false;
         pickUpItems = false;
+        character = gameObject.GetComponentInChildren<Animation>();
         speed = player.playerSpeed;
         vacuumCapacity = playerDevice.deviceCapacity;
         offloadRate = playerDevice.offloadRate; 
@@ -96,7 +98,7 @@ public class PlayerController : MonoBehaviour
         upgradeAbilityPrice.text = player.upgradeAbilityPrice.ToString() + "eggs";
         upgradeCapacityPrice.text = player.upgradeCapacityPrice.ToString() + "eggs";
         rb = GetComponent<Rigidbody>();
-      
+        Debug.Log(character.clip.name);
     }
 
     // Update is called once per frame
@@ -136,12 +138,26 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!GameManager.instance.hasGamestarted)
+        {
+            character.clip = character.GetClip("Idle");
+            character.Play();
+            return;
+        }
+
         if (movementDirection != Vector3.zero)
             rb.MovePosition(transform.position + movementDirection *speed * Time.fixedDeltaTime);
         if (movementDirection != Vector3.zero)
         {
+            character.clip = character.GetClip("Run");
+            character.Play();
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, player.playerRotationSpeed * Time.deltaTime);
+        }
+        else
+        {
+            character.clip = character.GetClip("Idle");
+            character.Play();
         }
     }
 
