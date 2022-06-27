@@ -2687,8 +2687,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2187559573697333595}
+  henTarget: {fileID: 6692554359614464996, guid: 225c12f5e56f65e48a02158d29d499ae, type: 3}
   smoothSpeed: 0.125
   offset: {x: -13.6, y: 19.8, z: -8.3}
+  offsetHen: {x: -17, y: 31, z: 19}
   lookAtTraget: 0
 --- !u!1 &426407909
 GameObject:
@@ -9644,7 +9646,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 34cde66db183dfb49af112c96eb6b392, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: c4648a46511321842bea3886e29f44b5, type: 2}
 --- !u!4 &2097842555
 Transform:
   m_ObjectHideFlags: 0
@@ -10038,7 +10040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: 995c3d9cc3749ce49b6a78ce57181250, type: 2}
-  delay: 0
+  delay: 4
   Response:
     m_PersistentCalls:
       m_Calls:

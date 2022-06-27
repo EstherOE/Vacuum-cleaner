@@ -51,6 +51,8 @@ public class LevelSO : ScriptableObject
     public int scoreToReach;
     public string levelInstructions;
 
+    [Header("LevelUI Attributes")]
+    public int totalStars;
 
     public void SendInstructions() 
     {

@@ -49,12 +49,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 534340397}
   player: {fileID: 2336218985908426189, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+  coop: {fileID: 8378484215660899923, guid: eae1ac766d247cc419971bd607bda847, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 128
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  whatIsCoop:
+    serializedVersion: 2
+    m_Bits: 512
   health: 0
   walkPoint: {x: 3, y: 0, z: 10.07}
   walkPointRange: 8
