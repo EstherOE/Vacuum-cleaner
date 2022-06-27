@@ -27,7 +27,7 @@ MonoBehaviour:
   - {fileID: 2237154057215456247, guid: 62c77d2cfadc83048b37b10637b94751, type: 3}
   henCount: 1
   henSpeed: 5
-  henSightRange: 4
+  henSightRange: 5
   henXPositive: 15
   henXNegative: 6.5
   henZPositive: 18
@@ -38,7 +38,7 @@ MonoBehaviour:
   eggXNegative: 1
   eggZPositive: 3
   eggZNegative: -17
-  chickCount: 2
+  chickCount: 3
   chickSpeed: 3
   chickSightRange: 2
   chickXPositive: 13

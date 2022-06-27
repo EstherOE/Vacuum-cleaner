@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     public bool isBagFull = false;
     public int vacuumCapacity;
     public TextMeshProUGUI currentVacuumCapacity;
-    public GameObject scoreText;
+   // public GameObject scoreText;
 
     [Header("EggBasket Properties")]
     public EggBasketSO playerBasket;
@@ -93,7 +93,6 @@ public class PlayerController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         GameManager.instance.currentScore = 0;
         GameManager.instance.processorCapacity = 0;
-        scoreText.GetComponent<TextMeshProUGUI>().text = GameManager.instance.currentScore +"/" +GameManager.instance.processorMax;
         currentVacuumCapacity.text = _deviceCapacity.ToString() + " / " + vacuumCapacity.ToString();
         upgradeAbilityPrice.text = player.upgradeAbilityPrice.ToString() + "eggs";
         upgradeCapacityPrice.text = player.upgradeCapacityPrice.ToString() + "eggs";
@@ -115,19 +114,18 @@ public class PlayerController : MonoBehaviour
         movementDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
         if (anim)
             anim.SetFloat("speed", movementDirection.magnitude);
-       
-        if (_deviceCapacity==vacuumCapacity)
+
+
+        if (_deviceCapacity == vacuumCapacity)
         {
-            if (GameManager.instance.currentLevelId > 2) 
+            if (GameManager.instance.currentLevelId > 2)
             {
                 OnVacuumFull.Raise();
-              //  playerAudio.PlayOneShot(bagIsFull);
+                //  playerAudio.PlayOneShot(bagIsFull);
                 isBagFull = true;
             }
-           
-
-
         }
+
         if (_deviceCapacity < 0)
         {
             _deviceCapacity = 0;
@@ -262,14 +260,13 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                
                 GameManager.instance.currentScore += _deviceCapacity;
                 GameManager.instance.processorCapacity += _deviceCapacity;
               //  GameManager.instance._AddCoins(_deviceCapacity * 3);
                 _deviceCapacity = 0;
             }
             speed += 0.5f;
-            scoreText.GetComponent<TextMeshProUGUI>().text = GameManager.instance.currentScore + "/" + GameManager.instance.processorMax;
+         //   scoreText.GetComponent<TextMeshProUGUI>().text = GameManager.instance.currentScore + "/" + GameManager.instance.processorMax;
             currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
             EnableBag();
             
@@ -286,7 +283,7 @@ public class PlayerController : MonoBehaviour
             timeTaken += Time.deltaTime;
             t.position = Vector3.MoveTowards(t.position, spawnPoint.position, Time.deltaTime *100);
             t.localScale = Vector3.MoveTowards(t.localScale, Vector3.one * 0.1f, Time.deltaTime * 50);
-            if (timeTaken > 0.9f)
+            if (timeTaken > 0.05f)
                 break;
         }
 
@@ -313,7 +310,8 @@ public class PlayerController : MonoBehaviour
         _deviceCapacity += 1;
         currentVacuumCapacity.text = _deviceCapacity + "/ " + vacuumCapacity.ToString();
         Destroy(other.gameObject);
-       
+        
+      
     }
 
     private void ExtractCoin(Collider other) 
