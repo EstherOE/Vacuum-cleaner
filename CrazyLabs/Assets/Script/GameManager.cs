@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
     public int currentLevelId;
     public LevelSO[] gameLevel;
     public bool hasGamestarted = false;
-    public bool gameWon = false;
     public static GameManager instance;
 
     [Header("Camera Movement")]
@@ -89,8 +88,7 @@ public class GameManager : MonoBehaviour
         OnGameWin.Raise();
     //  managerAudio.PlayOneShot(GameWin);
         processorMax = 0;
-        gameWon = true;
-      //  hasGamestarted = false;
+        hasGamestarted = false;
        
       
        // Debug.Log("You have Won");
