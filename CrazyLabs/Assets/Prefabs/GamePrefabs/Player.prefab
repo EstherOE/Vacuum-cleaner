@@ -514,6 +514,7 @@ MonoBehaviour:
   OnDrop: {fileID: 11400000, guid: c0027e731bea6e74f9c003c96113e22a, type: 2}
   OnPrompt: {fileID: 11400000, guid: a5a0abbc7d1b25b4a9ba5f8e5dfc8ff1, type: 2}
   goals: []
+  winPoint: {fileID: 0}
 --- !u!136 &2336218985908426187
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3148,7 +3149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4442292949824776, guid: eea16ef0f58854448aaa9db9257bc84b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.081547
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4442292949824776, guid: eea16ef0f58854448aaa9db9257bc84b, type: 3}
       propertyPath: m_LocalPosition.z

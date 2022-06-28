@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6692554359614464996}
   - component: {fileID: 6692554359614464999}
+  - component: {fileID: 4163914141675016766}
   - component: {fileID: 534340397}
   - component: {fileID: 7036248660381926931}
   - component: {fileID: 1665370186328868347}
@@ -65,9 +66,26 @@ MonoBehaviour:
   timeBetweenAttacks: 0
   sightRange: 10
   attackRange: 0
+  coopRange: 0
   playerInSightRange: 0
   playerInAttackRange: 0
+  coopInRange: 0
   enemyAnimation: {fileID: 6692554358749752545}
+--- !u!114 &4163914141675016766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6692554359614464997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e2e6be28c48ae42ba5352e35fe41af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisEnemy: {fileID: 6692554359614464999}
+  henAI: {fileID: 534340397}
+  coopLocation: {fileID: 9155127189910271209, guid: eae1ac766d247cc419971bd607bda847, type: 3}
 --- !u!195 &534340397
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -15,8 +15,8 @@ public class Upgrade : MonoBehaviour
     void Start()
     {
       
-        upgradeAbilityPrice.text = player.upgradeAbilityPrice.ToString() + "eggs";
-        upgradeCapacityPrice.text = player.upgradeCapacityPrice.ToString() + "eggs";
+       // upgradeAbilityPrice.text = player.upgradeAbilityPrice.ToString() + " ";
+        //upgradeCapacityPrice.text = player.upgradeCapacityPrice.ToString() + "eggs";
        
     }
 

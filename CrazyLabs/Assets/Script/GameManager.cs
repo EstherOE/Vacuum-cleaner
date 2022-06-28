@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameEvent OnGameWin;
     public GameEvent OnGameLose;
     public GameEvent OnGameComplete;
+    public GameEvent ChicksComplete;
   
 
     [Header("Game Stats")]
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
     public int totalEggsPicked;
     public int totalEggsLeft;
     public int totalChicksLeft;
+    public TextMeshProUGUI chickCounter;
     public LevelSO[] gameLevel;
     public bool hasGamestarted = false;
     public bool gameWon = false;
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
     public AudioClip GameLose;
     private void Awake()
     {
+        Time.timeScale = 1f;
         currentLevelId = PlayerPrefs.GetInt("CurrentLevelID");
         instance = this;
         totalEggsPicked = 0;
@@ -65,6 +68,7 @@ public class GameManager : MonoBehaviour
         gameOver = false;
 
         totalChicksLeft = gameLevel[currentLevelId].chickCount;
+        chickCounter.text = totalChicksLeft.ToString();
         totalEggsLeft = gameLevel[currentLevelId].eggCount;
         //Instantiate(Levels[currentLevelId].levelPrefab,)
     }
@@ -93,11 +97,16 @@ public class GameManager : MonoBehaviour
         {
             cameraCanMove = true;
         }
+        if (totalChicksLeft==0)
+        {
+            ChicksComplete.Raise();
+        }
     }
 
     public void PlayerWin() 
     {
         OnGameWin.Raise();
+        gameWon = true;
     //  managerAudio.PlayOneShot(GameWin);
         processorMax = 0;
         hasGamestarted = false;
@@ -171,7 +180,7 @@ public class GameManager : MonoBehaviour
 
     public void CountStars()
     {
-        if (totalChicksLeft == 0)
+        if (totalChicksLeft == 0) 
             gameLevel[currentLevelId].totalStars++;
         if (totalEggsLeft == 0)
             gameLevel[currentLevelId].totalStars++;

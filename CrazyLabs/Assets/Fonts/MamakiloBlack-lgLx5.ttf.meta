@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ff705cbc6b6e23a42ac2b6a6982a1f72
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - MamaKilo
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d76b3cf759d9aa94f9e479c864f99b5e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

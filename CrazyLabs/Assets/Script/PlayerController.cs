@@ -97,8 +97,8 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.currentScore = 0;
         GameManager.instance.processorCapacity = 0;
         currentVacuumCapacity.text = _deviceCapacity.ToString() + " / " + vacuumCapacity.ToString();
-        upgradeAbilityPrice.text = player.upgradeAbilityPrice.ToString() + "eggs";
-        upgradeCapacityPrice.text = player.upgradeCapacityPrice.ToString() + "eggs";
+        upgradeAbilityPrice.text = player.upgradeAbilityPrice.ToString() + " coins";
+        upgradeCapacityPrice.text = player.upgradeCapacityPrice.ToString() + " coins";
         rb = GetComponent<Rigidbody>();
         //finalDestination.rotation = Quaternion.identity;
         //Debug.Log(character.clip.name);
@@ -151,6 +151,7 @@ public class PlayerController : MonoBehaviour
                 character.Play();
                 transform.LookAt(winPoint);
                 transform.position = Vector3.MoveTowards(transform.position, winPoint.position, .2f);
+                transform.Rotate(0, 90, 0);
                 //transform.rotation = Quaternion.Euler(0, transform.rotation.y, transform.rotation.z);
             }
             else
@@ -322,6 +323,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("dirt"))
         {
             GameManager.instance.totalChicksLeft--;
+            GameManager.instance.chickCounter.text = GameManager.instance.totalChicksLeft.ToString();
             ExtractChick(other);
         }
         
