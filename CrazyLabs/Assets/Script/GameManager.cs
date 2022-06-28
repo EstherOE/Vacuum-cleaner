@@ -186,12 +186,17 @@ public class GameManager : MonoBehaviour
 
     public void CountStars()
     {
+        int a = gameLevel[currentLevelId].totalStars;
+        gameLevel[currentLevelId].totalStars = 0;
         if (totalChicksLeft == 0) 
             gameLevel[currentLevelId].totalStars++;
         if (totalEggsLeft == 0)
             gameLevel[currentLevelId].totalStars++;
         if (GameTimer.instance.maxTime > gameLevel[currentLevelId].levelTime / 2)
             gameLevel[currentLevelId].totalStars++;
+
+        if(a > gameLevel[currentLevelId].totalStars)
+            gameLevel[currentLevelId].totalStars = a;
     }
 
     public void Pause() 
