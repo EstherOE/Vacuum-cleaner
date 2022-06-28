@@ -89,6 +89,10 @@ public class PlayerController : MonoBehaviour
     {
         offloadItems = false;
         pickUpItems = false;
+        player.playerSpeed = 6;
+        player.upgradeAbilityPrice = 10;
+        player.upgradeCapacityPrice = 10;
+        playerDevice.deviceCapacity = 1;
         character = gameObject.GetComponentInChildren<Animation>();
         speed = player.playerSpeed;
         vacuumCapacity = playerDevice.deviceCapacity;
