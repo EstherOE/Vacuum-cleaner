@@ -84,8 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisEnemy: {fileID: 6692554359614464999}
-  henAI: {fileID: 534340397}
-  coopLocation: {fileID: 9155127189910271209, guid: eae1ac766d247cc419971bd607bda847, type: 3}
+  henLocation: {fileID: 4061245211067429797, guid: dcdf297d24b1e8240b215a4a0d2b54b9, type: 3}
+  startLocation: {fileID: 2714693495274722928, guid: 2fbe5aef45a45e8479984e0620328edd, type: 3}
 --- !u!195 &534340397
 NavMeshAgent:
   m_ObjectHideFlags: 0

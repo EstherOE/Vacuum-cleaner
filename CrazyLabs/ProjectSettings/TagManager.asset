@@ -21,6 +21,8 @@ TagManager:
   - HenCoop
   - trashcan
   - wall
+  - HenLocation
+  - StartLocation
   layers:
   - Default
   - TransparentFX
