@@ -135,6 +135,12 @@ public class GameManager : MonoBehaviour
         //PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
         SceneManager.LoadScene("GameScene");
     }
+
+    public void RestartLevel() 
+    
+    {
+        PlayerPrefs.SetInt("CurrentLevelID", currentLevelId);
+    }
     public void StartGame() 
     {
         hasGamestarted = true;
