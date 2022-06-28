@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnPickUp;
     public GameEvent OnDrop;
     public GameEvent OnPrompt;
+    public GameEvent NotEnoughCoins;
 
     [Space]
     public Goals[] goals;
@@ -377,7 +378,10 @@ public class PlayerController : MonoBehaviour
     public void UpgradeCapacity()
     {
         if (GameManager.instance.playerCoins.playerCurrency < player.upgradeCapacityPrice)
+        {
+            NotEnoughCoins.Raise();
             return;
+        }
 
         GameManager.instance._SubtractCoins(player.upgradeCapacityPrice);
         playerDevice.deviceCapacity += 1;
@@ -392,7 +396,10 @@ public class PlayerController : MonoBehaviour
     public void UpgradePlayerAbility()
     {
         if (GameManager.instance.playerCoins.playerCurrency < player.upgradeAbilityPrice)
+        {
+            NotEnoughCoins.Raise();
             return;
+        }
 
         GameManager.instance._SubtractCoins(player.upgradeAbilityPrice);
         player.playerSpeed += 0.5f;

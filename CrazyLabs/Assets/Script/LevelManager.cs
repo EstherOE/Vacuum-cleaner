@@ -25,6 +25,11 @@ public class LevelManager : MonoBehaviour
                 LevelUi[i].transform.GetChild(j + 1).GetComponent<Image>().sprite = yellowStar;
             }
         }
+
+        for(int i = currentLevel; i < gameLevel.Length; i++)
+        {
+            LevelUi[i].GetComponent<Button>().enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -35,10 +40,6 @@ public class LevelManager : MonoBehaviour
 
     public void SelectLevel(int levelId)
     {
-        int currentLevel = PlayerPrefs.GetInt("CurrentLevelID");
-        if (levelId > currentLevel)
-            return;
         PlayerPrefs.SetInt("CurrentLevelID", levelId);
-        SceneManager.LoadScene("GameScene");
     }
 }
