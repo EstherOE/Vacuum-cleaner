@@ -53,6 +53,7 @@ public class LevelSO : ScriptableObject
 
     [Header("LevelUI Attributes")]
     public int totalStars;
+    public bool isUnlocked;
 
     public void SendInstructions() 
     {

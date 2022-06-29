@@ -119,7 +119,10 @@ public class GameManager : MonoBehaviour
             //_AddCoins(2 * totalEggsPicked);
             StartCoroutine(Coins(2 * totalEggsPicked));
             if (currentLevelId != gameLevel.Length - 1)
+            {
                 PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
+                gameLevel[currentLevelId + 1].isUnlocked = true;
+            }
 
             statsRecorded = true;
         }

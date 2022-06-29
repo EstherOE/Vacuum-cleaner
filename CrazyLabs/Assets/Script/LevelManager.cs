@@ -13,25 +13,27 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int currentLevel = PlayerPrefs.GetInt("CurrentLevelID") + 1;
+        /*int currentLevel = PlayerPrefs.GetInt("HighestLevelID") + 1;
         if (currentLevel == gameLevel.Length)
-            currentLevel = gameLevel.Length - 1;
+            currentLevel = gameLevel.Length - 1;*/
 
-        for(int i = 0; i < currentLevel; i++)
+        for(int i = 0; i < gameLevel.Length; i++)
         {
-            LevelUi[i].transform.GetChild(4).gameObject.SetActive(false);
-            for(int j = 0; j < gameLevel[i].totalStars; j++)
+            if (gameLevel[i].isUnlocked)
             {
-                LevelUi[i].transform.GetChild(j + 1).GetComponent<Image>().sprite = yellowStar;
+                LevelUi[i].transform.GetChild(4).gameObject.SetActive(false);
+                for (int j = 0; j < gameLevel[i].totalStars; j++)
+                {
+                    LevelUi[i].transform.GetChild(j + 1).GetComponent<Image>().sprite = yellowStar;
+                }
             }
-        }
-
-        for(int i = currentLevel; i < gameLevel.Length; i++)
-        {
-            LevelUi[i].GetComponent<Button>().enabled = false;
-            for (int j = 0; j < 3; j++)
+            else
             {
-                LevelUi[i].transform.GetChild(j + 1).gameObject.SetActive(false);
+                LevelUi[i].GetComponent<Button>().enabled = false;
+                for (int j = 0; j < 3; j++)
+                {
+                    LevelUi[i].transform.GetChild(j + 1).gameObject.SetActive(false);
+                }
             }
         }
     }

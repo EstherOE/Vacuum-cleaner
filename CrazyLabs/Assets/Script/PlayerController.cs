@@ -414,6 +414,9 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        if (player.playerSpeed + 0.5 > 10)
+            return;
+
         GameManager.instance._SubtractCoins(player.upgradeAbilityPrice);
         player.playerSpeed += 0.5f;
         player.upgradeAbilityPrice *= 2;
