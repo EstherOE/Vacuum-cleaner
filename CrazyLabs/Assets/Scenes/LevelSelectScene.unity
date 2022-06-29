@@ -1249,6 +1249,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &127766962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1836,6 +1848,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &178758923
@@ -2760,6 +2784,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &227696836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3471,6 +3507,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &302401817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3845,6 +3893,18 @@ MonoBehaviour:
           m_StringArgument: MenuScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &335579566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4145,6 +4205,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &352937976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4369,6 +4441,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &389202984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4516,6 +4600,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &392899801
@@ -5906,6 +6002,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &530243114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6130,6 +6238,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &542274685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6277,6 +6397,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &543128424
@@ -7703,6 +7835,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &697413771
@@ -9734,6 +9878,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &878500217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9957,6 +10113,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &895114175
@@ -10558,6 +10726,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &973463687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10705,6 +10885,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &985970225
@@ -11441,6 +11633,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1022152154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11703,6 +11907,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1045723368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11850,6 +12066,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1052808296
@@ -13073,6 +13301,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1145837087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14084,6 +14324,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1281103212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14458,6 +14710,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1304985393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14830,6 +15094,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1321251709
@@ -16217,6 +16493,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1526878122
@@ -17826,6 +18114,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1668108423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18469,6 +18769,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1692205359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18991,6 +19303,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1741797500
@@ -19704,6 +20028,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1839181680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20151,6 +20487,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1866698501
@@ -21430,6 +21778,18 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2023227284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21577,6 +21937,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2cd93587efc45aa489a7cbf37762040d, type: 2}
+        m_TargetAssemblyTypeName: SoundEffectSO, Assembly-CSharp
+        m_MethodName: PlaySO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2034512970
