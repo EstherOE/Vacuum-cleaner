@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
     [Space]
     public Goals[] goals;
     public Transform winPoint;
+    private bool playedDeathAnimation;
     //private Vector3 initialRotation;
 
     [System.Serializable]
@@ -101,6 +102,7 @@ public class PlayerController : MonoBehaviour
         upgradeAbilityPrice.text = player.upgradeAbilityPrice.ToString();
         upgradeCapacityPrice.text = player.upgradeCapacityPrice.ToString();
         rb = GetComponent<Rigidbody>();
+        playedDeathAnimation = false;
         //finalDestination.rotation = Quaternion.identity;
         //Debug.Log(character.clip.name);
     }
@@ -158,7 +160,15 @@ public class PlayerController : MonoBehaviour
             else
             {
                 //transform.rotation = Quaternion.Euler(initialRotation);
-                character.Play("idle main");
+                if (GameManager.instance.gameWon)
+                {
+                    character.Play("idle main");
+                }
+                else if (!playedDeathAnimation)
+                {
+                    character.Play("death");
+                    playedDeathAnimation = true;
+                }
             }
             return;
         }
