@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
                 {
                     character.Play("dancing");
                 }
-                else if (!playedDeathAnimation)
+                else if (!playedDeathAnimation && GameManager.instance.gameOver)
                 {
                     character.Play("death");
                     playedDeathAnimation = true;

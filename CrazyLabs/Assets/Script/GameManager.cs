@@ -161,6 +161,7 @@ public class GameManager : MonoBehaviour
     public void PlayerLose() 
     {
         //PlayerController.userPlayer.ConvertEggs();
+        gameOver = true;
         totalEggsPicked = gameLevel[currentLevelId].eggCount - totalEggsLeft;
         _AddCoins(2 * totalEggsPicked);
         OnGameLose.Raise();
