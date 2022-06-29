@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1431945747}
-  m_IndirectSpecularColor: {r: 0.4938131, g: 1.0503027, b: 1.0606912, a: 1}
+  m_IndirectSpecularColor: {r: 0.49381325, g: 1.0503031, b: 1.0606921, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12724,6 +12724,38 @@ PrefabInstance:
       propertyPath: followTransform
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8795082318215793172, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: -203655887218126122, guid: 302e9d63f7cc64543bf3407e5b71454f, type: 3}
+    - target: {fileID: 8795082318215793172, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+      propertyPath: m_Animations.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8795082318215793172, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+      propertyPath: m_Animations.Array.data[0]
+      value: 
+      objectReference: {fileID: -203655887218126122, guid: 099b225e160d1db4397d5b8e8b2bbaf1, type: 3}
+    - target: {fileID: 8795082318215793172, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+      propertyPath: m_Animations.Array.data[1]
+      value: 
+      objectReference: {fileID: -203655887218126122, guid: de32cfde9d6ef8c49a9a0e8f78fe5dac, type: 3}
+    - target: {fileID: 8795082318215793172, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+      propertyPath: m_Animations.Array.data[2]
+      value: 
+      objectReference: {fileID: -203655887218126122, guid: 2ae655f0b587b7245a1683ad80a5d6a6, type: 3}
+    - target: {fileID: 8795082318215793172, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+      propertyPath: m_Animations.Array.data[3]
+      value: 
+      objectReference: {fileID: -203655887218126122, guid: 31d239ac559220e43beba782c5fd1a08, type: 3}
+    - target: {fileID: 8795082318215793172, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+      propertyPath: m_Animations.Array.data[4]
+      value: 
+      objectReference: {fileID: -203655887218126122, guid: 302e9d63f7cc64543bf3407e5b71454f, type: 3}
+    - target: {fileID: 8795082318215793172, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+      propertyPath: m_Animations.Array.data[5]
+      value: 
+      objectReference: {fileID: -203655887218126122, guid: 302e9d63f7cc64543bf3407e5b71454f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
 --- !u!114 &4481133433646767255 stripped

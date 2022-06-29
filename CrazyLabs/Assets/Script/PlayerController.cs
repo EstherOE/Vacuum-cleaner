@@ -148,8 +148,8 @@ public class PlayerController : MonoBehaviour
             //character.Play();
             if (GameManager.instance.statsRecorded && Vector3.Distance(transform.position, winPoint.position) > 5.0f)
             {
-                character.clip = character.GetClip("Run");
-                character.Play();
+              
+                character.Play("run");
                 transform.LookAt(winPoint);
                 transform.position = Vector3.MoveTowards(transform.position, winPoint.position, .2f);
                 transform.Rotate(0, 90, 0);
@@ -158,8 +158,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 //transform.rotation = Quaternion.Euler(initialRotation);
-                character.clip = character.GetClip("Idle");
-                character.Play();
+                character.Play("idle main");
             }
             return;
         }
@@ -168,15 +167,13 @@ public class PlayerController : MonoBehaviour
             rb.MovePosition(transform.position + movementDirection *speed * Time.fixedDeltaTime);
         if (movementDirection != Vector3.zero)
         {
-            character.clip = character.GetClip("Run");
-            character.Play();
+            character.Play("run");
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, player.playerRotationSpeed * Time.deltaTime);
         }
         else
         {
-            character.clip = character.GetClip("Idle");
-            character.Play();
+            character.Play("idle main");
         }
     }
 
@@ -245,6 +242,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Enemy")) 
         {
+            character.Play("death");
             GameManager.instance.hasGamestarted = false;
             GameManager.instance.PlayerLose();
         }
@@ -342,6 +340,7 @@ public class PlayerController : MonoBehaviour
       if (isBagFull)
       return;
         playerAudio.PlayOneShot(catchChicken);
+        character.Play("pick up item");
         _deviceCapacity += 1;
         currentVacuumCapacity.text = _deviceCapacity + "/ " + vacuumCapacity.ToString();
         Destroy(other.gameObject);
