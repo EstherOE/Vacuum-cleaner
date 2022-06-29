@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
                 //transform.rotation = Quaternion.Euler(initialRotation);
                 if (GameManager.instance.gameWon)
                 {
-                    character.Play("idle main");
+                    character.Play("dancing");
                 }
                 else if (!playedDeathAnimation)
                 {
