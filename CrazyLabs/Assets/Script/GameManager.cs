@@ -116,7 +116,8 @@ public class GameManager : MonoBehaviour
             CountStars();
             //PlayerController.userPlayer.ConvertEggs();
             totalEggsPicked = gameLevel[currentLevelId].eggCount - totalEggsLeft;
-            _AddCoins(2 * totalEggsPicked);
+            //_AddCoins(2 * totalEggsPicked);
+            StartCoroutine(Coins(2 * totalEggsPicked));
             if (currentLevelId != gameLevel.Length - 1)
                 PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
 
@@ -124,6 +125,17 @@ public class GameManager : MonoBehaviour
         }
         // Debug.Log("You have Won");
     }
+
+    public IEnumerator Coins(int amount, int rate = 1)
+    {
+        while(amount > 0)
+        {
+            yield return new WaitForSeconds(0.05f);
+            amount -= rate;
+            _AddCoins(rate);
+        }
+    }
+
     public void NextLevel() 
     {
         if (currentLevelId == gameLevel.Length - 1)
