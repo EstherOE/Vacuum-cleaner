@@ -29,6 +29,10 @@ public class LevelManager : MonoBehaviour
         for(int i = currentLevel; i < gameLevel.Length; i++)
         {
             LevelUi[i].GetComponent<Button>().enabled = false;
+            for (int j = 0; j < 3; j++)
+            {
+                LevelUi[i].transform.GetChild(j + 1).gameObject.SetActive(false);
+            }
         }
     }
 
