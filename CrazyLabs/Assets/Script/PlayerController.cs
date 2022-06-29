@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnDrop;
     public GameEvent OnPrompt;
     public GameEvent NotEnoughCoins;
+    public GameEvent OnReachMaxSpeed;
 
     [Space]
     public Goals[] goals;
@@ -415,7 +416,10 @@ public class PlayerController : MonoBehaviour
         }
 
         if (player.playerSpeed + 0.5 > 10)
+        {
+            OnReachMaxSpeed.Raise();
             return;
+        }
 
         GameManager.instance._SubtractCoins(player.upgradeAbilityPrice);
         player.playerSpeed += 0.5f;
