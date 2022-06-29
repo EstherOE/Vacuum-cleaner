@@ -169,6 +169,10 @@ public class PlayerController : MonoBehaviour
                     character.Play("death");
                     playedDeathAnimation = true;
                 }
+                else
+                {
+                    character.Play("idle main");
+                }
             }
             return;
         }
