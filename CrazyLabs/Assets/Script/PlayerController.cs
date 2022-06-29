@@ -99,8 +99,8 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.currentScore = 0;
         GameManager.instance.processorCapacity = 0;
         currentVacuumCapacity.text = _deviceCapacity.ToString() + " / " + vacuumCapacity.ToString();
-        upgradeAbilityPrice.text = player.upgradeAbilityPrice.ToString() + " coins";
-        upgradeCapacityPrice.text = player.upgradeCapacityPrice.ToString() + " coins";
+        upgradeAbilityPrice.text = player.upgradeAbilityPrice.ToString();
+        upgradeCapacityPrice.text = player.upgradeCapacityPrice.ToString();
         rb = GetComponent<Rigidbody>();
         playedDeathAnimation = false;
         //finalDestination.rotation = Quaternion.identity;
