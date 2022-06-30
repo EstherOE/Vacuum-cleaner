@@ -17,10 +17,13 @@ public class LevelManager : MonoBehaviour
         /*if (currentLevel == gameLevel.Length)
             currentLevel = gameLevel.Length - 1;*/
 
-        for(int i = 0; i < LevelUi.Length; i++)
+        for(int i = 0; i < gameLevel.Length; i++)
         {
             if (i <= currentLevel)
                 gameLevel[i].isUnlocked = true;
+            string s = "Level " + i;
+            int level = PlayerPrefs.GetInt(s);
+            gameLevel[i].totalStars = level;
         }
 
         for(int i = 0; i < gameLevel.Length; i++)
