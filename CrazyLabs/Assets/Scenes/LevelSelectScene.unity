@@ -2281,6 +2281,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8ad767c04e4d0be4e9029b602d5b05ef, type: 2}
   - {fileID: 11400000, guid: 207d85d9d00e8bd4d853635f7ab0ad9f, type: 2}
   - {fileID: 11400000, guid: 141566f310870e548a7b0a14299de437, type: 2}
+  - {fileID: 11400000, guid: d17a58ceec2ff8e4dada86af81a6caec, type: 2}
+  - {fileID: 11400000, guid: fdacf8c477c4ad646bf38b94b0418312, type: 2}
+  - {fileID: 11400000, guid: a1053db98920279438f862fcc6d1c84d, type: 2}
+  - {fileID: 11400000, guid: 86304dda797257c498796ff86f0ff523, type: 2}
+  - {fileID: 11400000, guid: 5b5794ff227e19647bd0a2f5e8b710d2, type: 2}
+  - {fileID: 11400000, guid: 65bfd1bbf73b6184ea3eebf174461c4e, type: 2}
+  - {fileID: 11400000, guid: b5b88f50d64f38b47934b3d1116b856e, type: 2}
+  - {fileID: 11400000, guid: 97a525177628fb143831eaa4b0444a82, type: 2}
+  - {fileID: 11400000, guid: b9bcc282d6062874b95d5895ebb569a8, type: 2}
+  - {fileID: 11400000, guid: 4b00ab4609a61f6439f035bffbfe1492, type: 2}
   yellowStar: {fileID: 21300000, guid: f45203bab19beef468f8f936c2ff8a77, type: 3}
 --- !u!4 &198016928
 Transform:
