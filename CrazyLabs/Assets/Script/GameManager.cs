@@ -121,7 +121,8 @@ public class GameManager : MonoBehaviour
             if (currentLevelId != gameLevel.Length - 1)
             {
                 PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
-                gameLevel[currentLevelId + 1].isUnlocked = true;
+                PlayerPrefs.SetInt("HighestLevelID", currentLevelId + 1);
+                //gameLevel[currentLevelId + 1].isUnlocked = true;
             }
 
             statsRecorded = true;

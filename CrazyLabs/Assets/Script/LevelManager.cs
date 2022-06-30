@@ -13,9 +13,15 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*int currentLevel = PlayerPrefs.GetInt("HighestLevelID") + 1;
-        if (currentLevel == gameLevel.Length)
+        int currentLevel = PlayerPrefs.GetInt("HighestLevelID");
+        /*if (currentLevel == gameLevel.Length)
             currentLevel = gameLevel.Length - 1;*/
+
+        for(int i = 0; i < LevelUi.Length; i++)
+        {
+            if (i <= currentLevel)
+                gameLevel[i].isUnlocked = true;
+        }
 
         for(int i = 0; i < gameLevel.Length; i++)
         {
