@@ -46,12 +46,12 @@ MonoBehaviour:
   chickZPositive: -5
   chickZNegative: -15
   chickWalkpointRange: 3
-  levelTime: 300
+  levelTime: 0
   doesLevelHaveTimer: 0
   hasTutorial: 1
   levelPrefab: {fileID: 0}
   levelPosition: {x: 0, y: 13.13, z: 0}
   scoreToReach: 1
   levelInstructions: 
-  totalStars: 0
-  isUnlocked: 0
+  totalStars: 3
+  isUnlocked: 1
