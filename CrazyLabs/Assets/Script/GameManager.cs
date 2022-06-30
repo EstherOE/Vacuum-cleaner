@@ -121,7 +121,9 @@ public class GameManager : MonoBehaviour
             if (currentLevelId != gameLevel.Length - 1)
             {
                 PlayerPrefs.SetInt("CurrentLevelID", currentLevelId + 1);
-                PlayerPrefs.SetInt("HighestLevelID", currentLevelId + 1);
+                int a = PlayerPrefs.GetInt("HighestLevelID");
+                if (currentLevelId + 1 > a)
+                    PlayerPrefs.SetInt("HighestLevelID", currentLevelId + 1);
                 //gameLevel[currentLevelId + 1].isUnlocked = true;
             }
 
@@ -210,7 +212,9 @@ public class GameManager : MonoBehaviour
             gameLevel[currentLevelId].totalStars++;
         if (totalEggsLeft == 0)
             gameLevel[currentLevelId].totalStars++;
-        if (GameTimer.instance.maxTime > gameLevel[currentLevelId].levelTime / 2)
+        if (GameTimer.instance.maxTime > gameLevel[currentLevelId].levelTime / 2 && gameLevel[currentLevelId].doesLevelHaveTimer)
+            gameLevel[currentLevelId].totalStars++;
+        else
             gameLevel[currentLevelId].totalStars++;
 
         if(a > gameLevel[currentLevelId].totalStars)
