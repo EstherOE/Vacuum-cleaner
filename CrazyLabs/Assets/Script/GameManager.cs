@@ -203,7 +203,8 @@ public class GameManager : MonoBehaviour
 
     public void CountStars()
     {
-        int a = gameLevel[currentLevelId].totalStars;
+        string s = "Level " + currentLevelId;
+        int a = PlayerPrefs.GetInt(s);
         gameLevel[currentLevelId].totalStars = 0;
         if (totalChicksLeft == 0) 
             gameLevel[currentLevelId].totalStars++;
@@ -214,6 +215,7 @@ public class GameManager : MonoBehaviour
 
         if(a > gameLevel[currentLevelId].totalStars)
             gameLevel[currentLevelId].totalStars = a;
+        PlayerPrefs.SetInt(s, gameLevel[currentLevelId].totalStars);
     }
 
     public void Pause() 
