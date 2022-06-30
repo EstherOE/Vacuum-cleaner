@@ -61,4 +61,9 @@ public class LevelSO : ScriptableObject
        
     }
 
+    public void UnlockLevel() 
+    {
+        
+    }
+
 }

@@ -400,7 +400,7 @@ public class PlayerController : MonoBehaviour
         GameManager.instance._SubtractCoins(player.upgradeCapacityPrice);
         playerDevice.deviceCapacity += 1;
         player.upgradeCapacityPrice *= 2;
-        upgradeCapacityPrice.text = player.upgradeCapacityPrice + "coins";
+        upgradeCapacityPrice.text = player.upgradeCapacityPrice.ToString();
         vacuumCapacity = playerDevice.deviceCapacity;
         currentVacuumCapacity.text = _deviceCapacity.ToString() + "/ " + vacuumCapacity.ToString();
         EnableBag();
@@ -425,7 +425,7 @@ public class PlayerController : MonoBehaviour
         player.playerSpeed += 0.5f;
         player.upgradeAbilityPrice *= 2;
         speed = player.playerSpeed;
-        upgradeAbilityPrice.text = player.upgradeAbilityPrice + "coins";
+        upgradeAbilityPrice.text = player.upgradeAbilityPrice.ToString();
  
     }
 

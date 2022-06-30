@@ -31,8 +31,8 @@ public class GameTimer : MonoBehaviour
         maxTime = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].levelTime;
          minutes = ((int)maxTime / 60).ToString();
         seconds = (maxTime % 60).ToString();
-        timeSpent = minutes + " : " + seconds+"0";
-        timer.text = timeSpent;
+        timeSpent = seconds;
+        timer.text = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].levelTime.ToString() + " s";
 
         CheckForTime();
     }

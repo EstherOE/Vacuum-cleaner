@@ -38,4 +38,12 @@ MonoBehaviour:
     probability: 1
     tutorialInstructions:
     - When your bag is full, click on the plus button to upgrade.
+  - eventToBeTriggered: {fileID: 11400000, guid: a177ec369e30d9c4781931b5d9715ba4, type: 2}
+    randomiseText: 0
+    currentIndex: 0
+    probability: 1
+    tutorialInstructions:
+    - 'Send all the chicks before time runs out
+
+'
   isTutorialFinshed: 0

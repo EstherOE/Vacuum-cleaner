@@ -27,7 +27,7 @@ MonoBehaviour:
   - {fileID: 2237154057215456247, guid: 62c77d2cfadc83048b37b10637b94751, type: 3}
   henCount: 1
   henSpeed: 5
-  henSightRange: 6
+  henSightRange: 8
   henXPositive: 15
   henXNegative: 6.5
   henZPositive: 18
@@ -39,17 +39,19 @@ MonoBehaviour:
   eggZPositive: 2.5
   eggZNegative: -19
   chickCount: 4
-  chickSpeed: 4.5
+  chickSpeed: 6
   chickSightRange: 5
   chickXPositive: 18
   chickXNegative: -5
   chickZPositive: -1
   chickZNegative: -20
   chickWalkpointRange: 3
-  levelTime: 300
-  doesLevelHaveTimer: 0
+  levelTime: 80
+  doesLevelHaveTimer: 1
   hasTutorial: 0
-  levelPrefab: {fileID: 4326574659984937117, guid: 2a3fbf9c4c39ade4bbc456a0b6eb77ac, type: 3}
+  levelPrefab: {fileID: 0}
   levelPosition: {x: 0, y: 13.13, z: 0}
   scoreToReach: 1
   levelInstructions: 
+  totalStars: 0
+  isUnlocked: 0

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de643e5d66c532a42ad1c14549fb7647, type: 3}
-  m_Name: Level 10
+  m_Name: Level 23
   m_EditorClassIdentifier: 
   CollectiblesTimers:
   - 15
@@ -25,28 +25,28 @@ MonoBehaviour:
   - {fileID: 2244161356582078427, guid: 0d8ed574c12992a4e9704960db648114, type: 3}
   - {fileID: 6692554359614464997, guid: 225c12f5e56f65e48a02158d29d499ae, type: 3}
   - {fileID: 2237154057215456247, guid: 62c77d2cfadc83048b37b10637b94751, type: 3}
-  henCount: 1
+  henCount: 3
   henSpeed: 5
-  henSightRange: 8
-  henXPositive: 15
-  henXNegative: 6.5
+  henSightRange: 10
+  henXPositive: 21
+  henXNegative: -1
   henZPositive: 18
   henZNegative: 7
-  henWalkPointRange: 5
-  eggCount: 4
+  henWalkPointRange: 1
+  eggCount: 8
   eggXPositive: 22
-  eggXNegative: 1
-  eggZPositive: 3
-  eggZNegative: -17
-  chickCount: 4
+  eggXNegative: -4
+  eggZPositive: 2.5
+  eggZNegative: -19
+  chickCount: 7
   chickSpeed: 6
-  chickSightRange: 10
-  chickXPositive: 13
-  chickXNegative: -3
-  chickZPositive: -5
-  chickZNegative: -15
-  chickWalkpointRange: 5
-  levelTime: 90
+  chickSightRange: 8
+  chickXPositive: 15
+  chickXNegative: -5
+  chickZPositive: -1
+  chickZNegative: -20
+  chickWalkpointRange: 3
+  levelTime: 70
   doesLevelHaveTimer: 1
   hasTutorial: 0
   levelPrefab: {fileID: 0}

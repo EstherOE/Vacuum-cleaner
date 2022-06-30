@@ -49,7 +49,9 @@ MonoBehaviour:
   levelTime: 300
   doesLevelHaveTimer: 0
   hasTutorial: 1
-  levelPrefab: {fileID: 4326574659984937117, guid: 2a3fbf9c4c39ade4bbc456a0b6eb77ac, type: 3}
+  levelPrefab: {fileID: 0}
   levelPosition: {x: 0, y: 13.13, z: 0}
   scoreToReach: 1
   levelInstructions: 
+  totalStars: 0
+  isUnlocked: 0
