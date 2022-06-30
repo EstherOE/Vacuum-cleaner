@@ -21,6 +21,8 @@ public class LevelManager : MonoBehaviour
         {
             if (i <= currentLevel)
                 gameLevel[i].isUnlocked = true;
+            else
+                gameLevel[i].isUnlocked = false;
             string s = "Level " + i;
             int level = PlayerPrefs.GetInt(s);
             gameLevel[i].totalStars = level;
