@@ -218,6 +218,8 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("coin"))
         {
+            if (isBagFull)
+                return;
             StartCoroutine(MoverObject(other.gameObject.transform, other));
         }
 
@@ -232,7 +234,7 @@ public class PlayerController : MonoBehaviour
         {
             if (isBagFull)
             {
-                return;
+                //return;
             }
             else
             {
@@ -330,24 +332,25 @@ public class PlayerController : MonoBehaviour
             timeTaken += Time.deltaTime;
             t.position = Vector3.MoveTowards(t.position, spawnPoint.position, Time.deltaTime *100);
             t.localScale = Vector3.MoveTowards(t.localScale, Vector3.one * 0.1f, Time.deltaTime * 50);
-            if (timeTaken > 0.05f)
+            if (timeTaken > 0.02f)
                 break;
         }
 
         if (other.CompareTag("dirt"))
         {
             GameManager.instance.totalChicksLeft--;
-            GameManager.instance.chickCounter.text = GameManager.instance.totalChicksLeft.ToString();
+            //GameManager.instance.chickCounter.text = GameManager.instance.totalChicksLeft.ToString();
             ExtractChick(other);
         }
         
         if (other.CompareTag("coin")) 
         {
             GameManager.instance.totalEggsLeft--;
+            GameManager.instance.chickCounter.text = GameManager.instance.totalEggsLeft.ToString();
             ExtractCoin(other);
         }
         //need to destroy objects on the event that they don't get sucked in completely
-        Destroy(other.gameObject);
+        //Destroy(other.gameObject);
     }
     private void ExtractChick(Collider other)
     {
@@ -356,8 +359,8 @@ public class PlayerController : MonoBehaviour
       return;
         playerAudio.PlayOneShot(catchChicken);
         character.Play("pick up item");
-        _deviceCapacity += 1;
-        currentVacuumCapacity.text = _deviceCapacity + "/ " + vacuumCapacity.ToString();
+        /*_deviceCapacity += 1;
+        currentVacuumCapacity.text = _deviceCapacity + "/ " + vacuumCapacity.ToString();*/
         Destroy(other.gameObject);
         
       
@@ -365,12 +368,15 @@ public class PlayerController : MonoBehaviour
 
     private void ExtractCoin(Collider other) 
     {
-        if (!GameManager.instance.hasGamestarted)
+        if (!GameManager.instance.hasGamestarted || isBagFull)
         {
             return;
         }
         else
         {
+            character.Play("pick up item");
+            _deviceCapacity += 1;
+            currentVacuumCapacity.text = _deviceCapacity + "/ " + vacuumCapacity.ToString();
             OnExtractedCoin.Raise();
             Destroy(other.gameObject);
             //GameManager.instance._AddCoins(2);
