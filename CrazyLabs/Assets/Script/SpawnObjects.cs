@@ -58,7 +58,13 @@ public class SpawnObjects : MonoBehaviour
                     Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(), Quaternion.identity);
             }
 
-            
+            else if (GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("Obstacles"))
+            {
+                xPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceXPositive;
+                xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceXNeagtive;
+                zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceZNegative;
+                zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceZPostive;
+            }
         }
     }
 
