@@ -33,7 +33,7 @@ MonoBehaviour:
   henZPositive: 18
   henZNegative: 7
   henWalkPointRange: 0
-  eggCount: 2
+  eggCount: 3
   eggXPositive: 20
   eggXNegative: 1
   eggZPositive: 3
@@ -53,5 +53,5 @@ MonoBehaviour:
   levelPosition: {x: 0, y: 13.13, z: 0}
   scoreToReach: 1
   levelInstructions: 
-  totalStars: 0
+  totalStars: 3
   isUnlocked: 0

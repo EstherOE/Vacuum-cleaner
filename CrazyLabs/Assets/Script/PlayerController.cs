@@ -85,6 +85,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         //initialRotation = transform.rotation.eulerAngles;
+        userPlayer = this;
+
     }
 
     private void Start()
@@ -170,7 +172,7 @@ public class PlayerController : MonoBehaviour
                     character.Play("death");
                     playedDeathAnimation = true;
                 }
-                else
+                else if(!GameManager.instance.gameOver)
                 {
                     character.Play("idle main");
                 }

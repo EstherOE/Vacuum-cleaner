@@ -1,0 +1,22 @@
+{
+    "name": "AV.Inspector",
+    "rootNamespace": "AV.Inspector",
+    "references": [
+        "GUID:5bfd80592c1d75544a34ca5910633008",
+        "GUID:eb5c71b3282959648bd552d27a44a1c0",
+        "GUID:383e6b2cc76f5584ebf91a5576982fec"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Smart-Inspector-Harmony.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
