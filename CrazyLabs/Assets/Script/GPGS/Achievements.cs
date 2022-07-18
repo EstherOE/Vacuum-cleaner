@@ -32,7 +32,6 @@ public class Achievements : MonoBehaviour
     {
         // TODO? More Optimization...
         playedGamesAchievements();
-        wonGamesAchievements();
     }
 
 
@@ -83,6 +82,7 @@ public class Achievements : MonoBehaviour
 	public void UpdateLeaderboardScore()
 	{
         // Get input from input field
+		var leaderboardScoreValue = 20;
         // var leaderboardScoreValue = GameObject.Find("XPInputField").GetComponent<InputField>();
 		// Get Score from Game Manager // ? TODO: Get Score...
 
@@ -90,7 +90,7 @@ public class Achievements : MonoBehaviour
         // Debug.Log("This is the Value : " + leaderboardScoreValue.text);
 
 
-		Social.ReportScore(int.Parse(leaderboardScoreValue.text), chickenPickinLeaderBoard, (bool success) => {
+		Social.ReportScore(leaderboardScoreValue, chickenPickinLeaderBoard, (bool success) => {
 			// handle success or failure
 		});
 	}
