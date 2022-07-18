@@ -263,6 +263,12 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.hasGamestarted = false;
             GameManager.instance.PlayerLose();
         }
+        if(other.CompareTag("Obstacles"))
+        {
+            character.Play("Death");
+            GameManager.instance.hasGamestarted = false;
+            GameManager.instance.PlayerLose();
+        }
     }
 
     private void OnTriggerExit(Collider other)

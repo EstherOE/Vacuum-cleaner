@@ -23,6 +23,8 @@ TagManager:
   - wall
   - HenLocation
   - StartLocation
+  - Fence
+  - Obstacles
   layers:
   - Default
   - TransparentFX

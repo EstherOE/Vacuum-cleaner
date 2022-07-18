@@ -25,6 +25,7 @@ MonoBehaviour:
   - {fileID: 2244161356582078427, guid: 0d8ed574c12992a4e9704960db648114, type: 3}
   - {fileID: 6692554359614464997, guid: 225c12f5e56f65e48a02158d29d499ae, type: 3}
   - {fileID: 2237154057215456247, guid: 62c77d2cfadc83048b37b10637b94751, type: 3}
+  - {fileID: 3811670448673821132, guid: 2f5a2c3eebe634323aa1e9ca2bef3407, type: 3}
   henCount: 1
   henSpeed: 5
   henSightRange: 8
@@ -46,6 +47,11 @@ MonoBehaviour:
   chickZPositive: -2
   chickZNegative: -17
   chickWalkpointRange: 3
+  fenceCount: 0
+  fenceXPositive: 0
+  fenceXNeagtive: 0
+  fenceZPostive: 0
+  fenceZNegative: 0
   levelTime: 90
   doesLevelHaveTimer: 1
   hasTutorial: 0
