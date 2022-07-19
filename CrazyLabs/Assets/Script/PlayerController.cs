@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public float currentHealth;
     public int offloadRate = 1;
     public Slider healthSlider;
+    public float peckPower;
+    
 
 
     [Header("UpgradeAtttributes")]
@@ -72,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Effects")]
     public UltimateTextDamageManager damageText;
-
+   
     [Space]
     public Goals[] goals;
     public Transform winPoint;
@@ -163,6 +165,10 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            damageText.Add ("-" + peckPower, this.gameObject.transform.position);
+        }
        
     }
 
@@ -255,7 +261,21 @@ public class PlayerController : MonoBehaviour
         {
           //  pickUpItems = true;
             OnPickUp.Raise();
-           // StartCoroutine(_PickUpItems());
+            // StartCoroutine(_PickUpItems());
+            //pick a random powerup
+            Item t = other.gameObject.GetComponent<Item>();
+            if (t.itemType == Item.ItemType.Speed)
+            {
+                //increase speed
+            }
+            else if (t.itemType == Item.ItemType.Shield)
+            {
+                //set shield active
+            }
+            else
+            {
+                //set frying pan active
+            }
         }
         
         if (other.CompareTag("dirt"))
@@ -287,10 +307,12 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Enemy")) 
         {
+            if (!GameManager.instance.hasGamestarted)
+                return;
             OnPlayerHit.Raise();
             currentHealth -= 2f;
             healthSlider.value = currentHealth;
-            damageText.Add("-" + 2, gameObject.transform.position);
+            damageText.Add((5).ToString(), this.gameObject.transform.position,"default");
             
         }
         if(other.CompareTag("Obstacles"))
