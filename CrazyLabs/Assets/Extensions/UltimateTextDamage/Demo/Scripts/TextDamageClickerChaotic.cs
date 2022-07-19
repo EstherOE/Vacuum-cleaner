@@ -16,10 +16,7 @@ namespace Guirao.UltimateTextDamage
         }
         private void OnMouseUpAsButton( )
         {
-            if( Random.value < 0.3f )
-                textManager.Add( ( Random.Range( 100800f , 2008000f ) ).ToStringScientific( ) , overrideTransform != null ? overrideTransform : transform );
-            else
-                textManager.Add( Random.Range( 900000f , 1100000f ).ToStringScientific( ) , overrideTransform != null ? overrideTransform : transform );
+                textManager.Add( "-" + 5, overrideTransform != null ? overrideTransform : transform,"critical");  
         }
 
         public bool autoclicker = true;
@@ -28,14 +25,14 @@ namespace Guirao.UltimateTextDamage
         float lastTimeClick;
         private void Update( )
         {
-            if( !autoclicker )
-                return;
-
-            if( Time.time - lastTimeClick >= 1f / clickRate )
+            
+            if(Input.GetKeyDown(KeyCode.Space))
             {
-                lastTimeClick = Time.time;
-                OnMouseUpAsButton( );
+                //lastTimeClick = Time.time;
+                textManager.Add(5f.ToString(), overrideTransform != null ? overrideTransform : transform, "default");
             }
+           
+            
         }
     }
 }
