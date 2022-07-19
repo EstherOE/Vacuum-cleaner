@@ -11,12 +11,9 @@ public class Item : MonoBehaviour
 
     public enum ItemType
     {
-        Normal,
-        Coin,
-        PlayerSpeedIncrease,
-        PlayerSpeedDecrease,
-        Immunity,
-        Vacuum,
+        Speed,
+        Shield,
+        FryingPan,
     }
 
     public ItemType itemType;
