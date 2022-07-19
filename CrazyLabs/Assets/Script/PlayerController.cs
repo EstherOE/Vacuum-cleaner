@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using NaughtyAttributes;
+using MilkShake;
+using Guirao.UltimateTextDamage;
 using TMPro;
 
 public class PlayerController : MonoBehaviour
@@ -14,7 +16,10 @@ public class PlayerController : MonoBehaviour
     public PlayerSO player;
     public Joystick joyStick;
     public float speed;
+    public float currentHealth;
     public int offloadRate = 1;
+    public Slider healthSlider;
+
 
     [Header("UpgradeAtttributes")]
     public TextMeshProUGUI upgradeCapacityPrice;
@@ -33,7 +38,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource playerAudio;
 
     public AudioClip catchChicken; 
-    public AudioClip bagIsFull;
+    public AudioClip run;
 
 
     [Header("Container Properties")]
@@ -62,6 +67,11 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnPrompt;
     public GameEvent NotEnoughCoins;
     public GameEvent OnReachMaxSpeed;
+    public GameEvent OnPlayerWalk;
+    public GameEvent OnPlayerStop;
+
+    [Header("Effects")]
+    public UltimateTextDamageManager damageText;
 
     [Space]
     public Goals[] goals;
@@ -75,7 +85,7 @@ public class PlayerController : MonoBehaviour
         public int targetGoal;
         public UnityEvent onReachedGoal;
     }
-
+    public UnityEvent OnAttack;
 
 
     //private int theScore;
@@ -85,6 +95,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         //initialRotation = transform.rotation.eulerAngles;
+        userPlayer = this;
     }
 
     private void Start()
@@ -92,6 +103,9 @@ public class PlayerController : MonoBehaviour
         offloadItems = false;
         pickUpItems = false;
         character = gameObject.GetComponentInChildren<Animation>();
+        currentHealth = player.maxHealth;
+        healthSlider.value = currentHealth;
+        healthSlider.maxValue = currentHealth;
         speed = player.playerSpeed;
         vacuumCapacity = playerDevice.deviceCapacity;
         offloadRate = playerDevice.offloadRate; 
@@ -138,7 +152,16 @@ public class PlayerController : MonoBehaviour
         {
             _deviceCapacity = 0;
         }
-        
+
+        if (currentHealth <= 0)
+        {
+           
+            character.Play("death");
+            currentHealth = 0;
+            GameManager.instance.hasGamestarted = false;
+            GameManager.instance.PlayerLose();
+
+        }
 
        
     }
@@ -170,8 +193,9 @@ public class PlayerController : MonoBehaviour
                     character.Play("death");
                     playedDeathAnimation = true;
                 }
-                else
+                else if(!GameManager.instance.gameOver)
                 {
+                 
                     character.Play("idle main");
                 }
             }
@@ -183,12 +207,16 @@ public class PlayerController : MonoBehaviour
         if (movementDirection != Vector3.zero)
         {
             character.Play("run");
+          //  playerAudio.PlayOneShot(run);
+            OnPlayerWalk.Raise();
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, player.playerRotationSpeed * Time.deltaTime);
         }
         else
         {
             character.Play("idle main");
+            playerAudio.Stop();
+          //  OnPlayerStop.Raise();   
         }
     }
 
@@ -259,9 +287,11 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Enemy")) 
         {
-            character.Play("death");
-            GameManager.instance.hasGamestarted = false;
-            GameManager.instance.PlayerLose();
+            OnPlayerHit.Raise();
+            currentHealth -= 2f;
+            healthSlider.value = currentHealth;
+            damageText.Add("-" + 2, gameObject.transform.position);
+            
         }
         if(other.CompareTag("Obstacles"))
         {
