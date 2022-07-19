@@ -121,7 +121,7 @@ public class SpawnObjects : MonoBehaviour
         return newPos; 
     }
 
-
+    /*
     void SpawnDirt()
     {
         int id = Random.Range(0, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene.Length);
@@ -130,5 +130,5 @@ public class SpawnObjects : MonoBehaviour
             id = Random.Range(0, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene.Length);
 
         Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(), Quaternion.identity);
-    }
+    }*/
 }

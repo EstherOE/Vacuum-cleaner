@@ -261,7 +261,21 @@ public class PlayerController : MonoBehaviour
         {
           //  pickUpItems = true;
             OnPickUp.Raise();
-           // StartCoroutine(_PickUpItems());
+            // StartCoroutine(_PickUpItems());
+            //pick a random powerup
+            Item t = other.gameObject.GetComponent<Item>();
+            if (t.itemType == Item.ItemType.Speed)
+            {
+                //increase speed
+            }
+            else if (t.itemType == Item.ItemType.Shield)
+            {
+                //set shield active
+            }
+            else
+            {
+                //set frying pan active
+            }
         }
         
         if (other.CompareTag("dirt"))
