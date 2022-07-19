@@ -24,13 +24,13 @@ MonoBehaviour:
     currentIndex: 0
     probability: 1
     tutorialInstructions:
-    - Collect the egg then collect the chick and place it  in the coop
+    - Collect the eggs then collect the chick and place it  in the coop
   - eventToBeTriggered: {fileID: 11400000, guid: a177ec369e30d9c4781931b5d9715ba4, type: 2}
     randomiseText: 0
     currentIndex: 0
     probability: 1
     tutorialInstructions:
-    - Collect the egg then collect the chick and place it  in the coop. Make Sure
+    - Collect the eggs then collect the chick and place it  in the coop. Make Sure
       you avoid the Mother hen.
   - eventToBeTriggered: {fileID: 11400000, guid: a177ec369e30d9c4781931b5d9715ba4, type: 2}
     randomiseText: 0

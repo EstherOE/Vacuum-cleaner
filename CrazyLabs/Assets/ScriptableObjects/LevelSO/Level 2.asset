@@ -34,7 +34,7 @@ MonoBehaviour:
   henZPositive: 0
   henZNegative: -20
   henWalkPointRange: 0
-  eggCount: 1
+  eggCount: 3
   eggXPositive: 20
   eggXNegative: 1
   eggZPositive: 3
@@ -60,4 +60,4 @@ MonoBehaviour:
   scoreToReach: 1
   levelInstructions: 
   totalStars: 3
-  isUnlocked: 1
+  isUnlocked: 0
