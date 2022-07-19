@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     [Header("Level Attributes")]
     public int currentLevelId;
     public bool statsRecorded;
+    public bool gameCompleted;
     public int totalEggsPicked;
     public int totalEggsLeft;
     public int totalChicksLeft;
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         totalEggsPicked = 0;
         statsRecorded = false;
+        gameCompleted = false;
         managerAudio = GetComponent<AudioSource>();
        //SetLevel();
         playerCoins.CurrencyInitializer();
@@ -85,8 +87,8 @@ public class GameManager : MonoBehaviour
     {
         if(processorCapacity >= processorMax) 
         {
-            PlayerWin();
-            
+            //PlayerWin();
+            //gameCompleted = true;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {

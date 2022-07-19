@@ -57,7 +57,12 @@ public class EnemyAiTutorial : MonoBehaviour
         coopInRange = Physics.CheckSphere(transform.position, coopRange, whatIsCoop);
 
 
-      //  if (GameManager.instance.gameWon) EnterCoop();
+        //  if (GameManager.instance.gameWon) EnterCoop();
+        if (GameManager.instance.gameCompleted)
+        {
+            ChasePlayer();
+            return;
+        }
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange ) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();

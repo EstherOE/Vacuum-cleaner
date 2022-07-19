@@ -178,9 +178,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameManager.instance.hasGamestarted)
         {
-            //character.clip = character.GetClip("Idle");
-            //character.Play();
-            if (GameManager.instance.statsRecorded && Vector3.Distance(transform.position, winPoint.position) > 5.0f)
+            //character win/lose animation
+            /*if (GameManager.instance.statsRecorded && Vector3.Distance(transform.position, winPoint.position) > 5.0f)
             {
               
                 character.Play("run");
@@ -206,7 +205,23 @@ public class PlayerController : MonoBehaviour
                  
                     character.Play("idle main");
                 }
+            }*/
+
+            if (GameManager.instance.gameWon)
+            {
+                character.Play("dancing");
             }
+            else if (!playedDeathAnimation && GameManager.instance.gameOver)
+            {
+                character.Play("death");
+                playedDeathAnimation = true;
+            }
+            else if (!GameManager.instance.gameOver)
+            {
+
+                character.Play("idle main");
+            }
+
             return;
         }
 
@@ -326,6 +341,9 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.hasGamestarted = false;
             GameManager.instance.PlayerLose();
         }
+
+        if (other.CompareTag("Portal"))
+            GameManager.instance.PlayerWin();
     }
 
     private void OnTriggerExit(Collider other)
@@ -389,6 +407,8 @@ public class PlayerController : MonoBehaviour
             EnableBag();
             
         }
+        if (GameManager.instance.processorCapacity >= GameManager.instance.processorMax)
+            GameManager.instance.cameraCanMove = false;
     }
 
     IEnumerator MoverObject(Transform t, Collider other)
