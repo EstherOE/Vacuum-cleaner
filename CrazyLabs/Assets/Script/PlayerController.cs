@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnItemProcess;
     public GameEvent OnPlayerHit;
     public GameEvent OnPickUp;
+    public GameEvent EnableShield;
+    public GameEvent DisableShield;
     public GameEvent OnDrop;
     public GameEvent OnPrompt;
     public GameEvent NotEnoughCoins;
@@ -140,7 +142,7 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("speed", movementDirection.magnitude);
 
 
-        if (_deviceCapacity == vacuumCapacity)
+        /*if (_deviceCapacity == vacuumCapacity)
         {
             if (GameManager.instance.currentLevelId > 2)
             {
@@ -148,7 +150,7 @@ public class PlayerController : MonoBehaviour
                 //  playerAudio.PlayOneShot(bagIsFull);
                 isBagFull = true;
             }
-        }
+        }*/
 
         if (_deviceCapacity < 0)
         {
@@ -271,6 +273,9 @@ public class PlayerController : MonoBehaviour
             else if (t.itemType == Item.ItemType.Shield)
             {
                 //set shield active
+                EnableShield.Raise();
+                StartCoroutine(CountDown(t.collectible.effectTime));
+                DisableShield.Raise();
             }
             else
             {
@@ -282,7 +287,7 @@ public class PlayerController : MonoBehaviour
         {
             if (isBagFull)
             {
-                //return;
+                return;
             }
             else
             {
@@ -338,6 +343,12 @@ public class PlayerController : MonoBehaviour
            // ToggleSwitchOff();    
         }        
     }
+
+    IEnumerator CountDown(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+    }
+
     IEnumerator _PickUpItems() 
     {
         while (_deviceCapacity < playerDevice.deviceCapacity && pickUpItems)
