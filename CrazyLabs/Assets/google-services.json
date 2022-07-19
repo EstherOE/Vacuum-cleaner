@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1044266348558",
+    "project_id": "chicken-pickin",
+    "storage_bucket": "chicken-pickin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044266348558:android:964b5a5cdcfdf981a2cc5f",
+        "android_client_info": {
+          "package_name": "com.maliyo.chickenpickin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1044266348558-rjfshf0i6qeuce48s5i5ct1dn2oc80rc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.maliyo.chickenpickin",
+            "certificate_hash": "5418895a8eba691e4fb6527e26ac54247b5a8d05"
+          }
+        },
+        {
+          "client_id": "1044266348558-m1i24d6blu99m8d2ln3bal5knpcrrrft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7Gslyy56O3OgU6J3Wp9pweDVPrfPbLAs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1044266348558-m1i24d6blu99m8d2ln3bal5knpcrrrft.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
