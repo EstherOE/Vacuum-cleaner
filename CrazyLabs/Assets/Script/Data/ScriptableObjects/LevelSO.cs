@@ -30,7 +30,7 @@ public class LevelSO : ScriptableObject
     public float eggXNegative;
     public float eggZPositive;
     public float eggZNegative;
-
+    
     [Header("Chick AI Attributes")]
     public int chickCount;
     public float chickSpeed;
@@ -40,6 +40,13 @@ public class LevelSO : ScriptableObject
     public float chickZPositive;
     public float chickZNegative;
     public float chickWalkpointRange;
+
+    [Header("Fence Obstacles Attributes")]
+    public int fenceCount;
+    public float fenceXPositive;
+    public float fenceXNeagtive;
+    public float fenceZPostive;
+    public float fenceZNegative;
 
 
     [Header("LevelPrefab Attributes")]

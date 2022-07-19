@@ -16,7 +16,7 @@ public class SpawnObjects : MonoBehaviour
     public float colliderRadius = 0.2f;
 
     public float spawnTimer = 2.5f;
-  
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,10 +30,10 @@ public class SpawnObjects : MonoBehaviour
                 xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickXNegative;
                 zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickZPositive;
                 zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickZNegative;
-                yOffset = 1.5f  ;
+                yOffset = 1.5f;
                 //StartCoroutine(SpawnItem(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].GetComponent<Item>(), i));
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].eggCount; j++)
-               
+
                     Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(), Quaternion.identity);
             }
             else if (GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("Enemy"))
@@ -42,12 +42,12 @@ public class SpawnObjects : MonoBehaviour
                 xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henXNegative;
                 zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henZPositive;
                 zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henZNegative;
-                yOffset =0;
-                
+                yOffset = 0;
+
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].henCount; j++)
                     Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(), Quaternion.identity);
             }
-            else if(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("dirt"))
+            else if (GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("dirt"))
             {
                 xPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickXPositive;
                 xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickXNegative;
@@ -56,6 +56,14 @@ public class SpawnObjects : MonoBehaviour
                 yOffset = 0;
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].chickCount; j++)
                     Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(), Quaternion.identity);
+            }
+
+            else if (GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("Obstacles"))
+            {
+                xPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceXPositive;
+                xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceXNeagtive;
+                zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceZNegative;
+                zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceZPostive;
             }
         }
     }

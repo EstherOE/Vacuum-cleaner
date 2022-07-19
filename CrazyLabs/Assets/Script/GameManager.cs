@@ -67,9 +67,9 @@ public class GameManager : MonoBehaviour
         gameWon = false;
         gameOver = false;
 
-        totalChicksLeft = gameLevel[currentLevelId].chickCount;
-        chickCounter.text = totalChicksLeft.ToString();
+        totalChicksLeft = gameLevel[currentLevelId].eggCount;
         totalEggsLeft = gameLevel[currentLevelId].eggCount;
+        chickCounter.text = totalEggsLeft.ToString();
         //Instantiate(Levels[currentLevelId].levelPrefab,)
     }
 
