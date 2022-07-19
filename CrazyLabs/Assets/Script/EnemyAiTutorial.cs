@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyAiTutorial : MonoBehaviour
 {
@@ -28,6 +29,11 @@ public class EnemyAiTutorial : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange, coopInRange;
 
     public Animator enemyAnimation;
+
+   public bool isPatrolling = false, isChasing = false, isAttacking = false;
+
+    public Image[] colorState;
+
 
     private void Awake()
     {
@@ -57,11 +63,15 @@ public class EnemyAiTutorial : MonoBehaviour
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
 
 
+        ChangeColorState();
     }
 
     private void Patroling()
     {
-      
+        isPatrolling = true;
+        isChasing = false;
+        isAttacking = false;
+
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
@@ -72,6 +82,9 @@ public class EnemyAiTutorial : MonoBehaviour
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
+
+      
+
     }
     private void SearchWalkPoint()
     {
@@ -99,16 +112,26 @@ public class EnemyAiTutorial : MonoBehaviour
     }
 
     private void ChasePlayer()
-    {  
-            agent.SetDestination(player.position);
+    {
+        isChasing = true;
+        isPatrolling = false;
+        isAttacking = false;
+        agent.SetDestination(player.position);
             enemyAnimation.SetBool("chase", true);
-              
+
+        
+
+      
     }
 
     private void AttackPlayer()
     {
+        isAttacking = true;
+        isPatrolling = false;
+        isChasing = false;
+
         //Make sure enemy doesn't move
-        
+
         agent.SetDestination(transform.position);
 
         transform.LookAt(player);
@@ -119,8 +142,32 @@ public class EnemyAiTutorial : MonoBehaviour
             enemyAnimation.SetBool("chase", false);
             enemyAnimation.SetBool("attack", true);
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
+
+        }
+      
+    }
+
+    void ChangeColorState()
+    {
+        for (int i = 0; i < colorState.Length; i++)
+        {
+            if(isPatrolling==true)
+            {
+                colorState[i].color = Color.white;
+              
+            }
+            if(isChasing==true)
+            {
+                colorState[i].color = Color.magenta;
+            }
+            if(isAttacking==true)
+            {
+                colorState[i].color = Color.red;
+            }
+          
         }
     }
+
 
     private void EnterCoop() 
     {
