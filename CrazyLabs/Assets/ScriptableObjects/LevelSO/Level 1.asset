@@ -26,13 +26,13 @@ MonoBehaviour:
   - {fileID: 6692554359614464997, guid: 225c12f5e56f65e48a02158d29d499ae, type: 3}
   - {fileID: 2237154057215456247, guid: 62c77d2cfadc83048b37b10637b94751, type: 3}
   henCount: 0
-  henSpeed: 0
-  henSightRange: 0
+  henSpeed: 5
+  henSightRange: 15
   henXPositive: 15
   henXNegative: 6.5
   henZPositive: 18
   henZNegative: 7
-  henWalkPointRange: 0
+  henWalkPointRange: 10
   eggCount: 0
   eggXPositive: 0
   eggXNegative: 0
