@@ -20,9 +20,10 @@ public class PlayerController : MonoBehaviour
     public int offloadRate = 1;
     public Slider healthSlider;
     public float peckPower;
-    
 
-
+    public float _speedboost;
+    public float _speedBoostDuration = 5f;
+    public float normalSpeed;
     [Header("UpgradeAtttributes")]
     public TextMeshProUGUI upgradeCapacityPrice;
     public TextMeshProUGUI upgradeAbilityPrice;
@@ -94,6 +95,17 @@ public class PlayerController : MonoBehaviour
     //private int vacuumCapacity;
 
 
+    public void ActivateSpeedBoost()
+    {
+        StartCoroutine(SpeedBoostCoolDown());
+    }
+
+    IEnumerator SpeedBoostCoolDown()
+    {
+        speed = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].speedBoost;
+        yield return new WaitForSeconds(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].speedDuration);
+        speed = normalSpeed;
+    }
     private void Awake()
     {
         //initialRotation = transform.rotation.eulerAngles;
@@ -109,6 +121,7 @@ public class PlayerController : MonoBehaviour
         healthSlider.value = currentHealth;
         healthSlider.maxValue = currentHealth;
         speed = player.playerSpeed;
+        normalSpeed = speed;
         vacuumCapacity = playerDevice.deviceCapacity;
         offloadRate = playerDevice.offloadRate; 
         playerAudio = GetComponent<AudioSource>();

@@ -64,24 +64,53 @@ public class SpawnObjects : MonoBehaviour
                 xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceXNeagtive;
                 zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceZNegative;
                 zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceZPostive;
+                yOffset = 2.8f;
+                float angle = Random.Range(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].minAngle, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].maxAngle);
+                for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceCount ; j++)
+                {
+
+                    Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomObstaclesPos(), Quaternion.AngleAxis(angle, Vector3.up));
+                    angle = Random.Range(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].minAngle, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].maxAngle);
+
+                }
+            }
+
+            else if(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("SpeedPowerUp"))
+            {
+                xPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].speedXPositive;
+                xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].speedXNegative;
+                zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].speedZNegative;
+                zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].speedZpositive;
+                yOffset = 2.8f;
+
+                StartCoroutine(SpawnEgg(i));
+                
             }
         }
     }
 
+    IEnumerator SpawnEgg(int id)
+    {
+        yield return new  WaitForSeconds(1);
 
+        Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(), Quaternion.identity);
+    }
+
+    Vector3 RandomObstaclesPos()
+    {
+        float x = Random.Range(xNegative, xPositive);
+        float y = yOffset;
+        float z = Random.Range(zNegative, zPositive);
+
+        Vector3 ns = new Vector3(x, y, z);
+        return ns;
+    }
     void Update()
     {
         
     }
 
-    IEnumerator SpawnItem(Item t, int id)
-    {
-        while (t.collectible.spawnRate > 0 && !GameManager.instance.gameOver)
-        {
-            yield return new WaitForSeconds(t.collectible.spawnRate);
-            Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(), Quaternion.identity);
-        }
-    }
+   
 
     Vector3 RandomPos()
     {
@@ -121,7 +150,7 @@ public class SpawnObjects : MonoBehaviour
         return newPos; 
     }
 
-    /*
+
     void SpawnDirt()
     {
         int id = Random.Range(0, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene.Length);
@@ -130,5 +159,5 @@ public class SpawnObjects : MonoBehaviour
             id = Random.Range(0, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene.Length);
 
         Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(), Quaternion.identity);
-    }*/
+    }
 }
