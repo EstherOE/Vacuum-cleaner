@@ -86,8 +86,8 @@ public class PlayerController : MonoBehaviour
     {
         //initialRotation = transform.rotation.eulerAngles;
 
-        GPGSManager.ConfigureGPGS();
-        GPGSManager.SignIntoGPGS(SignInInteractivity.CanPromptOnce, clientConfiguration);
+        // GPGSManager.ConfigureGPGS();
+        // GPGSManager.SignIntoGPGS(SignInInteractivity.CanPromptOnce, clientConfiguration);
     }
 
     private void Start()
