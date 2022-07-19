@@ -9740,7 +9740,7 @@ GameObject:
   - component: {fileID: 1681501500}
   - component: {fileID: 1681501499}
   m_Layer: 0
-  m_Name: AudioSourceSec
+  m_Name: Audio Source Master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
