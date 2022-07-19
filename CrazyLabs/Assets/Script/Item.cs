@@ -14,6 +14,7 @@ public class Item : MonoBehaviour
         Speed,
         Shield,
         FryingPan,
+        Vacuum,
     }
 
     public ItemType itemType;
