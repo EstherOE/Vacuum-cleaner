@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
     [Header("SO Events")]
     public GameEvent OnExtracted;
     public GameEvent OnExtractedCoin;
-    public GameEvent OnVacuumOff;
+    public GameEvent OpenPortal;
     public GameEvent OnVacuumFull;
     public GameEvent OnVacuumCanCarry;
     public GameEvent OnItemProcess;
@@ -434,7 +434,10 @@ public class PlayerController : MonoBehaviour
             
         }
         if (GameManager.instance.processorCapacity >= GameManager.instance.processorMax)
+        {
+            OpenPortal.Raise();
             GameManager.instance.cameraCanMove = false;
+        }
     }
 
     IEnumerator MoverObject(Transform t, Collider other)

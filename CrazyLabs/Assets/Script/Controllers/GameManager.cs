@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public int totalChicksLeft;
     public TextMeshProUGUI chickCounter;
     public LevelSO[] gameLevel;
+    public Transform[] Waypoints;
     public bool hasGamestarted = false;
     public bool gameWon = false;
     public static GameManager instance;

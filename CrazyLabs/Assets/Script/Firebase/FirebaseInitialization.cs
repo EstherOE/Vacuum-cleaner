@@ -1,5 +1,3 @@
-// To be Uncommented when any Firebase Package is Installed
-
 /**using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

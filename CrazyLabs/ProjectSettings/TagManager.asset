@@ -28,6 +28,8 @@ TagManager:
   - SpeedPowerUp
   - Portal
   - spikes
+  - FxTemporaire
+  - CrateBox
   layers:
   - Default
   - TransparentFX
