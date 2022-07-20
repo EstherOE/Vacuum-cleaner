@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource playerAudio;
 
     public AudioClip catchChicken; 
-    public AudioClip run;
+   // public AudioClip run;
 
 
     [Header("Container Properties")]
@@ -357,6 +357,14 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Portal"))
             GameManager.instance.PlayerWin();
+
+        if (other.CompareTag("spikes"))
+        {
+            
+                Debug.Log("Hit Spikes");
+            
+            
+        }
     }
 
     private void OnTriggerExit(Collider other)
