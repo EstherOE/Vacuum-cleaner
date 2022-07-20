@@ -109,9 +109,10 @@ public class EnemyAiTutorial : MonoBehaviour
         if(Z > 28)
             Z = 27;
 
-
-        walkPoint = new Vector3(X, transform.position.y, Z);
-
+        int index = Random.Range(0, GameManager.instance.Waypoints.Length);
+        //walkPoint = new Vector3(X, transform.position.y, Z);
+        walkPoint = new Vector3(GameManager.instance.Waypoints[index].position.x, transform.position.y, GameManager.instance.Waypoints[index].position.z);
+        Debug.Log(Physics.Raycast(walkPoint, -transform.up, 2f,whatIsGround));
         if (Physics.Raycast(walkPoint, -transform.up, 2f,whatIsGround))
             walkPointSet = true;
     }
