@@ -343,7 +343,7 @@ public class PlayerController : MonoBehaviour
             if (!GameManager.instance.hasGamestarted)
                 return;
             OnPlayerHit.Raise();
-            currentHealth -= 2f;
+            currentHealth -= peckPower;
             healthSlider.value = currentHealth;
             damageText.Add("-" + peckPower, this.gameObject.transform.position + new Vector3 (0f,10f,0f));
 
@@ -360,10 +360,15 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("spikes"))
         {
-            
-                Debug.Log("Hit Spikes");
-            
-            
+
+            // Debug.Log("Hit Spikes");
+            OnPlayerHit.Raise();
+            currentHealth -= peckPower;
+            healthSlider.value = currentHealth;
+            damageText.Add("-" + peckPower, this.gameObject.transform.position + new Vector3(0f, 10f, 0f));
+
+
+
         }
     }
 
