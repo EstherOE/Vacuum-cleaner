@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1431945747}
-  m_IndirectSpecularColor: {r: 0.3600612, g: 0.73627555, b: 0.9663688, a: 1}
+  m_IndirectSpecularColor: {r: 0.36010912, g: 0.73688596, b: 0.96749383, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1316,6 +1316,18 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: MilkShake.ShakePreset, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1042515558}
+        m_TargetAssemblyTypeName: SimpleFlash, Assembly-CSharp
+        m_MethodName: StartFlash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -9159,6 +9171,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679914816}
   m_CullTransparentMesh: 1
+--- !u!1001 &703091632
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4099916687696001376, guid: e4cbe12df592e9c4f93445a6dd29c02d, type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099916687696001376, guid: e4cbe12df592e9c4f93445a6dd29c02d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099916687696001376, guid: e4cbe12df592e9c4f93445a6dd29c02d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099916687696001376, guid: e4cbe12df592e9c4f93445a6dd29c02d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099916687696001376, guid: e4cbe12df592e9c4f93445a6dd29c02d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099916687696001376, guid: e4cbe12df592e9c4f93445a6dd29c02d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099916687696001376, guid: e4cbe12df592e9c4f93445a6dd29c02d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099916687696001376, guid: e4cbe12df592e9c4f93445a6dd29c02d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099916687696001376, guid: e4cbe12df592e9c4f93445a6dd29c02d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099916687696001376, guid: e4cbe12df592e9c4f93445a6dd29c02d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099916687696001376, guid: e4cbe12df592e9c4f93445a6dd29c02d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099916687696001382, guid: e4cbe12df592e9c4f93445a6dd29c02d, type: 3}
+      propertyPath: m_Name
+      value: SpikeBase
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e4cbe12df592e9c4f93445a6dd29c02d, type: 3}
 --- !u!1 &719426724
 GameObject:
   m_ObjectHideFlags: 0
@@ -9669,7 +9738,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &772414250
 GameObject:
@@ -10830,6 +10899,17 @@ MonoBehaviour:
     Target: {fileID: 129362284}
     Value: {x: 1, y: 1}
     Ease: 400
+--- !u!114 &1042515558 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 596555565800606007, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+  m_PrefabInstance: {fileID: 4481133433646767254}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd58e0aa8fd943544ad230f3841f8f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1054128946
 GameObject:
   m_ObjectHideFlags: 0

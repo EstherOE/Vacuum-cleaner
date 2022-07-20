@@ -837,6 +837,7 @@ MonoBehaviour:
   spikeActive: 0
   intervalTime: 10
   countTime: 0
+  duration: 5
   spikeAnim: {fileID: 0}
 --- !u!54 &4099916687696001383
 Rigidbody:
