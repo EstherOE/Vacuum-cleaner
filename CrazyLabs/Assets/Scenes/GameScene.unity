@@ -7596,11 +7596,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2187559573697333595}
+  portal: {fileID: 0}
   henTarget: {fileID: 6692554359614464996, guid: 225c12f5e56f65e48a02158d29d499ae, type: 3}
   smoothSpeed: 0.125
+  startTime: 0
   offset: {x: 0, y: 19.8, z: -8.3}
   offsetHen: {x: -17, y: 31, z: 19}
   lookAtTraget: 0
+  timer: 0
 --- !u!114 &424483396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8763,11 +8766,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2187559573697333595}
+  portal: {fileID: 0}
   henTarget: {fileID: 6692554359614464996, guid: 225c12f5e56f65e48a02158d29d499ae, type: 3}
   smoothSpeed: 0.125
+  startTime: 0
   offset: {x: 0, y: 19.8, z: -8.3}
   offsetHen: {x: -17, y: 31, z: 19}
   lookAtTraget: 0
+  timer: 0
 --- !u!1 &632922772
 GameObject:
   m_ObjectHideFlags: 0
@@ -18702,6 +18708,7 @@ MonoBehaviour:
   indicateLevel: {fileID: 1961636739}
   currentLevelId: 0
   statsRecorded: 0
+  gameCompleted: 0
   totalEggsPicked: 0
   totalEggsLeft: 0
   totalChicksLeft: 0
@@ -19603,7 +19610,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2336218985908426186, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
   m_PrefabInstance: {fileID: 4481133433646767254}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4481133433646767257}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a707c316f7b822e4aa8c0f0745b37dfa, type: 3}
@@ -19614,6 +19621,29 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1355865108, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
   m_PrefabInstance: {fileID: 4481133433646767254}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4481133433646767257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2336218985908426190, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+  m_PrefabInstance: {fileID: 4481133433646767254}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4481133433646767258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4481133433646767257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 1, b: 0.03481388, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &4656650059825371728
 PrefabInstance:
   m_ObjectHideFlags: 0
