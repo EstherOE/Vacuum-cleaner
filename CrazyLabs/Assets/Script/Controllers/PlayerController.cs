@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource playerAudio;
 
     public AudioClip catchChicken; 
-    public AudioClip run;
+   // public AudioClip run;
 
 
     [Header("Container Properties")]
@@ -343,7 +343,7 @@ public class PlayerController : MonoBehaviour
             if (!GameManager.instance.hasGamestarted)
                 return;
             OnPlayerHit.Raise();
-            currentHealth -= 2f;
+            currentHealth -= peckPower;
             healthSlider.value = currentHealth;
             damageText.Add("-" + peckPower, this.gameObject.transform.position + new Vector3 (0f,10f,0f));
 
@@ -357,6 +357,19 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Portal"))
             GameManager.instance.PlayerWin();
+
+        if (other.CompareTag("spikes"))
+        {
+
+            // Debug.Log("Hit Spikes");
+            OnPlayerHit.Raise();
+            currentHealth -= peckPower;
+            healthSlider.value = currentHealth;
+            damageText.Add("-" + peckPower, this.gameObject.transform.position + new Vector3(0f, 10f, 0f));
+
+
+
+        }
     }
 
     private void OnTriggerExit(Collider other)

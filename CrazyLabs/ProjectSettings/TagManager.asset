@@ -25,9 +25,11 @@ TagManager:
   - StartLocation
   - Fence
   - Obstacles
-  - FxTemporaire
-  - Portal
   - SpeedPowerUp
+  - Portal
+  - spikes
+  - FxTemporaire
+  - CrateBox
   layers:
   - Default
   - TransparentFX
