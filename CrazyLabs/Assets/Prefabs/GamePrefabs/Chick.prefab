@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 228764459}
   - component: {fileID: 2206797747744061382}
   - component: {fileID: 3076870869239204608}
+  - component: {fileID: 2232505784471022750}
   m_Layer: 0
   m_Name: Chick
   m_TagString: dirt
@@ -199,6 +200,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2232505784471022750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2244161356582078427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.9056604, g: 0.79276687, b: 0.14012098, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &2244161356232725076
 PrefabInstance:
   m_ObjectHideFlags: 0

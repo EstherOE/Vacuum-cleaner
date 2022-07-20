@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 2548206870384625968}
   - component: {fileID: 7231830171302394942}
   - component: {fileID: 6853759771128993064}
-  - component: {fileID: 2848412421892213914}
+  - component: {fileID: 4528879372753591048}
   m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2848412421892213914
+--- !u!114 &4528879372753591048
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4645824381716408550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f202382dc7a83664f8d94354f33a3f10, type: 3}
+  m_Script: {fileID: 11500000, guid: b52845a2efd503848ab21e16feffe00b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4758282634527117102
@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 534340397}
   - component: {fileID: 7036248660381926931}
   - component: {fileID: 1665370186328868347}
+  - component: {fileID: 1203371842999325405}
   m_Layer: 8
   m_Name: HenEnemy
   m_TagString: Enemy
@@ -411,6 +412,9 @@ MonoBehaviour:
   playerInAttackRange: 0
   coopInRange: 0
   enemyAnimation: {fileID: 6692554358749752545}
+  isPatrolling: 0
+  isChasing: 0
+  isAttacking: 0
   colorState:
   - {fileID: 1855935308275484837}
   - {fileID: 7864044277873332156}
@@ -560,6 +564,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1203371842999325405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6692554359614464997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &6692554358759201153
 PrefabInstance:
   m_ObjectHideFlags: 0
