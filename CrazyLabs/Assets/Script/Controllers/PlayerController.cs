@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
     [Header("SO Events")]
     public GameEvent OnExtracted;
     public GameEvent OnExtractedCoin;
-    public GameEvent OnVacuumOff;
+    public GameEvent OpenPortal;
     public GameEvent OnVacuumFull;
     public GameEvent OnVacuumCanCarry;
     public GameEvent OnItemProcess;
@@ -345,8 +345,8 @@ public class PlayerController : MonoBehaviour
             OnPlayerHit.Raise();
             currentHealth -= 2f;
             healthSlider.value = currentHealth;
-            damageText.Add((5).ToString(), this.gameObject.transform.position,"default");
-            
+            damageText.Add("-" + peckPower, this.gameObject.transform.position + new Vector3 (0f,10f,0f));
+
         }
         if(other.CompareTag("Obstacles"))
         {
@@ -421,7 +421,10 @@ public class PlayerController : MonoBehaviour
             
         }
         if (GameManager.instance.processorCapacity >= GameManager.instance.processorMax)
+        {
+            OpenPortal.Raise();
             GameManager.instance.cameraCanMove = false;
+        }
     }
 
     IEnumerator MoverObject(Transform t, Collider other)

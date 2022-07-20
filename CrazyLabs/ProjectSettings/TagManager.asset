@@ -25,6 +25,9 @@ TagManager:
   - StartLocation
   - Fence
   - Obstacles
+  - FxTemporaire
+  - Portal
+  - SpeedPowerUp
   layers:
   - Default
   - TransparentFX
