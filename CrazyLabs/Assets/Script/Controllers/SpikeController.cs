@@ -7,14 +7,18 @@ public class SpikeController : MonoBehaviour
     public List<Spike> spikes = new List<Spike>();
 
     public bool spikeActive;
-    public float coolTime;
+    public float intervalTime;
+    public float countTime;
+    public float duration;
     public Animator spikeAnim;
 
     private void Start()
-    { 
+    {
         spikeAnim = this.gameObject.GetComponentInChildren<Animator>();
         spikeAnim.Play("spike idle");
-      
+
+        countTime = intervalTime;
+
     }
 
     private void Update()
@@ -32,12 +36,21 @@ public class SpikeController : MonoBehaviour
             spikeAnim.SetBool("isNotActive", true);
             spikeActive = false;
         }
-
+      
+        countTime -= Time.deltaTime;
+        //Debug.Log(countTime);
+      
+        
+        if (countTime <=0)
+        {
+            StartCoroutine(TriggerSpikes());
+            ResetTime();
+        }
 
         
-            StartCoroutine(TriggerSpikes());
-     
+        
        
+        
        
 
     }
@@ -55,27 +68,21 @@ public class SpikeController : MonoBehaviour
         spikeAnim.SetBool("isActive", false);
         spikeAnim.SetBool("isNotActive", true);
         spikeActive = false;
-
+      //  ResetTime();
+    }
+    private void ResetTime()
+    {
+        countTime = intervalTime;
     }
 
     IEnumerator TriggerSpikes() 
     {
-        yield return new WaitForSeconds(coolTime);
-        while (!spikeActive)
-        {
-            Activate();
-            break;
-        }
+        Activate();
+        yield return new WaitForSeconds(duration);
+        Deactivate();
        
     }
 
-    IEnumerator RetractSpikes()
-    {
-        yield return new WaitForSeconds(coolTime);
-        while (spikeActive)
-        {
-            Activate();
-        }
-    }
+   
 
 }
