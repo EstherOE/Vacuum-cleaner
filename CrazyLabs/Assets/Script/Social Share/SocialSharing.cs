@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShareButton : MonoBehaviour
+public class SocialSharing : MonoBehaviour
 {
     public Image screenshot_image;
 
