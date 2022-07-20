@@ -3,11 +3,11 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShareButton : MonoBehaviour
+public class SocialSharing : MonoBehaviour
 {
     public Image screenshot_image;
 
-    private bool isProductionScreenshot = false;
+    private bool isTestScreenShot = false;
 
     void Update()
     {
@@ -43,7 +43,7 @@ public class ShareButton : MonoBehaviour
     {
         m_Image.gameObject.SetActive(true);
 
-        m_Image.sprite = Resources.Load<Sprite>("ScreenShots/shot " + Random.Range(0, 8));
+        m_Image.sprite = Resources.Load<Sprite>("ScreenShots/shot " + Random.Range(0, 4));
 
         yield return null;
 
@@ -66,16 +66,16 @@ public class ShareButton : MonoBehaviour
 
         m_Image.gameObject.SetActive(false);
 
-        new NativeShare().AddFile(filePath).SetSubject("Maliyo Games").SetText("Join the fun here: https://play.google.com/store/apps/details?id=com.maliyo.whotking").Share();
+        new NativeShare().AddFile(filePath).SetSubject("Maliyo Games").SetText("Get our fan Games here: https://play.google.com/store/apps/dev?id=7388683869055327292").Share();
     }
 
     public void ShareBtn()
     {
-        if(isProductionScreenshot)
+        if(!isTestScreenShot)
         {
             StartCoroutine(TakeSSAndShare(screenshot_image));
         }
-        else 
+        else
         {
             StartCoroutine(TakeScreenshotAndShare());
         }
