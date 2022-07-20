@@ -86,14 +86,30 @@ public class SpawnObjects : MonoBehaviour
                 StartCoroutine(SpawnEgg(i));
                 
             }
+            else if(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("CrateBox"))
+            {
+                xPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].boxXPositive;
+                xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].boxXNegative;
+                yOffset = 2.8f;
+                zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].boxZNegative;
+                zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].boxZPositive;
+                StartCoroutine(SpawnBox(i));
+            }
         }
+    }
+
+
+    IEnumerator SpawnBox(int id)
+    {
+        yield return new WaitForSeconds(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].displayTimer);
+        Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(), Quaternion.identity);
     }
 
     IEnumerator SpawnEgg(int id)
     {
-        yield return new  WaitForSeconds(1);
-
-        Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(), Quaternion.identity);
+        yield return new  WaitForSeconds(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].speedTimer);
+        for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].speedCount; j++)
+            Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(), Quaternion.identity);
     }
 
     Vector3 RandomObstaclesPos()

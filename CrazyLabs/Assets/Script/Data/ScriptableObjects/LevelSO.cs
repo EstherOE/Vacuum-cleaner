@@ -52,6 +52,18 @@ public class LevelSO : ScriptableObject
     public float speedXNegative;
     public float speedZpositive;
     public float speedZNegative;
+    public int speedTimer;
+
+
+    [Header("Crate Box Attributes")]
+
+    
+    public int displayTimer;
+    public int numberofCoins;
+    public float boxXPositive;
+    public float boxXNegative;
+    public float boxZPositive;
+    public float boxZNegative;
 
     [Header("Fence Obstacles Attributes")]
     public int fenceCount;
