@@ -18,10 +18,14 @@ public class EnemyAiTutorial : MonoBehaviour
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
+    public float cooldownTime;
 
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
+    bool startedAttack = false;
+    bool canAttack = true;
+    public float attackStartTime;
     //public GameObject projectile;
 
     //States
@@ -63,10 +67,9 @@ public class EnemyAiTutorial : MonoBehaviour
             ChasePlayer();
             return;
         }
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange ) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
-
+        if ((!playerInSightRange && !playerInAttackRange) || !canAttack) Patroling();
+        if (playerInSightRange && !playerInAttackRange && canAttack) ChasePlayer();
+        if (playerInAttackRange && playerInSightRange && canAttack) AttackPlayer();
 
         ChangeColorState();
     }
@@ -88,7 +91,8 @@ public class EnemyAiTutorial : MonoBehaviour
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
 
-      
+        if (Time.time - cooldownTime > 5.0f)
+            canAttack = true;
 
     }
     private void SearchWalkPoint()
@@ -112,7 +116,7 @@ public class EnemyAiTutorial : MonoBehaviour
         int index = Random.Range(0, GameManager.instance.Waypoints.Length);
         //walkPoint = new Vector3(X, transform.position.y, Z);
         walkPoint = new Vector3(GameManager.instance.Waypoints[index].position.x, transform.position.y, GameManager.instance.Waypoints[index].position.z);
-        Debug.Log(Physics.Raycast(walkPoint, -transform.up, 2f,whatIsGround));
+        
         if (Physics.Raycast(walkPoint, -transform.up, 2f,whatIsGround))
             walkPointSet = true;
     }
@@ -136,6 +140,12 @@ public class EnemyAiTutorial : MonoBehaviour
         isPatrolling = false;
         isChasing = false;
 
+        if (!startedAttack)
+        {
+            attackStartTime = Time.time;
+            startedAttack = true;
+        }
+
         //Make sure enemy doesn't move
 
         agent.SetDestination(transform.position);
@@ -149,6 +159,13 @@ public class EnemyAiTutorial : MonoBehaviour
             enemyAnimation.SetBool("attack", true);
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
 
+        }
+
+        if (Time.time - attackStartTime > 0.5f)
+        {
+            startedAttack = false;
+            canAttack = false;
+            cooldownTime = Time.time;
         }
       
     }
