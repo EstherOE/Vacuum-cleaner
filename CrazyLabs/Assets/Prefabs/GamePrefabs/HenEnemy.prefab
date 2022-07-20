@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 2548206870384625968}
   - component: {fileID: 7231830171302394942}
   - component: {fileID: 6853759771128993064}
-  - component: {fileID: 8908374411617865996}
+  - component: {fileID: 2848412421892213914}
   m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8908374411617865996
+--- !u!114 &2848412421892213914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -411,6 +411,10 @@ MonoBehaviour:
   playerInAttackRange: 0
   coopInRange: 0
   enemyAnimation: {fileID: 6692554358749752545}
+  colorState:
+  - {fileID: 1855935308275484837}
+  - {fileID: 7864044277873332156}
+  - {fileID: 5832060433961838040}
 --- !u!114 &4163914141675016766
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ MonoBehaviour:
   henZPositive: 18
   henZNegative: 7
   henWalkPointRange: 10
-  eggCount: 0
+  eggCount: 1
   eggXPositive: 0
   eggXNegative: 0
   eggZPositive: 0

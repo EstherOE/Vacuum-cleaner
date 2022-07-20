@@ -11,4 +11,5 @@ public class PlayerSO : ScriptableObject
     public int upgradeAbilityPrice;
     public int upgradeProcessorPrice;
     public int upgradeCapacityPrice;
+    public float speedBoost;
 }

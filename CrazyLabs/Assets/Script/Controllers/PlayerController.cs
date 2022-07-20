@@ -20,9 +20,10 @@ public class PlayerController : MonoBehaviour
     public int offloadRate = 1;
     public Slider healthSlider;
     public float peckPower;
-    
 
-
+    public float _speedboost;
+    public float _speedBoostDuration = 5f;
+    public float normalSpeed;
     [Header("UpgradeAtttributes")]
     public TextMeshProUGUI upgradeCapacityPrice;
     public TextMeshProUGUI upgradeAbilityPrice;
@@ -65,6 +66,8 @@ public class PlayerController : MonoBehaviour
     public GameEvent OnItemProcess;
     public GameEvent OnPlayerHit;
     public GameEvent OnPickUp;
+    public GameEvent EnableShield;
+    public GameEvent DisableShield;
     public GameEvent OnDrop;
     public GameEvent OnPrompt;
     public GameEvent NotEnoughCoins;
@@ -94,6 +97,17 @@ public class PlayerController : MonoBehaviour
     //private int vacuumCapacity;
 
 
+    public void ActivateSpeedBoost()
+    {
+        StartCoroutine(SpeedBoostCoolDown());
+    }
+
+    IEnumerator SpeedBoostCoolDown()
+    {
+        speed = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].speedBoost;
+        yield return new WaitForSeconds(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].speedDuration);
+        speed = normalSpeed;
+    }
     private void Awake()
     {
         //initialRotation = transform.rotation.eulerAngles;
@@ -109,6 +123,7 @@ public class PlayerController : MonoBehaviour
         healthSlider.value = currentHealth;
         healthSlider.maxValue = currentHealth;
         speed = player.playerSpeed;
+        normalSpeed = speed;
         vacuumCapacity = playerDevice.deviceCapacity;
         offloadRate = playerDevice.offloadRate; 
         playerAudio = GetComponent<AudioSource>();
@@ -140,7 +155,7 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("speed", movementDirection.magnitude);
 
 
-        if (_deviceCapacity == vacuumCapacity)
+        /*if (_deviceCapacity == vacuumCapacity)
         {
             if (GameManager.instance.currentLevelId > 2)
             {
@@ -148,7 +163,7 @@ public class PlayerController : MonoBehaviour
                 //  playerAudio.PlayOneShot(bagIsFull);
                 isBagFull = true;
             }
-        }
+        }*/
 
         if (_deviceCapacity < 0)
         {
@@ -176,9 +191,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameManager.instance.hasGamestarted)
         {
-            //character.clip = character.GetClip("Idle");
-            //character.Play();
-            if (GameManager.instance.statsRecorded && Vector3.Distance(transform.position, winPoint.position) > 5.0f)
+            //character win/lose animation
+            /*if (GameManager.instance.statsRecorded && Vector3.Distance(transform.position, winPoint.position) > 5.0f)
             {
               
                 character.Play("run");
@@ -204,7 +218,23 @@ public class PlayerController : MonoBehaviour
                  
                     character.Play("idle main");
                 }
+            }*/
+
+            if (GameManager.instance.gameWon)
+            {
+                character.Play("dancing");
             }
+            else if (!playedDeathAnimation && GameManager.instance.gameOver)
+            {
+                character.Play("death");
+                playedDeathAnimation = true;
+            }
+            else if (!GameManager.instance.gameOver)
+            {
+
+                character.Play("idle main");
+            }
+
             return;
         }
 
@@ -271,6 +301,9 @@ public class PlayerController : MonoBehaviour
             else if (t.itemType == Item.ItemType.Shield)
             {
                 //set shield active
+                EnableShield.Raise();
+                StartCoroutine(CountDown(t.collectible.effectTime));
+                DisableShield.Raise();
             }
             else
             {
@@ -282,7 +315,7 @@ public class PlayerController : MonoBehaviour
         {
             if (isBagFull)
             {
-                //return;
+                return;
             }
             else
             {
@@ -321,6 +354,9 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.hasGamestarted = false;
             GameManager.instance.PlayerLose();
         }
+
+        if (other.CompareTag("Portal"))
+            GameManager.instance.PlayerWin();
     }
 
     private void OnTriggerExit(Collider other)
@@ -338,6 +374,12 @@ public class PlayerController : MonoBehaviour
            // ToggleSwitchOff();    
         }        
     }
+
+    IEnumerator CountDown(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+    }
+
     IEnumerator _PickUpItems() 
     {
         while (_deviceCapacity < playerDevice.deviceCapacity && pickUpItems)
@@ -378,6 +420,8 @@ public class PlayerController : MonoBehaviour
             EnableBag();
             
         }
+        if (GameManager.instance.processorCapacity >= GameManager.instance.processorMax)
+            GameManager.instance.cameraCanMove = false;
     }
 
     IEnumerator MoverObject(Transform t, Collider other)
