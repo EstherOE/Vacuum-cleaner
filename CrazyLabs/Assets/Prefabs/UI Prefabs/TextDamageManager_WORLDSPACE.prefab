@@ -26,13 +26,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594001708582056684}
-  m_LocalRotation: {x: 0.19631778, y: -0, z: -0, w: 0.9805404}
+  m_LocalRotation: {x: 0.19631404, y: 0, z: 0, w: 0.9805411}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 22.643, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -110.6, y: 0}
@@ -99,13 +99,13 @@ MonoBehaviour:
   theCamera: {fileID: 0}
   autoFaceToCamera: 1
   overlaping: 1
-  followsTarget: 0
+  followsTarget: 1
   offsetUnits: 32
   damping: 20
   textTypes:
   - keyType: default
-    poolCount: 20
+    poolCount: 5
     prefab: {fileID: 114685088414384168, guid: 95183e82ccb5dbd41bb955d19937434b, type: 3}
   - keyType: critical
-    poolCount: 20
+    poolCount: 1
     prefab: {fileID: 114865973802963578, guid: f142b35f35a6b494689b8060d0822e79, type: 3}

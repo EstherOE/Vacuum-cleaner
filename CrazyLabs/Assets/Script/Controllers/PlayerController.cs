@@ -345,7 +345,7 @@ public class PlayerController : MonoBehaviour
             OnPlayerHit.Raise();
             currentHealth -= peckPower;
             healthSlider.value = currentHealth;
-            damageText.Add("-" + peckPower, this.gameObject.transform.position + new Vector3 (0f,10f,0f));
+            damageText.Add("-" + peckPower, this.gameObject.transform.position);
 
         }
         if(other.CompareTag("Obstacles"))
@@ -365,7 +365,7 @@ public class PlayerController : MonoBehaviour
             OnPlayerHit.Raise();
             currentHealth -= peckPower;
             healthSlider.value = currentHealth;
-            damageText.Add("-" + peckPower, this.gameObject.transform.position + new Vector3(0f, 10f, 0f));
+            damageText.Add("-" + peckPower, this.gameObject.transform.position);
 
 
 
