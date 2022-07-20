@@ -18,7 +18,7 @@ MonoBehaviour:
     currentIndex: 0
     probability: 1
     tutorialInstructions:
-    - Collect the chick and place it in the coop.
+    - Collect the chick <sprite=12> and place it in the coop.
   - eventToBeTriggered: {fileID: 11400000, guid: a177ec369e30d9c4781931b5d9715ba4, type: 2}
     randomiseText: 0
     currentIndex: 0
