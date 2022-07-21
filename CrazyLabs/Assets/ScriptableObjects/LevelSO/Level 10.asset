@@ -27,6 +27,7 @@ MonoBehaviour:
   - {fileID: 2237154057215456247, guid: 62c77d2cfadc83048b37b10637b94751, type: 3}
   - {fileID: 473722871368857117, guid: d05469aefd0a9411693bf0a13e32e8a8, type: 3}
   - {fileID: 2062745191275067858, guid: 5f1ceaf47c1df4a5c9a2e0a567ac2ebc, type: 3}
+  - {fileID: 3811670448673821132, guid: 2f5a2c3eebe634323aa1e9ca2bef3407, type: 3}
   henCount: 1
   henSpeed: 5
   henSightRange: 8
@@ -49,7 +50,6 @@ MonoBehaviour:
   chickZNegative: -15
   chickWalkpointRange: 5
   speedBoost: 0
-  speedCount: 0
   speedDuration: 0
   speedXPositive: 0
   speedXNegative: 0

@@ -46,7 +46,7 @@ public class LevelSO : ScriptableObject
     [Header("Speed Boost Atributes")]
 
     public float speedBoost;
-    public int speedCount;
+   
     public int speedDuration;
     public float speedXPositive;
     public float speedXNegative;

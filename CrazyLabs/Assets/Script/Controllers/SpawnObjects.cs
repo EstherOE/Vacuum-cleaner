@@ -64,14 +64,16 @@ public class SpawnObjects : MonoBehaviour
                 xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceXNeagtive;
                 zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceZNegative;
                 zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceZPostive;
-                yOffset = 2.8f;
-                float angle = Random.Range(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].minAngle, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].maxAngle);
+                yOffset = 4f;
+                //float angle = Random.Range(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].minAngle, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].maxAngle);
+                float angle = Random.Range(0, 90);
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceCount ; j++)
                 {
+                    
 
-                    Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomObstaclesPos(), Quaternion.AngleAxis(angle, Vector3.up));
-                    angle = Random.Range(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].minAngle, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].maxAngle);
-
+                    Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], SpawnSs(), Quaternion.AngleAxis(angle, Vector3.up));
+                    //angle = Random.Range(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].minAngle, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].maxAngle);
+                    angle = Random.Range(0, 90);
                 }
             }
 
@@ -113,19 +115,27 @@ public class SpawnObjects : MonoBehaviour
 
     Vector3 RandomObstaclesPos()
     {
-        float x = Random.Range(xNegative, xPositive);
+        float x = Random.Range(-4, 24);
         float y = yOffset;
-        float z = Random.Range(zNegative, zPositive);
+        float z = Random.Range(-24, 30);
 
         Vector3 ns = new Vector3(x, y, z);
         return ns;
     }
-    void Update()
-    {
-        
-    }
 
-   
+    Vector3 SpawnSs()
+    {
+        Vector3 newPos = RandomObstaclesPos();
+
+        Collider[] intersecting = Physics.OverlapSphere(newPos, colliderRadius);
+
+        while (intersecting.Length != 0)
+        {
+            newPos = RandomObstaclesPos();
+            intersecting = Physics.OverlapSphere(newPos, colliderRadius);
+        }
+        return newPos;
+    }
 
     Vector3 RandomPos()
     {

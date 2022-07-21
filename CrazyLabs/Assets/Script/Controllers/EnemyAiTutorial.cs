@@ -20,6 +20,10 @@ public class EnemyAiTutorial : MonoBehaviour
     public float walkPointRange;
     public float cooldownTime;
 
+    //Chasing
+    public Transform currentTransform;
+    public bool isPlayerTarget = false;
+
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
@@ -123,15 +127,23 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void ChasePlayer()
     {
+        //pick an attack point
+        if (!isChasing)
+        {
+            if (Random.Range(0, 1f) >= .4f)
+                currentTransform = player;
+            else
+                currentTransform = PlayerController.userPlayer.attackPoints[Random.Range(0, PlayerController.userPlayer.attackPoints.Length)];
+        }
+
         isChasing = true;
         isPatrolling = false;
         isAttacking = false;
-        agent.SetDestination(player.position);
+        agent.SetDestination(currentTransform.position);
             enemyAnimation.SetBool("chase", true);
 
-        
-
-      
+        if ((transform.position - currentTransform.position).magnitude < 1f)
+            currentTransform = player; 
     }
 
     private void AttackPlayer()
