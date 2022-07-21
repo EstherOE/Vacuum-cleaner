@@ -15,10 +15,18 @@ public class CratesScript : MonoBehaviour
         {
             
             for (int i = 0; i < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].numberofCoins; i++)
-                Instantiate(coinObject, RandomObstaclesPos(), Quaternion.identity);
-                
+            {
+                float angle = i * Mathf.PI * 2 / GameManager.instance.gameLevel[GameManager.instance.currentLevelId].numberofCoins;
+                float x = Mathf.Cos(angle) * 5f;
+                float z = Mathf.Sin(angle) * 5f;
+                Vector3 pos = transform.position + new Vector3(x, 0, z);
+
+                float angleDegrees = -angle * Mathf.Rad2Deg;
+                Quaternion der = Quaternion.Euler(0, angleDegrees, 0);
+                Instantiate(coinObject, pos, transform.rotation);
+            }
             
-            Debug.Log("Coin appears");
+            
             Destroy(gameObject);
         }
     }

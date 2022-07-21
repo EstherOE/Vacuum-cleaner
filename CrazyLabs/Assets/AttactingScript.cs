@@ -13,11 +13,5 @@ public class AttactingScript : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if(transform.childCount <1)
-        {
-            Destroy(gameObject);
-        }
-    }
+   
 }
