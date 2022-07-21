@@ -7,10 +7,10 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
 {
 
 #if UNITY_IOS
-    string GAME_ID = "4802589";
+    string GAME_ID = "4851104"; // 4851104
 
 #elif UNITY_ANDROID
-    string GAME_ID = "4802588";
+    string GAME_ID = "4851105"; // 4851105
 
 #endif
 

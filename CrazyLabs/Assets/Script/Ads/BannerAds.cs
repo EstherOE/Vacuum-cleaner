@@ -34,9 +34,11 @@ public class BannerAds : MonoBehaviour
 
         // toggleBannerBtn.onClick.AddListener(unityAdsManager.ToggleBanner);
 
-        showBannerBtn.onClick.AddListener(adsManager.ShowBanner);
+        // showBannerBtn.onClick.AddListener(adsManager.ShowBanner);
+        
+        adsManager.ShowBanner();
 
-        hideBannerBtn.onClick.AddListener(adsManager.HideBanner);
+        // hideBannerBtn.onClick.AddListener(adsManager.HideBanner);
     }
 
     private void OnEnable()
