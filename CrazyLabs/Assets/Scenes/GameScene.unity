@@ -1364,6 +1364,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87789060}
   m_CullTransparentMesh: 1
+--- !u!114 &97147070 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 596555565800606007, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+  m_PrefabInstance: {fileID: 4481133433646767254}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd58e0aa8fd943544ad230f3841f8f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &117915713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,6 +1437,18 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: MilkShake.ShakePreset, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 97147070}
+        m_TargetAssemblyTypeName: SimpleFlash, Assembly-CSharp
+        m_MethodName: StartFlash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -11523,29 +11546,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870639419}
   m_CullTransparentMesh: 1
---- !u!1 &1896468324 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2469072689567045491, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
-  m_PrefabInstance: {fileID: 4481133433646767254}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1896468325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896468324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 1, b: 0.03481388, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &1900848280
 GameObject:
   m_ObjectHideFlags: 0
@@ -16123,10 +16123,6 @@ PrefabInstance:
       propertyPath: theCamera
       value: 
       objectReference: {fileID: 424483393}
-    - target: {fileID: 4481133433646767258, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
 --- !u!114 &4481133433646767255 stripped
