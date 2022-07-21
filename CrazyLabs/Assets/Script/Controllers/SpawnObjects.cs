@@ -68,6 +68,7 @@ public class SpawnObjects : MonoBehaviour
                 float angle = Random.Range(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].minAngle, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].maxAngle);
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceCount ; j++)
                 {
+                    
 
                     Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomObstaclesPos(), Quaternion.AngleAxis(angle, Vector3.up));
                     angle = Random.Range(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].minAngle, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].maxAngle);
@@ -120,7 +121,36 @@ public class SpawnObjects : MonoBehaviour
         Vector3 ns = new Vector3(x, y, z);
         return ns;
     }
-   
+
+    Vector3 SpawnSs()
+    {
+        float Y = yPos.position.y + yOffset;
+        float X = Random.Range(xNegative, xPositive);
+        float Z = Random.Range(zNegative, zPositive);
+        Vector3 newPos = new Vector3(X, Y, Z);
+
+        Collider[] intersecting = Physics.OverlapSphere(new Vector3(newPos.x, -1f, newPos.z), colliderRadius);
+        Collider[] surface = Physics.OverlapSphere(newPos, colliderRadius);
+
+        while (intersecting.Length == 0 || (surface.Length != 0 && !surface[0].CompareTag("validspawnpoint")))
+        {
+            X = Random.Range(xNegative, xPositive);
+            Z = Random.Range(zNegative, zPositive);
+            newPos = new Vector3(X, Y, Z);
+            surface = Physics.OverlapSphere(newPos, colliderRadius);
+            intersecting = Physics.OverlapSphere(new Vector3(newPos.x, -1f, newPos.z), colliderRadius);
+        }
+
+        intersecting = Physics.OverlapSphere(newPos, colliderRadius);
+
+        while (intersecting.Length != 0 && intersecting[0].CompareTag("validspawnpoint"))
+        {
+            Y += 1.0f;
+            newPos = new Vector3(X, Y, Z);
+            intersecting = Physics.OverlapSphere(newPos, colliderRadius);
+        }
+        return newPos;
+    }
 
     Vector3 RandomPos()
     {
