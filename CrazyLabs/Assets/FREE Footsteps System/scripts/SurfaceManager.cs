@@ -8,7 +8,7 @@ public struct SurfaceDefinition {
 
 [System.Serializable]
 public struct RegisteredMaterial {
-	public Texture texture;
+	public Material texture;
 	public int surfaceIndex;
 }
 
@@ -69,13 +69,17 @@ public class SurfaceManager : MonoBehaviour {
 		// Case when the ground is a normal mesh.
 		else {
 			textureName = GetMeshMaterialAtPoint(worldPos, ray);
+			
 		}
 		// Searching for the found texture / material name in registered materials.
 		foreach(var material in registeredTextures) {
-			if(material.texture.name == textureName) {
+		
+			if (material.texture.name == textureName) {
 				return material.surfaceIndex;
 			}
+			
 		}
+		
 
 		return -1;
 	}
@@ -95,6 +99,8 @@ public class SurfaceManager : MonoBehaviour {
 		// Case when the ground is a normal mesh.
 		else {
 			textureName = GetMeshMaterialAtPoint(worldPos, new Ray(Vector3.zero, Vector3.zero));
+			textureName = textureName.Replace("(Instance)", "").Trim();
+			Debug.Log(textureName);
 		}
 		// Searching for the found texture / material name in registered materials.
 		foreach(var material in registeredTextures) {
@@ -102,6 +108,7 @@ public class SurfaceManager : MonoBehaviour {
 				return material.surfaceIndex;
 			}
 		}
+		
 
 		return -1;
 	}
@@ -120,11 +127,11 @@ public class SurfaceManager : MonoBehaviour {
 		Renderer r = hit.collider.GetComponent<Renderer>();
 		MeshCollider mc = hit.collider as MeshCollider;
 
-		if (r == null || r.sharedMaterial == null || r.sharedMaterial.mainTexture == null || r == null) {
+		if (r == null || r.sharedMaterial == null || r == null) {
 			return "";
 		}
 		else if(!mc || mc.convex) {
-			return r.material.mainTexture.name;
+			return r.material.name;
 		}
 
 		int materialIndex = -1;
@@ -149,7 +156,8 @@ public class SurfaceManager : MonoBehaviour {
 			if (materialIndex != -1) break;
 		}
 
-		string textureName = r.materials[materialIndex].mainTexture.name;
+		string textureName = r.materials[materialIndex].name;
+		//Debug.Log(textureName);
 
 		return textureName;
 	}

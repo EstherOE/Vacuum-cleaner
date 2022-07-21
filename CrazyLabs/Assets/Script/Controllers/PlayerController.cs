@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
    
     [Header("Player Properties")]
     public PlayerSO player;
-    public Joystick joyStick;
+    public VariableJoystick joyStick;
     public float speed;
     public float currentHealth;
     public int offloadRate = 1;
@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
    
     [Space]
     public Goals[] goals;
+    public Transform[] attackPoints;
     public Transform winPoint;
     private bool playedDeathAnimation;
     //private Vector3 initialRotation;
@@ -90,13 +91,6 @@ public class PlayerController : MonoBehaviour
         public int targetGoal;
         public UnityEvent onReachedGoal;
     }
-    public UnityEvent OnAttack;
-
-
-    //private int theScore;
-    //private int vacuumCapacity;
-
-
     public void ActivateSpeedBoost()
     {
         StartCoroutine(SpeedBoostCoolDown());
@@ -149,21 +143,11 @@ public class PlayerController : MonoBehaviour
         //move the player
         float horizontalInput = joyStick.Horizontal;
         float verticalInput = joyStick.Vertical;
-
-        movementDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
+        movementDirection =new Vector3( horizontalInput , 0, verticalInput).normalized;
         if (anim)
             anim.SetFloat("speed", movementDirection.magnitude);
 
 
-        /*if (_deviceCapacity == vacuumCapacity)
-        {
-            if (GameManager.instance.currentLevelId > 2)
-            {
-                OnVacuumFull.Raise();
-                //  playerAudio.PlayOneShot(bagIsFull);
-                isBagFull = true;
-            }
-        }*/
 
         if (_deviceCapacity < 0)
         {
@@ -172,22 +156,19 @@ public class PlayerController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-           
             character.Play("death");
             currentHealth = 0;
             GameManager.instance.hasGamestarted = false;
             GameManager.instance.PlayerLose();
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            damageText.Add ("-" + peckPower, this.gameObject.transform.position);
         }
        
     }
 
-    private void FixedUpdate()
+    public void MovePlayer() 
+    {
+        
+    }
+    public void FixedUpdate()
     {
         if (!GameManager.instance.hasGamestarted)
         {
@@ -237,13 +218,11 @@ public class PlayerController : MonoBehaviour
 
             return;
         }
-
-        if (movementDirection != Vector3.zero)
-            rb.MovePosition(transform.position + movementDirection *speed * Time.fixedDeltaTime);
+      
         if (movementDirection != Vector3.zero)
         {
+            rb.MovePosition(transform.position + movementDirection * speed * Time.fixedDeltaTime);
             character.Play("run");
-          //  playerAudio.PlayOneShot(run);
             OnPlayerWalk.Raise();
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, player.playerRotationSpeed * Time.deltaTime);
@@ -251,7 +230,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             character.Play("idle main");
-            playerAudio.Stop();
           //  OnPlayerStop.Raise();   
         }
     }
@@ -289,8 +267,8 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("pickup")) 
         {
-          //  pickUpItems = true;
-            OnPickUp.Raise();
+            //pickUpItems = true;
+            //OnPickUp.Raise();
             // StartCoroutine(_PickUpItems());
             //pick a random powerup
             Item t = other.gameObject.GetComponent<Item>();
@@ -301,9 +279,7 @@ public class PlayerController : MonoBehaviour
             else if (t.itemType == Item.ItemType.Shield)
             {
                 //set shield active
-                EnableShield.Raise();
-                StartCoroutine(CountDown(t.collectible.effectTime));
-                DisableShield.Raise();
+                StartCoroutine(ShieldCountDown(t.collectible.effectTime));
             }
             else
             {
@@ -388,9 +364,11 @@ public class PlayerController : MonoBehaviour
         }        
     }
 
-    IEnumerator CountDown(float timer)
+    IEnumerator ShieldCountDown(float timer)
     {
+        EnableShield.Raise();
         yield return new WaitForSeconds(timer);
+        DisableShield.Raise();
     }
 
     IEnumerator _PickUpItems() 
