@@ -10516,7 +10516,7 @@ GameObject:
   - component: {fileID: 2336218985908426187}
   - component: {fileID: 2336218985908426188}
   - component: {fileID: 1365489860}
-  - component: {fileID: 4481133433646767258}
+  - component: {fileID: 5389800898327061748}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -10769,24 +10769,19 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &4481133433646767258
+--- !u!114 &5389800898327061748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2336218985908426190}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e8885a543e383840a4a107040bd082c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 1, b: 0.03481388, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
+  timeToReset: 0.4
 --- !u!1 &2336218986050978564
 GameObject:
   m_ObjectHideFlags: 0
