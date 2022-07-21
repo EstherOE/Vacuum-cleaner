@@ -108,8 +108,7 @@ public class SpawnObjects : MonoBehaviour
     IEnumerator SpawnEgg(int id)
     {
         yield return new  WaitForSeconds(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].speedTimer);
-        for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].speedCount; j++)
-            Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(), Quaternion.identity);
+             Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(), Quaternion.identity);
     }
 
     Vector3 RandomObstaclesPos()

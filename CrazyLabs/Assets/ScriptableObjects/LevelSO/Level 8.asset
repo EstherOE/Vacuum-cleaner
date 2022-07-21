@@ -48,21 +48,21 @@ MonoBehaviour:
   chickZPositive: -5
   chickZNegative: -15
   chickWalkpointRange: 3
-  speedBoost: 0
-  speedCount: 0
-  speedDuration: 0
-  speedXPositive: 0
-  speedXNegative: 0
-  speedZpositive: 0
-  speedZNegative: 0
-  speedTimer: 0
-  displayTimer: 1
+  speedBoost: 15
+  speedCount: 1
+  speedDuration: 5
+  speedXPositive: 20
+  speedXNegative: -5
+  speedZpositive: -9
+  speedZNegative: 12
+  speedTimer: 12
+  displayTimer: 0
   numberofCoins: 8
   boxXPositive: 20
   boxXNegative: -3
   boxZPositive: -8
   boxZNegative: 15
-  fenceCount: 0
+  fenceCount: 1
   fenceXPositive: 0
   fenceXNeagtive: 0
   fenceZPostive: 0

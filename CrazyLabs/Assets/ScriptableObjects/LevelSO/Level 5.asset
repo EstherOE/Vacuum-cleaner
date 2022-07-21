@@ -58,10 +58,10 @@ MonoBehaviour:
   speedTimer: 0
   displayTimer: 0
   numberofCoins: 8
-  boxXPositive: 0
-  boxXNegative: 0
-  boxZPositive: 0
-  boxZNegative: 0
+  boxXPositive: 20
+  boxXNegative: -3
+  boxZPositive: -18
+  boxZNegative: 6
   fenceCount: 1
   fenceXPositive: 15
   fenceXNeagtive: -5
