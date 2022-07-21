@@ -59,6 +59,7 @@ public class LevelSO : ScriptableObject
 
     
     public int displayTimer;
+    public int boxCount;
     public int numberofCoins;
     public float boxXPositive;
     public float boxXNegative;

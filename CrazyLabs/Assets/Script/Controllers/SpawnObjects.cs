@@ -69,12 +69,13 @@ public class SpawnObjects : MonoBehaviour
                 float angle = Random.Range(0, 90);
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceCount ; j++)
                 {
-                    
 
                     Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], SpawnSs(), Quaternion.AngleAxis(angle, Vector3.up));
                     //angle = Random.Range(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].minAngle, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].maxAngle);
                     angle = Random.Range(0, 90);
                 }
+
+
             }
 
             else if(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i].CompareTag("SpeedPowerUp"))
@@ -95,7 +96,8 @@ public class SpawnObjects : MonoBehaviour
                 yOffset = 2.8f;
                 zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].boxZNegative;
                 zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].boxZPositive;
-                StartCoroutine(SpawnBox(i));
+                for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].boxCount; j++)
+                    Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], RandomPos(), Quaternion.identity);
             }
         }
     }
@@ -104,6 +106,8 @@ public class SpawnObjects : MonoBehaviour
     IEnumerator SpawnBox(int id)
     {
         yield return new WaitForSeconds(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].displayTimer);
+
+
         Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[id], RandomPos(), Quaternion.identity);
     }
 
@@ -122,6 +126,7 @@ public class SpawnObjects : MonoBehaviour
         Vector3 ns = new Vector3(x, y, z);
         return ns;
     }
+
 
     Vector3 SpawnSs()
     {
@@ -142,7 +147,8 @@ public class SpawnObjects : MonoBehaviour
         //bool validSpawnPoint = false;
         float Y = yPos.position.y + yOffset;
         float X = Random.Range(xNegative, xPositive);
-        
+
+       
         /*if (dirt[id].CompareTag("damage"))
             Y = 0.5f;
         else
