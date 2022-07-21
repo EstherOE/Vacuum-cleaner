@@ -72,8 +72,8 @@ public class SpawnObjects : MonoBehaviour
                     
 
                     Instantiate(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].itemsSpawnedInScene[i], SpawnSs(), Quaternion.AngleAxis(angle, Vector3.up));
-                    angle = Random.Range(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].minAngle, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].maxAngle);
-
+                    //angle = Random.Range(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].minAngle, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].maxAngle);
+                    angle = Random.Range(0, 90);
                 }
             }
 
