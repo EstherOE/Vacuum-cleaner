@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
    
     [Space]
     public Goals[] goals;
+    public Transform[] attackPoints;
     public Transform winPoint;
     private bool playedDeathAnimation;
     //private Vector3 initialRotation;
@@ -266,8 +267,8 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("pickup")) 
         {
-          //  pickUpItems = true;
-            OnPickUp.Raise();
+            //pickUpItems = true;
+            //OnPickUp.Raise();
             // StartCoroutine(_PickUpItems());
             //pick a random powerup
             Item t = other.gameObject.GetComponent<Item>();
@@ -278,9 +279,7 @@ public class PlayerController : MonoBehaviour
             else if (t.itemType == Item.ItemType.Shield)
             {
                 //set shield active
-                EnableShield.Raise();
-                StartCoroutine(CountDown(t.collectible.effectTime));
-                DisableShield.Raise();
+                StartCoroutine(ShieldCountDown(t.collectible.effectTime));
             }
             else
             {
@@ -365,9 +364,11 @@ public class PlayerController : MonoBehaviour
         }        
     }
 
-    IEnumerator CountDown(float timer)
+    IEnumerator ShieldCountDown(float timer)
     {
+        EnableShield.Raise();
         yield return new WaitForSeconds(timer);
+        DisableShield.Raise();
     }
 
     IEnumerator _PickUpItems() 
