@@ -6,6 +6,7 @@
 
 // DISCLAIMER : THIS SCRIPT CAN BE USED IN ANY WAY, MENTIONING MY WORK WILL BE GREATLY APPRECIATED BUT NOT REQUIRED.
 
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Footsteps {
@@ -60,6 +61,7 @@ namespace Footsteps {
 		float stepCycleProgress;
 		float lastPlayTime;
 		bool previouslyGrounded;
+		[SerializeField,ReadOnly]
 		bool isGrounded;
 
 
@@ -102,7 +104,12 @@ namespace Footsteps {
 		}
 
 		void PlayLandSound() {
-			audioSource.PlayOneShot(SurfaceManager.singleton.GetFootstep(currentGroundInfo.collider, currentGroundInfo.point));
+			AudioClip c = SurfaceManager.singleton.GetFootstep(currentGroundInfo.collider, currentGroundInfo.point);
+			if (c!=null)
+			{
+				audioSource.PlayOneShot(c);
+			}
+			
 		}
 
 		void AdvanceStepCycle(float increment) {
