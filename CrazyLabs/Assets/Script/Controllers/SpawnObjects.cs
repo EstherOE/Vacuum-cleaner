@@ -64,7 +64,7 @@ public class SpawnObjects : MonoBehaviour
                 xNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceXNeagtive;
                 zNegative = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceZNegative;
                 zPositive = GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceZPostive;
-                yOffset = 2.8f;
+                yOffset = 4f;
                 float angle = Random.Range(GameManager.instance.gameLevel[GameManager.instance.currentLevelId].minAngle, GameManager.instance.gameLevel[GameManager.instance.currentLevelId].maxAngle);
                 for (int j = 0; j < GameManager.instance.gameLevel[GameManager.instance.currentLevelId].fenceCount ; j++)
                 {
@@ -120,11 +120,6 @@ public class SpawnObjects : MonoBehaviour
         Vector3 ns = new Vector3(x, y, z);
         return ns;
     }
-    void Update()
-    {
-        
-    }
-
    
 
     Vector3 RandomPos()

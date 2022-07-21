@@ -62,7 +62,7 @@ MonoBehaviour:
   boxXNegative: -3
   boxZPositive: -18
   boxZNegative: 6
-  fenceCount: 1
+  fenceCount: 3
   fenceXPositive: 15
   fenceXNeagtive: -5
   fenceZPostive: -7
