@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
    
     [Space]
     public Goals[] goals;
+    public Transform[] attackPoints;
     public Transform winPoint;
     private bool playedDeathAnimation;
     //private Vector3 initialRotation;
