@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1431945747}
-  m_IndirectSpecularColor: {r: 0.36010912, g: 0.73688596, b: 0.96749383, a: 1}
+  m_IndirectSpecularColor: {r: 0.36032927, g: 0.73677135, b: 0.96646565, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1390,6 +1390,8 @@ GameObject:
   - component: {fileID: 117915719}
   - component: {fileID: 117915718}
   - component: {fileID: 117915720}
+  - component: {fileID: 117915722}
+  - component: {fileID: 117915721}
   m_Layer: 6
   m_Name: playerevents
   m_TagString: Untagged
@@ -1633,6 +1635,74 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+  PrivateResponse:
+    m_PersistentCalls:
+      m_Calls: []
+  invokeCheckOnEnable: 0
+  m_disableFirstEvent: 0
+--- !u!114 &117915721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117915713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 5a4b92ee83937af4d9bc54dc3742e2ba, type: 2}
+  delay: 0
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 998985164}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  PrivateResponse:
+    m_PersistentCalls:
+      m_Calls: []
+  invokeCheckOnEnable: 0
+  m_disableFirstEvent: 0
+--- !u!114 &117915722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117915713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: c159f324f1b2dfb4b9b5b1e647cdc463, type: 2}
+  delay: 0
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 998985164}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
   PrivateResponse:
     m_PersistentCalls:
@@ -6396,6 +6466,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4876581363749162055, guid: 63068c5659b9e2e46a58c55b1ca9b4c4, type: 3}
   m_PrefabInstance: {fileID: 4876581364721046003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &998985164 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1864230836, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+  m_PrefabInstance: {fileID: 4481133433646767254}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1021563237
 GameObject:
@@ -16167,6 +16242,14 @@ PrefabInstance:
       propertyPath: damageText
       value: 
       objectReference: {fileID: 1598981207}
+    - target: {fileID: 2336218985908426186, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+      propertyPath: EnableShield
+      value: 
+      objectReference: {fileID: 11400000, guid: c159f324f1b2dfb4b9b5b1e647cdc463, type: 2}
+    - target: {fileID: 2336218985908426186, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
+      propertyPath: DisableShield
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a4b92ee83937af4d9bc54dc3742e2ba, type: 2}
     - target: {fileID: 2336218985908426186, guid: 2ebf39b008be88f4c8bc14e342c87b32, type: 3}
       propertyPath: upgradeAbilityPrice
       value: 
